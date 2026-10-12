@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,viewport-fit=cover,user-scalable=no">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#000">
+<title>Tecno Tarot Parallax 3</title>
+<style>
+*{-webkit-tap-highlight-color:transparent}
+button:active,.btn:active{transform:none!important}
+html,body{margin:0;-webkit-touch-callout:none;-webkit-text-size-adjust:100%;height:100%;background:#000;overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none;font-family:-apple-system,system-ui,sans-serif}
+body{display:flex;align-items:center;justify-content:center;perspective:1400px;box-sizing:border-box;
+ padding:calc(44px + env(safe-area-inset-top)) env(safe-area-inset-right) calc(52px + env(safe-area-inset-bottom)) env(safe-area-inset-left);
+ background:radial-gradient(ellipse at 50% 40%,#1a0b24 0%,#000 70%)}
+#card{touch-action:none;position:relative;height:min(100%,calc((100vw - 16px)*12/7));aspect-ratio:7/12;transform-style:flat;isolation:isolate;will-change:transform;transition:opacity .18s}
+#card img{position:absolute;display:block;pointer-events:none;-webkit-user-drag:none}
+#win{position:absolute;z-index:1;left:8.080%;top:9.740%;width:84.464%;height:80.469%;overflow:hidden;background:#000;isolation:isolate;transform:translateZ(0);-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+#win img.layer{left:0;top:0;width:100%;height:100%}
+#win img.empty{visibility:hidden}
+#frame{left:0;top:0;width:100%;height:100%;z-index:5;transform:none!important}
+.layer{will-change:transform}
+.bar{position:fixed;left:0;right:0;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 10px;z-index:6;color:#ffd58a}
+#top{top:0;height:44px;padding-top:env(safe-area-inset-top)}
+#bot{bottom:0;height:52px;padding-bottom:env(safe-area-inset-bottom)}
+.btn{font:600 15px/1 inherit;color:#fff;background:#ffffff14;border:1px solid #c9a24a88;border-radius:999px;padding:10px 16px}
+#name{font-size:14px;letter-spacing:.06em;text-align:center;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#hud{font-size:11px;color:#fff6;text-align:center;flex:1}
+#start{position:fixed;inset:0;display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;background:rgba(0,0,0,.6);z-index:9;
+ font:600 18px/1.3 -apple-system,system-ui,sans-serif;color:#ffd58a;text-align:center}
+#start button{font:inherit;font-size:20px;letter-spacing:.08em;padding:16px 34px;border-radius:999px;border:2px solid #c9a24a;color:#fff;
+ background:linear-gradient(135deg,#ff2bc8,#20d8ff);box-shadow:0 0 24px #ff2bc8aa,0 0 40px #20d8ff66}
+#start small{color:#9fdcff;font-weight:400;max-width:80vw}
+#index{position:fixed;inset:0;z-index:8;background:#05030aee;overflow-y:auto;display:none;padding:calc(10px + env(safe-area-inset-top)) 10px 30px;touch-action:pan-y;box-sizing:border-box}
+#index.on{display:block}
+#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px}
+#grid a{display:block;color:#ffd58a;font-size:10px;text-align:center;text-decoration:none}
+#grid img{width:100%;aspect-ratio:7/12;object-fit:cover;border-radius:6px;border:1px solid #c9a24a55;background:#111}
+#dbg{position:fixed;left:6px;top:calc(48px + env(safe-area-inset-top));z-index:7;font:11px/1.35 ui-monospace,Menlo,monospace;color:#9f9;background:#000a;padding:6px 8px;border-radius:6px;white-space:pre;display:none;pointer-events:none}
+#msg{position:fixed;left:12px;right:12px;bottom:calc(64px + env(safe-area-inset-bottom));z-index:7;display:none;font-size:14px;line-height:1.35;color:#fff;background:#2a0a2ccc;border:1px solid #ff2bc8;border-radius:12px;padding:12px 14px}
+#index h2{color:#ffd58a;font-size:16px;margin:4px 4px 10px;display:flex;justify-content:space-between;align-items:center}
+#card *{pointer-events:none}
+#card{pointer-events:auto}
+#err{position:fixed;left:6px;right:6px;top:calc(48px + env(safe-area-inset-top));z-index:20;max-height:30vh;overflow:auto;font:11px/1.35 ui-monospace,Menlo,monospace;color:#fff;background:#a00d;padding:6px 8px;border-radius:6px;white-space:pre-wrap;display:none;pointer-events:auto}
+#status{position:fixed;left:0;right:0;bottom:calc(52px + env(safe-area-inset-bottom));z-index:7;font:10px/1.3 ui-monospace,Menlo,monospace;color:#9f9;text-align:center;pointer-events:none;white-space:nowrap;overflow:hidden}
+</style><script>
+// error catcher: installed first so later failures are visible on screen
+(function(){var box=null;function out(t){try{box=box||document.getElementById('err');if(!box){setTimeout(function(){out(t)},50);return;}box.style.display='block';box.textContent+=t+'\n';}catch(_){}}
+window.__err=out;window.onerror=function(m,f,l,c,e){out('ERR '+m+' @'+(f||'').split('/').pop()+':'+l+':'+c);};
+window.addEventListener('unhandledrejection',function(e){out('PROMISE '+(e.reason&&e.reason.message||e.reason));});})();
+</script>
+</head><body>
+<div id="top" class="bar"><button class="btn" id="idx">Index</button><div id="name"></div><button class="btn" id="mt">Motion: on</button><button class="btn" id="rc">Recenter</button></div>
+<div id="card">
+ <div id="win"><img id="bg" class="layer" alt=""><img id="mid" class="layer" alt=""><img id="figure" class="layer" alt=""><img id="fg" class="layer" alt=""></div>
+ <img id="frame" alt="">
+</div>
+<div id="bot" class="bar"><button class="btn" id="prev">&#9664; Prev</button><div id="hud"></div><button class="btn" id="next">Next &#9654;</button></div>
+<div id="index"><h2>Tecno Tarot Parallax 3, 78 cards <button class="btn" id="close">Close</button></h2><div id="grid"></div></div>
+<div id="dbg"></div><div id="err"></div><div id="status"></div><div id="msg"></div>
+<div id="start"><button id="go">Tap to start</button><small>Tilt the phone to look into the card. Drag the card to explore, use Prev/Next or Index to change cards. On desktop, move the mouse and use the arrow keys.</small></div>
+<script>
+// v2-engine. Five layers per card: frame (fixed, topmost, never transformed) | fg | figure | mid | bg (far).
+// Depth order, per-layer depth factors, blend and overscan come from deck/manifest.json; card entries may override.
+// Every moving layer sits inside #win, which is clipped by the frame window alpha (CSS mask-image) and drawn under the frame.
+// Displayed layer size = window * max(rect, 1 + 2*|depth|*amplitude + 0.01), so no layer edge can enter the window at max tilt.
+// Keeps all v5 robustness: Reduce Motion = 50%, Motion toggle, touch + pointer drag, permission first in the tap,
+// deviceorientation + devicemotion, on-screen error panel, status line.
+var V='2.0', ENGINE='v2-engine', TILT=5, MAXDEG=12, LERP=0.12, AMPLITUDE=1.15;
+var Q=new URLSearchParams(location.search), DEBUG=Q.get('debug')==='1';
+// test hook: ?pose=x,y forces the tilt (-1..1), ?cardtilt=0 disables the whole-card rotation (frame diff QA)
+var POSE=Q.get('pose')?Q.get('pose').split(',').map(Number):null; if(Q.get('cardtilt')==='0') TILT=0; if(POSE) LERP=1;
+var reduce=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
+var $=function(id){return document.getElementById(id)};
+var card=$('card'), win=$('win'), hud=$('hud'), dbg=$('dbg'), msg=$('msg'), stat=$('status');
+var M=null, deck=[], cur=0, MOVING=['bg','mid','figure','fg'], DEPTH={bg:0,mid:0,figure:0,fg:0};
+var tx=0,ty=0,x=0,y=0,base=null,mbase=null,mode='none',perm='not requested',lastO=null,nO=0,nM=0,nT=0,nP=0,started=false,useMotion=false;
+function clamp(v){return Math.max(-1,Math.min(1,v))}
+function pad(n){return String(n).padStart(2,'0')}
+function say(t){ msg.innerHTML=t; msg.style.display=t?'block':'none'; }
+function cbase(c){ return c.base||('deck/'+c.id+'/'); }
+function fileOf(c,n){ var f=c.files&&(n in c.files)?c.files[n]:n; return f; }
+function src(c,n){ var f=fileOf(c,n); return f?cbase(c)+f+'.webp?v='+V:null; }
+function layerCfg(c,n){
+  var L=M.layers[n]||{};
+  var d=(c.depth&&c.depth[n]!=null)?c.depth[n]:(L.depth||0);
+  var r=(c.rect&&c.rect[n]!=null)?c.rect[n]:(L.rect||1);
+  var b=(c.blend&&c.blend[n])||L.blend||'normal';
+  var s=Math.max(r, 1+2*Math.abs(d)*AMPLITUDE+0.01);
+  return {d:d*AMPLITUDE, s:s, blend:b, z:L.z||0};
+}
+function show(i){
+  if(!deck.length) return;
+  cur=(i+deck.length)%deck.length; var c=deck[cur];
+  card.style.opacity=.35;
+  var names=MOVING.concat(['frame']);
+  Promise.all(names.map(function(n){return new Promise(function(r){var u=src(c,n); if(!u) return r(); var im=new Image(); im.onload=im.onerror=r; im.src=u;});})).then(function(){
+    if(deck[cur]!==c) return;
+    names.forEach(function(n){
+      var el=$(n), u=src(c,n);
+      if(n==='frame'){ el.src=u; return; }
+      var g=layerCfg(c,n); DEPTH[n]=g.d;
+      if(!u){ el.removeAttribute('src'); el.classList.add('empty'); }
+      else { el.classList.remove('empty'); el.src=u; }
+      var off=((g.s-1)/2*100).toFixed(3)+'%';
+      el.style.left='-'+off; el.style.top='-'+off; el.style.width=(g.s*100).toFixed(3)+'%'; el.style.height=(g.s*100).toFixed(3)+'%';
+      el.style.mixBlendMode=g.blend; el.style.zIndex=g.z;
+    });
+    card.style.opacity=1; });
+  $('name').textContent=pad(c.index)+' '+c.title+(c.placeholder?' (v1 layers)':'');
+  try{history.replaceState(null,'',location.pathname+location.search+'#'+pad(c.index));}catch(_){}
+  [1,-1].forEach(function(k){ var n=deck[(cur+k+deck.length)%deck.length]; names.forEach(function(l){var u=src(n,l); if(u) new Image().src=u;}); });
+}
+// ---- gyro
+function onOri(e){
+  nO++; lastO=e;
+  if(e.beta==null||e.gamma==null) return;
+  useMotion=false;
+  var g=e.gamma, b=e.beta;
+  if(!base){ base={g:g,b:b}; mode='gyro'; hud.textContent='gyro on'; say(''); }
+  var dg=g-base.g, db=b-base.b; if(dg>90)dg-=180; if(dg<-90)dg+=180;
+  tx=clamp(dg/MAXDEG); ty=clamp(db/MAXDEG);
+}
+// devicemotion fallback: gravity vector gives tilt when orientation events carry no data
+function onMot(e){
+  nM++;
+  var a=e.accelerationIncludingGravity; if(!a||a.x==null) return;
+  if(nO>0 && lastO && lastO.gamma!=null) return;
+  useMotion=true;
+  var gx=Math.atan2(a.x,Math.hypot(a.y,a.z))*57.3, gy=Math.atan2(a.y,a.z)*57.3;
+  if(!mbase){ mbase={x:gx,y:gy}; mode='gyro'; hud.textContent='motion on'; say(''); }
+  tx=clamp((gx-mbase.x)/MAXDEG); ty=clamp(-(gy-mbase.y)/MAXDEG);
+}
+function deniedMsg(){
+  say('<b>Motion access is off for this site.</b><br>In Safari tap <b>aA</b> in the address bar, then <b>Website Settings</b>, set <b>Motion &amp; Orientation Access</b> to Allow (or Ask), and reload the page. You can still drag the card to explore.');
+}
+var attached=false;
+function attach(){
+  if(attached) return; attached=true;
+  window.addEventListener('deviceorientation',onOri,true);
+  window.addEventListener('devicemotion',onMot,true);
+  setTimeout(function(){ if(nO===0 && nM===0) say('No motion data received. Check that Safari has Motion &amp; Orientation Access (aA, Website Settings) and reload. Dragging the card still works.'); },2500);
+}
+// requestPermission must be the FIRST call inside the click, before any await or DOM work
+function start(){
+  var DOE=window.DeviceOrientationEvent, DME=window.DeviceMotionEvent, ps=[];
+  try{
+    if(DOE && typeof DOE.requestPermission==='function') ps.push(DOE.requestPermission());
+    if(DME && typeof DME.requestPermission==='function') ps.push(DME.requestPermission());
+  }catch(err){ perm='error: '+err.message; }
+  if(started) return; started=true;
+  $('start').style.display='none'; $('start').remove();
+  if(ps.length){
+    perm='asking';
+    Promise.all(ps.map(function(p){return p.catch(function(e){return 'error: '+(e&&e.message||e)})})).then(function(r){
+      perm=r.join('/');
+      if(r.indexOf('granted')>=0) attach(); else { deniedMsg(); hud.textContent='motion denied: drag'; }
+    });
+  } else if(DOE||DME){ if(perm==='not requested') perm='not required'; attach(); }
+  else { perm='unsupported'; hud.textContent='no gyro: drag'; }
+}
+$('go').addEventListener('click',start);
+// ---- drag: touch events primary, pointer events fallback (ignored while a touch is active)
+var p0=null, touching=false;
+function dStart(cx,cy){ p0={x:cx,y:cy,t:performance.now()}; }
+function dMove(cx,cy){ if(!p0) return; if(mode!=='gyro'){ mode='drag'; tx=clamp((cx-p0.x)/110); ty=clamp((cy-p0.y)/110); } }
+function dEnd(cx){ if(!p0) return; var dx=cx-p0.x, dt=performance.now()-p0.t;
+  if(Math.abs(dx)>innerWidth*0.55 && dt<280) show(cur+(dx<0?1:-1));
+  if(mode!=='gyro'){ tx=0; ty=0; } p0=null; }
+var NP={passive:false};
+card.addEventListener('touchstart',function(e){ nT++; touching=true; var t=e.touches[0]; dStart(t.clientX,t.clientY); e.preventDefault(); },NP);
+card.addEventListener('touchmove',function(e){ nT++; var t=e.touches[0]; dMove(t.clientX,t.clientY); e.preventDefault(); },NP);
+function tEnd(e){ nT++; var t=e.changedTouches[0]; dEnd(t?t.clientX:p0?p0.x:0); if(!e.touches.length) setTimeout(function(){touching=false},50); }
+card.addEventListener('touchend',tEnd,NP); card.addEventListener('touchcancel',tEnd,NP);
+if(window.PointerEvent){
+  card.addEventListener('pointerdown',function(e){ nP++; if(touching||e.pointerType==='touch'&&('ontouchstart' in window)) return; dStart(e.clientX,e.clientY); try{card.setPointerCapture(e.pointerId);}catch(_){} });
+  card.addEventListener('pointermove',function(e){ nP++; if(touching) return; if(p0) dMove(e.clientX,e.clientY); });
+  card.addEventListener('pointerup',function(e){ if(!touching) dEnd(e.clientX); });
+  card.addEventListener('pointercancel',function(e){ if(!touching) dEnd(e.clientX); });
+}
+window.addEventListener('mousemove',function(e){ if(mode==='gyro'||p0||touching)return; if(mode==='none'||mode==='mouse'){ mode='mouse'; tx=clamp(e.clientX/innerWidth*2-1); ty=clamp(e.clientY/innerHeight*2-1); } });
+// no zoom: pinch, double tap, dblclick
+['gesturestart','gesturechange','gestureend'].forEach(function(ev){ document.addEventListener(ev,function(e){e.preventDefault()},NP); });
+document.addEventListener('dblclick',function(e){e.preventDefault()},NP);
+var lastEnd=0; document.addEventListener('touchend',function(e){ var n=Date.now(); if(n-lastEnd<350 && !e.target.closest('button,a')) e.preventDefault(); lastEnd=n; },NP);
+document.addEventListener('touchmove',function(e){ if(!e.target.closest('#index')) e.preventDefault(); },NP);
+window.addEventListener('keydown',function(e){ if(e.key==='ArrowRight')show(cur+1); if(e.key==='ArrowLeft')show(cur-1); });
+$('prev').onclick=function(){show(cur-1)}; $('next').onclick=function(){show(cur+1)};
+$('rc').onclick=function(){ base=null; mbase=null; };
+$('idx').onclick=function(){$('index').classList.add('on')}; $('close').onclick=function(){$('index').classList.remove('on')};
+var motionOn=true, AMP=reduce?0.5:1;
+$('mt').onclick=function(){ motionOn=!motionOn; this.textContent='Motion: '+(motionOn?'on':'off'); };
+if(reduce) hud.textContent='Reduce Motion is on: parallax at 50%';
+var L={bg:$('bg'),mid:$('mid'),figure:$('figure'),fg:$('fg')};
+if(DEBUG) dbg.style.display='block';
+var frames=0;
+function tick(){
+  try{
+    frames++;
+    if(POSE){tx=POSE[0];ty=POSE[1];mode='test';}
+    var gt=motionOn?AMP:0; x+=(tx*gt-x)*LERP; y+=(ty*gt-y)*LERP; var w=win.clientWidth||300;
+    for(var k in L){ var t='translate3d('+(x*DEPTH[k]*w).toFixed(2)+'px,'+(y*DEPTH[k]*w).toFixed(2)+'px,0)'; L[k].style.webkitTransform=t; L[k].style.transform=t; }
+    var ct='rotateY('+(x*TILT).toFixed(2)+'deg) rotateX('+(-y*TILT).toFixed(2)+'deg)'; card.style.webkitTransform=ct; card.style.transform=ct;
+    if(frames%6===0) stat.textContent=ENGINE+' '+V+' | perm '+perm+' | mode '+mode+' | touch '+nT+' ptr '+nP+' | ori '+nO+' mot '+nM+(reduce?' | reduce-motion':'');
+    if(DEBUG) dbg.textContent=ENGINE+' '+V+'  mode '+mode+'\nperm '+perm+'  secure '+window.isSecureContext+'\nori '+nO+' mot '+nM+'\nbeta '+(lastO&&lastO.beta!=null?lastO.beta.toFixed(1):'-')+'  gamma '+(lastO&&lastO.gamma!=null?lastO.gamma.toFixed(1):'-')+'\ntilt '+x.toFixed(2)+' '+y.toFixed(2);
+  }catch(err){ window.__err&&__err('tick: '+err.message); }
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+fetch('deck/manifest.json?v='+V,{cache:'no-store'}).then(function(r){return r.json()}).then(function(m){
+  M=m; deck=m.cards; if(m.amplitude) AMPLITUDE=m.amplitude;
+  if(m.order){ MOVING=m.order.filter(function(n){return n!=='frame'}); MOVING.forEach(function(n){ if($(n)) win.appendChild($(n)); }); }
+  if(m.windowMask){ var u='url('+m.windowMask+')'; win.style.webkitMaskImage=u; win.style.maskImage=u; }
+  $('grid').innerHTML=deck.map(function(c,i){return '<a href="#'+pad(c.index)+'" data-i="'+i+'"><img loading="lazy" src="'+src(c,'thumb')+'" alt=""><br>'+pad(c.index)+' '+c.title+'</a>'}).join('');
+  $('grid').onclick=function(e){var a=e.target.closest('a'); if(!a)return; e.preventDefault(); $('index').classList.remove('on'); show(+a.dataset.i);};
+  var h=parseInt(location.hash.slice(1)); show(isNaN(h)?0:Math.max(0,deck.findIndex(function(c){return c.index===h})));
+}).catch(function(err){say('Could not load the deck manifest: '+err); window.__err&&__err('manifest: '+err);});
+</script>
+</body></html>
