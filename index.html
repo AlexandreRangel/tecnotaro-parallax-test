@@ -41,7 +41,17 @@ body{display:flex;align-items:center;justify-content:center;perspective:1400px;b
 #dbg{position:fixed;left:6px;top:calc(48px + env(safe-area-inset-top));z-index:7;font:11px/1.35 ui-monospace,Menlo,monospace;color:#9f9;background:#000a;padding:6px 8px;border-radius:6px;white-space:pre;display:none;pointer-events:none}
 #msg{position:fixed;left:12px;right:12px;bottom:calc(64px + env(safe-area-inset-bottom));z-index:7;display:none;font-size:14px;line-height:1.35;color:#fff;background:#2a0a2ccc;border:1px solid #ff2bc8;border-radius:12px;padding:12px 14px}
 #index h2{color:#ffd58a;font-size:16px;margin:4px 4px 10px;display:flex;justify-content:space-between;align-items:center}
-</style></head><body>
+#card *{pointer-events:none}
+#card{pointer-events:auto}
+#err{position:fixed;left:6px;right:6px;top:calc(48px + env(safe-area-inset-top));z-index:20;max-height:30vh;overflow:auto;font:11px/1.35 ui-monospace,Menlo,monospace;color:#fff;background:#a00d;padding:6px 8px;border-radius:6px;white-space:pre-wrap;display:none;pointer-events:auto}
+#status{position:fixed;left:0;right:0;bottom:calc(52px + env(safe-area-inset-bottom));z-index:7;font:10px/1.3 ui-monospace,Menlo,monospace;color:#9f9;text-align:center;pointer-events:none;white-space:nowrap;overflow:hidden}
+</style><script>
+// v5 error catcher: installed first so later failures are visible on screen
+(function(){var box=null;function out(t){try{box=box||document.getElementById('err');if(!box){setTimeout(function(){out(t)},50);return;}box.style.display='block';box.textContent+=t+'\n';}catch(_){}}
+window.__err=out;window.onerror=function(m,f,l,c,e){out('ERR '+m+' @'+(f||'').split('/').pop()+':'+l+':'+c);};
+window.addEventListener('unhandledrejection',function(e){out('PROMISE '+(e.reason&&e.reason.message||e.reason));});})();
+</script>
+</head><body>
 <div id="top" class="bar"><button class="btn" id="idx">Index</button><div id="name"></div><button class="btn" id="rc">Recenter</button></div>
 <div id="card">
  <div id="win"><img id="bg" class="layer" alt=""><img id="mid" class="layer" alt=""><img id="fg" class="layer" alt=""></div>
@@ -49,98 +59,133 @@ body{display:flex;align-items:center;justify-content:center;perspective:1400px;b
 </div>
 <div id="bot" class="bar"><button class="btn" id="prev">&#9664; Prev</button><div id="hud"></div><button class="btn" id="next">Next &#9654;</button></div>
 <div id="index"><h2>Tecnotarô, 78 cards <button class="btn" id="close">Close</button></h2><div id="grid"></div></div>
-<div id="dbg"></div><div id="msg"></div>
+<div id="dbg"></div><div id="err"></div><div id="status"></div><div id="msg"></div>
 <div id="start"><button id="go">Tap to start</button><small>Tilt the phone to look into the card. Drag the card to explore, use Prev/Next or Index to change cards. On desktop, move the mouse and use the arrow keys.</small></div>
 <script>
-// v4. Depth bands (manifest.json): bg far, moves most and opposite | mid = figure + ground, zero plane | fg near, with the tilt.
-// offset = tilt(-1..1, clamped) * depth * window width, both axes. bg depth is clamped per card by its halo margin.
-const V='4', TILT=5, MAXDEG=12, LERP=0.12, FG_BOOST=2.5;
-const Q=new URLSearchParams(location.search), DEBUG=Q.get('debug')==='1';
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const $=id=>document.getElementById(id), card=$('card'), win=$('win'), hud=$('hud'), dbg=$('dbg'), msg=$('msg');
-let deck=[], cur=0, DEPTH={bg:-0.02,mid:0,fg:0.01};
-let tx=0,ty=0,x=0,y=0,base=null,mode='none',perm='not requested',lastO=null,nO=0,started=false;
-const clamp=v=>Math.max(-1,Math.min(1,v));
-const src=(c,n)=>`deck/${c.id}/${n}.webp?v=${V}`;
-const LAYERS=['bg','mid','fg','frame'];
+// v5. Depth bands (manifest.json): bg far, moves most and opposite | mid = figure + ground, zero plane | fg near, with the tilt.
+// Robust input: touch events (non-passive) + pointer fallback on the whole card; gyro via deviceorientation + devicemotion.
+// Reduced motion no longer disables everything (in v4 it killed the render loop and all input on iPhones with Reduce Motion on).
+var V='5', TILT=5, MAXDEG=12, LERP=0.12, FG_BOOST=2.5;
+var Q=new URLSearchParams(location.search), DEBUG=Q.get('debug')==='1';
+var reduce=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
+var $=function(id){return document.getElementById(id)};
+var card=$('card'), win=$('win'), hud=$('hud'), dbg=$('dbg'), msg=$('msg'), stat=$('status');
+var deck=[], cur=0, DEPTH={bg:-0.02,mid:0,fg:0.01};
+var tx=0,ty=0,x=0,y=0,base=null,mbase=null,mode='none',perm='not requested',lastO=null,nO=0,nM=0,nT=0,nP=0,started=false,useMotion=false;
+function clamp(v){return Math.max(-1,Math.min(1,v))}
+function src(c,n){return 'deck/'+c.id+'/'+n+'.webp?v='+V}
+var LAYERS=['bg','mid','fg','frame'];
 function say(t){ msg.innerHTML=t; msg.style.display=t?'block':'none'; }
+function pad(n){return String(n).padStart(2,'0')}
 function show(i){
-  cur=(i+deck.length)%deck.length; const c=deck[cur];
+  if(!deck.length) return;
+  cur=(i+deck.length)%deck.length; var c=deck[cur];
   card.style.opacity=.35;
-  Promise.all(LAYERS.map(n=>new Promise(r=>{const im=new Image(); im.onload=im.onerror=r; im.src=src(c,n);}))).then(()=>{
+  Promise.all(LAYERS.map(function(n){return new Promise(function(r){var im=new Image(); im.onload=im.onerror=r; im.src=src(c,n);});})).then(function(){
     if(deck[cur]!==c) return;
-    for(const n of LAYERS) $(n).src=src(c,n);
+    LAYERS.forEach(function(n){$(n).src=src(c,n);});
     DEPTH={bg:c.depth.bg, mid:0, fg:c.depth.fg*FG_BOOST}; card.style.opacity=1; });
-  $('name').textContent=`${String(c.index).padStart(2,'0')} ${c.title}`;
-  history.replaceState(null,'',location.pathname+location.search+'#'+String(c.index).padStart(2,'0'));
-  for(const k of [1,-1]){ const n=deck[(cur+k+deck.length)%deck.length]; for(const l of LAYERS) new Image().src=src(n,l); }
+  $('name').textContent=pad(c.index)+' '+c.title;
+  try{history.replaceState(null,'',location.pathname+location.search+'#'+pad(c.index));}catch(_){}
+  [1,-1].forEach(function(k){ var n=deck[(cur+k+deck.length)%deck.length]; LAYERS.forEach(function(l){new Image().src=src(n,l);}); });
 }
-// gyro
+// ---- gyro
 function onOri(e){
   nO++; lastO=e;
   if(e.beta==null||e.gamma==null) return;
-  const g=e.gamma, b=e.beta;
-  if(!base){ base={g,b}; mode='gyro'; hud.textContent='gyro on'; say(''); }
-  let dg=g-base.g, db=b-base.b; if(dg>90)dg-=180; if(dg<-90)dg+=180;
+  useMotion=false;
+  var g=e.gamma, b=e.beta;
+  if(!base){ base={g:g,b:b}; mode='gyro'; hud.textContent='gyro on'; say(''); }
+  var dg=g-base.g, db=b-base.b; if(dg>90)dg-=180; if(dg<-90)dg+=180;
   tx=clamp(dg/MAXDEG); ty=clamp(db/MAXDEG);
+}
+// devicemotion fallback: gravity vector gives tilt when orientation events carry no data
+function onMot(e){
+  nM++;
+  var a=e.accelerationIncludingGravity; if(!a||a.x==null) return;
+  if(nO>0 && lastO && lastO.gamma!=null) return;
+  useMotion=true;
+  var gx=Math.atan2(a.x,Math.hypot(a.y,a.z))*57.3, gy=Math.atan2(a.y,a.z)*57.3;
+  if(!mbase){ mbase={x:gx,y:gy}; mode='gyro'; hud.textContent='motion on'; say(''); }
+  tx=clamp((gx-mbase.x)/MAXDEG); ty=clamp(-(gy-mbase.y)/MAXDEG);
 }
 function deniedMsg(){
   say('<b>Motion access is off for this site.</b><br>In Safari tap <b>aA</b> in the address bar, then <b>Website Settings</b>, set <b>Motion &amp; Orientation Access</b> to Allow (or Ask), and reload the page. You can still drag the card to explore.');
 }
+var attached=false;
 function attach(){
-  addEventListener('deviceorientation',onOri,true);
-  setTimeout(()=>{ if(nO===0 && mode!=='gyro') say('No motion data received. Check that Safari has Motion &amp; Orientation Access (aA, Website Settings) and reload. Dragging the card still works.'); },2000);
+  if(attached) return; attached=true;
+  window.addEventListener('deviceorientation',onOri,true);
+  window.addEventListener('devicemotion',onMot,true);
+  setTimeout(function(){ if(nO===0 && nM===0) say('No motion data received. Check that Safari has Motion &amp; Orientation Access (aA, Website Settings) and reload. Dragging the card still works.'); },2500);
 }
-// must run synchronously inside the tap: requestPermission is the FIRST call, no await before it
-function start(ev){
+// requestPermission must be the FIRST call inside the click, before any await or DOM work
+function start(){
+  var DOE=window.DeviceOrientationEvent, DME=window.DeviceMotionEvent, ps=[];
+  try{
+    if(DOE && typeof DOE.requestPermission==='function') ps.push(DOE.requestPermission());
+    if(DME && typeof DME.requestPermission==='function') ps.push(DME.requestPermission());
+  }catch(err){ perm='error: '+err.message; }
   if(started) return; started=true;
-  $('start').style.display='none';
-  if(reduce){ hud.textContent='Reduce Motion on: static'; return; }
-  const DOE=window.DeviceOrientationEvent;
-  if(DOE && typeof DOE.requestPermission==='function'){
+  $('start').style.display='none'; $('start').remove();
+  if(ps.length){
     perm='asking';
-    DOE.requestPermission().then(r=>{ perm=r; if(r==='granted') attach(); else { deniedMsg(); hud.textContent='motion denied: drag'; } })
-      .catch(err=>{ perm='error: '+err; started=false; $('start').style.display='flex'; say('Motion permission needs a direct tap. Tap "Tap to start" again.'); });
-  } else if(DOE){ perm='not required'; attach(); }
+    Promise.all(ps.map(function(p){return p.catch(function(e){return 'error: '+(e&&e.message||e)})})).then(function(r){
+      perm=r.join('/');
+      if(r.indexOf('granted')>=0) attach(); else { deniedMsg(); hud.textContent='motion denied: drag'; }
+    });
+  } else if(DOE||DME){ if(perm==='not requested') perm='not required'; attach(); }
   else { perm='unsupported'; hud.textContent='no gyro: drag'; }
 }
 $('go').addEventListener('click',start);
-// drag parallax on the card (pointer events); card change only by buttons, index, or a long fast fling
-let p0=null;
-card.addEventListener('pointerdown',e=>{ p0={x:e.clientX,y:e.clientY,t:performance.now(),id:e.pointerId}; card.setPointerCapture(e.pointerId); e.preventDefault(); });
-card.addEventListener('pointermove',e=>{
-  if(p0){ if(mode!=='gyro'){ tx=clamp((e.clientX-p0.x)/110); ty=clamp((e.clientY-p0.y)/110); } }
-  else if(e.pointerType==='mouse' && mode!=='gyro'){ mode='mouse'; tx=clamp(e.clientX/innerWidth*2-1); ty=clamp(e.clientY/innerHeight*2-1); }
-});
-function pend(e){ if(!p0) return; const dx=e.clientX-p0.x, dt=performance.now()-p0.t;
+// ---- drag: touch events primary, pointer events fallback (ignored while a touch is active)
+var p0=null, touching=false;
+function dStart(cx,cy){ p0={x:cx,y:cy,t:performance.now()}; }
+function dMove(cx,cy){ if(!p0) return; if(mode!=='gyro'){ mode='drag'; tx=clamp((cx-p0.x)/110); ty=clamp((cy-p0.y)/110); } }
+function dEnd(cx){ if(!p0) return; var dx=cx-p0.x, dt=performance.now()-p0.t;
   if(Math.abs(dx)>innerWidth*0.55 && dt<280) show(cur+(dx<0?1:-1));
   if(mode!=='gyro'){ tx=0; ty=0; } p0=null; }
-card.addEventListener('pointerup',pend); card.addEventListener('pointercancel',pend);
-addEventListener('mousemove',e=>{ if(mode==='gyro'||p0||e.target.closest('#card'))return; mode='mouse'; tx=clamp(e.clientX/innerWidth*2-1); ty=clamp(e.clientY/innerHeight*2-1); });
+var NP={passive:false};
+card.addEventListener('touchstart',function(e){ nT++; touching=true; var t=e.touches[0]; dStart(t.clientX,t.clientY); e.preventDefault(); },NP);
+card.addEventListener('touchmove',function(e){ nT++; var t=e.touches[0]; dMove(t.clientX,t.clientY); e.preventDefault(); },NP);
+function tEnd(e){ nT++; var t=e.changedTouches[0]; dEnd(t?t.clientX:p0?p0.x:0); if(!e.touches.length) setTimeout(function(){touching=false},50); }
+card.addEventListener('touchend',tEnd,NP); card.addEventListener('touchcancel',tEnd,NP);
+if(window.PointerEvent){
+  card.addEventListener('pointerdown',function(e){ nP++; if(touching||e.pointerType==='touch'&&('ontouchstart' in window)) return; dStart(e.clientX,e.clientY); try{card.setPointerCapture(e.pointerId);}catch(_){} });
+  card.addEventListener('pointermove',function(e){ nP++; if(touching) return; if(p0) dMove(e.clientX,e.clientY); });
+  card.addEventListener('pointerup',function(e){ if(!touching) dEnd(e.clientX); });
+  card.addEventListener('pointercancel',function(e){ if(!touching) dEnd(e.clientX); });
+}
+window.addEventListener('mousemove',function(e){ if(mode==='gyro'||p0||touching)return; if(mode==='none'||mode==='mouse'){ mode='mouse'; tx=clamp(e.clientX/innerWidth*2-1); ty=clamp(e.clientY/innerHeight*2-1); } });
 // no zoom: pinch, double tap, dblclick
-for(const ev of ['gesturestart','gesturechange','gestureend']) document.addEventListener(ev,e=>e.preventDefault(),{passive:false});
-document.addEventListener('dblclick',e=>e.preventDefault(),{passive:false});
-let lastEnd=0; document.addEventListener('touchend',e=>{ const n=Date.now(); if(n-lastEnd<350 && !e.target.closest('button,a')) e.preventDefault(); lastEnd=n; },{passive:false});
-document.addEventListener('touchmove',e=>{ if(!e.target.closest('#index')) e.preventDefault(); },{passive:false});
-addEventListener('keydown',e=>{ if(e.key==='ArrowRight')show(cur+1); if(e.key==='ArrowLeft')show(cur-1); });
-$('prev').onclick=()=>show(cur-1); $('next').onclick=()=>show(cur+1);
-$('rc').onclick=()=>{ base=null; };
-$('idx').onclick=()=>$('index').classList.add('on'); $('close').onclick=()=>$('index').classList.remove('on');
-const L={bg:$('bg'),mid:$('mid'),fg:$('fg')};
+['gesturestart','gesturechange','gestureend'].forEach(function(ev){ document.addEventListener(ev,function(e){e.preventDefault()},NP); });
+document.addEventListener('dblclick',function(e){e.preventDefault()},NP);
+var lastEnd=0; document.addEventListener('touchend',function(e){ var n=Date.now(); if(n-lastEnd<350 && !e.target.closest('button,a')) e.preventDefault(); lastEnd=n; },NP);
+document.addEventListener('touchmove',function(e){ if(!e.target.closest('#index')) e.preventDefault(); },NP);
+window.addEventListener('keydown',function(e){ if(e.key==='ArrowRight')show(cur+1); if(e.key==='ArrowLeft')show(cur-1); });
+$('prev').onclick=function(){show(cur-1)}; $('next').onclick=function(){show(cur+1)};
+$('rc').onclick=function(){ base=null; mbase=null; };
+$('idx').onclick=function(){$('index').classList.add('on')}; $('close').onclick=function(){$('index').classList.remove('on')};
+var L={bg:$('bg'),mid:$('mid'),fg:$('fg')};
 if(DEBUG) dbg.style.display='block';
+var frames=0;
 function tick(){
-  x+=(tx-x)*LERP; y+=(ty-y)*LERP; const w=win.clientWidth;
-  for(const k in L) L[k].style.transform=`translate3d(${(x*DEPTH[k]*w).toFixed(2)}px,${(y*DEPTH[k]*w).toFixed(2)}px,0)`;
-  card.style.transform=`rotateY(${(x*TILT).toFixed(2)}deg) rotateX(${(-y*TILT).toFixed(2)}deg)`;
-  if(DEBUG) dbg.textContent=`v${V}  mode ${mode}\nperm ${perm}  secure ${window.isSecureContext}\nevents ${nO}\nbeta ${lastO&&lastO.beta!=null?lastO.beta.toFixed(1):'-'}  gamma ${lastO&&lastO.gamma!=null?lastO.gamma.toFixed(1):'-'}\ntilt ${x.toFixed(2)} ${y.toFixed(2)}\nbg ${(x*DEPTH.bg*w).toFixed(1)}px  fg ${(x*DEPTH.fg*w).toFixed(1)}px`;
+  try{
+    frames++;
+    x+=(tx-x)*LERP; y+=(ty-y)*LERP; var w=win.clientWidth||300;
+    for(var k in L){ var t='translate3d('+(x*DEPTH[k]*w).toFixed(2)+'px,'+(y*DEPTH[k]*w).toFixed(2)+'px,0)'; L[k].style.webkitTransform=t; L[k].style.transform=t; }
+    var ct='rotateY('+(x*TILT).toFixed(2)+'deg) rotateX('+(-y*TILT).toFixed(2)+'deg)'; card.style.webkitTransform=ct; card.style.transform=ct;
+    if(frames%6===0) stat.textContent='v'+V+' | perm '+perm+' | mode '+mode+' | touch '+nT+' ptr '+nP+' | ori '+nO+' mot '+nM+(reduce?' | reduce-motion':'');
+    if(DEBUG) dbg.textContent='v'+V+'  mode '+mode+'\nperm '+perm+'  secure '+window.isSecureContext+'\nori '+nO+' mot '+nM+'\nbeta '+(lastO&&lastO.beta!=null?lastO.beta.toFixed(1):'-')+'  gamma '+(lastO&&lastO.gamma!=null?lastO.gamma.toFixed(1):'-')+'\ntilt '+x.toFixed(2)+' '+y.toFixed(2);
+  }catch(err){ window.__err&&__err('tick: '+err.message); }
   requestAnimationFrame(tick);
 }
-if(!reduce) requestAnimationFrame(tick);
-fetch('manifest.json?v='+V,{cache:'no-store'}).then(r=>r.json()).then(m=>{
+requestAnimationFrame(tick);
+fetch('manifest.json?v='+V,{cache:'no-store'}).then(function(r){return r.json()}).then(function(m){
   deck=m.cards;
-  $('grid').innerHTML=deck.map((c,i)=>`<a href="#${String(c.index).padStart(2,'0')}" data-i="${i}"><img loading="lazy" src="deck/${c.id}/thumb.webp?v=${V}" alt=""><br>${String(c.index).padStart(2,'0')} ${c.title}</a>`).join('');
-  $('grid').onclick=e=>{const a=e.target.closest('a'); if(!a)return; e.preventDefault(); $('index').classList.remove('on'); show(+a.dataset.i);};
-  const h=parseInt(location.hash.slice(1)); show(isNaN(h)?0:Math.max(0,deck.findIndex(c=>c.index===h)));
-}).catch(err=>say('Could not load the deck manifest: '+err));
+  $('grid').innerHTML=deck.map(function(c,i){return '<a href="#'+pad(c.index)+'" data-i="'+i+'"><img loading="lazy" src="deck/'+c.id+'/thumb.webp?v='+V+'" alt=""><br>'+pad(c.index)+' '+c.title+'</a>'}).join('');
+  $('grid').onclick=function(e){var a=e.target.closest('a'); if(!a)return; e.preventDefault(); $('index').classList.remove('on'); show(+a.dataset.i);};
+  var h=parseInt(location.hash.slice(1)); show(isNaN(h)?0:Math.max(0,deck.findIndex(function(c){return c.index===h})));
+}).catch(function(err){say('Could not load the deck manifest: '+err)});
 </script>
 </body></html>
