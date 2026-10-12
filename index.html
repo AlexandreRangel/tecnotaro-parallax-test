@@ -15,7 +15,7 @@ body{display:flex;align-items:center;justify-content:center;perspective:1400px;
 #card img{position:absolute;display:block;pointer-events:none;-webkit-user-drag:none}
 #win{position:absolute;left:8.080%;top:9.740%;width:84.464%;height:80.469%;overflow:hidden;border-radius:4%/2.5%}
 #bg{left:-5%;top:-5%;width:110%;height:110%}
-#fig{left:-9.567%;top:-12.104%;width:118.393%;height:124.272%}
+#mid{left:0;top:0;width:100%;height:100%}
 #fg{left:0;top:0;width:100%;height:100%;mix-blend-mode:screen}
 #frame{left:0;top:0;width:100%;height:100%}
 .layer{will-change:transform}
@@ -29,7 +29,7 @@ body{display:flex;align-items:center;justify-content:center;perspective:1400px;
 <div id="card">
  <div id="win">
   <img id="bg" class="layer" src="layers/bg.webp" srcset="layers/bg.webp 1x, layers/bg@2x.webp 2x" alt="">
-  <img id="fig" class="layer" src="layers/fig.webp" srcset="layers/fig.webp 1x, layers/fig@2x.webp 2x" alt="The Fool">
+  <img id="mid" class="layer" src="layers/mid.webp" srcset="layers/mid.webp 1x, layers/mid@2x.webp 2x" alt="The Fool and his dog">
   <img id="fg" class="layer" src="layers/fg.webp" srcset="layers/fg.webp 1x, layers/fg@2x.webp 2x" alt="">
  </div>
  <img id="frame" src="layers/frame.webp" srcset="layers/frame.webp 1x, layers/frame@2x.webp 2x" alt="Tecnotarô frame, The Fool">
@@ -37,8 +37,10 @@ body{display:flex;align-items:center;justify-content:center;perspective:1400px;
 <div id="start"><button id="go">Tap to start</button><small>Tilt your phone to look into the card. Tap the card to recenter. On desktop, move or drag the mouse.</small></div>
 <div id="hud"></div>
 <script>
-// depth: fraction of the window size each layer travels at full tilt (negative = opposite to tilt)
-const DEPTH={bg:-0.035,fig:0.010,fg:0.045}, TILT=7, MAXDEG=22, LERP=0.10;
+// depth bands: offset = tilt(-1..1, clamped) * depth * window width, both axes.
+// bg far (moves most, opposite) | mid = figure + ground + contact shadows, zero plane (anchor) | fg near (small, with tilt).
+// |bg| * window width stays under the inpaint halo margin (58 px of 1892).
+const DEPTH={bg:-0.025,mid:0,fg:0.012}, TILT=4, MAXDEG=22, LERP=0.10;
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const $=id=>document.getElementById(id), card=$('card'), win=$('win'), hud=$('hud');
 let tx=0,ty=0,x=0,y=0,base=null,mode='none';
@@ -73,11 +75,11 @@ async function start(){
   if(document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(()=>{});
 }
 $('go').addEventListener('click',start);
-const L={bg:$('bg'),fig:$('fig'),fg:$('fg')};
+const L={bg:$('bg'),mid:$('mid'),fg:$('fg')};
 function frame(){
   x+=(tx-x)*LERP; y+=(ty-y)*LERP;
   const w=win.clientWidth,h=win.clientHeight;
-  for(const k in L){ L[k].style.transform=`translate3d(${(x*DEPTH[k]*w).toFixed(2)}px,${(y*DEPTH[k]*h).toFixed(2)}px,0)`; }
+  for(const k in L){ L[k].style.transform=`translate3d(${(x*DEPTH[k]*w).toFixed(2)}px,${(y*DEPTH[k]*w).toFixed(2)}px,0)`; }
   card.style.transform=`rotateY(${(x*TILT).toFixed(2)}deg) rotateX(${(-y*TILT).toFixed(2)}deg)`;
   requestAnimationFrame(frame);
 }

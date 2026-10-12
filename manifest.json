@@ -1,14 +1,84 @@
 {
-  "id": "00-the-fool",
-  "title": "THE FOOL",
-  "aspect": [7, 12],
-  "canvas": [2240, 3840],
-  "window": {"x": 181, "y": 374, "w": 1892, "h": 3090, "cornerRadius": 0.04},
-  "layers": [
-    {"name": "bg",    "file": "bg.png",    "depth": -0.035, "rect": "window", "overscan": 1.10, "blend": "normal"},
-    {"name": "fig",   "file": "fig.png",   "depth":  0.010, "rect": "canvas", "blend": "normal"},
-    {"name": "fg",    "file": "fg.png",    "depth":  0.045, "rect": "window", "blend": "screen"},
-    {"name": "frame", "file": "frame.png", "depth":  0.0,   "rect": "canvas", "blend": "normal", "fixed": true}
+ "id": "00-the-fool",
+ "title": "THE FOOL",
+ "aspect": [
+  7,
+  12
+ ],
+ "canvas": [
+  2240,
+  3840
+ ],
+ "window": {
+  "x": 181,
+  "y": 374,
+  "w": 1892,
+  "h": 3090,
+  "cornerRadius": 0.04
+ },
+ "layers": [
+  {
+   "name": "bg",
+   "file": "bg.png",
+   "depth": -0.025,
+   "rect": "window",
+   "overscan": 1.1,
+   "blend": "normal"
+  },
+  {
+   "name": "mid",
+   "file": "mid.png",
+   "depth": 0.0,
+   "rect": "window",
+   "blend": "normal",
+   "anchor": true,
+   "ground": {
+    "featherTop": 0.655,
+    "opaqueFrom": 0.745
+   },
+   "contactShadows": true
+  },
+  {
+   "name": "fg",
+   "file": "fg.png",
+   "depth": 0.012,
+   "rect": "window",
+   "blend": "screen"
+  },
+  {
+   "name": "frame",
+   "file": "frame.png",
+   "depth": 0.0,
+   "rect": "canvas",
+   "blend": "normal",
+   "fixed": true
+  }
+ ],
+ "motion": {
+  "maxTiltDeg": 22,
+  "smoothing": 0.1,
+  "cardTiltDeg": 4,
+  "clamp": 1.0
+ },
+ "version": 2,
+ "rule": "depth bands: bg (far, moves most, opposite) | mid = figure + ground strip + baked contact shadows (zero plane, anchor) | fg (near, small, same side as tilt) | frame fixed. Offsets = tilt(-1..1) * depth * window width on both axes; |bg depth| * window width must stay below halo_margin_px.",
+ "halo_margin_px": 58,
+ "contacts": [
+  [
+   575,
+   2729
   ],
-  "motion": {"maxTiltDeg": 22, "smoothing": 0.10, "cardTiltDeg": 7}
+  [
+   917,
+   2685
+  ],
+  [
+   1213,
+   2803
+  ],
+  [
+   1541,
+   2793
+  ]
+ ]
 }
