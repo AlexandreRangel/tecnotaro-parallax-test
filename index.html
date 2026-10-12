@@ -1,17 +1,20 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,viewport-fit=cover,user-scalable=no">
+<meta http-equiv="Cache-Control" content="no-cache">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#000">
 <title>Tecnotarô Parallax deck</title>
 <style>
-html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none;font-family:-apple-system,system-ui,sans-serif}
+*{-webkit-tap-highlight-color:transparent}
+button:active,.btn:active{transform:none!important}
+html,body{margin:0;-webkit-touch-callout:none;-webkit-text-size-adjust:100%;height:100%;background:#000;overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none;font-family:-apple-system,system-ui,sans-serif}
 body{display:flex;align-items:center;justify-content:center;perspective:1400px;box-sizing:border-box;
  padding:calc(44px + env(safe-area-inset-top)) env(safe-area-inset-right) calc(52px + env(safe-area-inset-bottom)) env(safe-area-inset-left);
  background:radial-gradient(ellipse at 50% 40%,#1a0b24 0%,#000 70%)}
-#card{position:relative;height:min(100%,calc((100vw - 16px)*12/7));aspect-ratio:7/12;transform-style:preserve-3d;will-change:transform;transition:opacity .18s}
+#card{touch-action:none;position:relative;height:min(100%,calc((100vw - 16px)*12/7));aspect-ratio:7/12;transform-style:preserve-3d;will-change:transform;transition:opacity .18s}
 #card img{position:absolute;display:block;pointer-events:none;-webkit-user-drag:none}
 #win{position:absolute;left:8.080%;top:9.740%;width:84.464%;height:80.469%;overflow:hidden;border-radius:4%/2.5%;background:#000}
 #bg{left:-5%;top:-5%;width:110%;height:110%}
@@ -35,6 +38,8 @@ body{display:flex;align-items:center;justify-content:center;perspective:1400px;b
 #grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px}
 #grid a{display:block;color:#ffd58a;font-size:10px;text-align:center;text-decoration:none}
 #grid img{width:100%;aspect-ratio:7/12;object-fit:cover;border-radius:6px;border:1px solid #c9a24a55;background:#111}
+#dbg{position:fixed;left:6px;top:calc(48px + env(safe-area-inset-top));z-index:7;font:11px/1.35 ui-monospace,Menlo,monospace;color:#9f9;background:#000a;padding:6px 8px;border-radius:6px;white-space:pre;display:none;pointer-events:none}
+#msg{position:fixed;left:12px;right:12px;bottom:calc(64px + env(safe-area-inset-bottom));z-index:7;display:none;font-size:14px;line-height:1.35;color:#fff;background:#2a0a2ccc;border:1px solid #ff2bc8;border-radius:12px;padding:12px 14px}
 #index h2{color:#ffd58a;font-size:16px;margin:4px 4px 10px;display:flex;justify-content:space-between;align-items:center}
 </style></head><body>
 <div id="top" class="bar"><button class="btn" id="idx">Index</button><div id="name"></div><button class="btn" id="rc">Recenter</button></div>
@@ -44,75 +49,98 @@ body{display:flex;align-items:center;justify-content:center;perspective:1400px;b
 </div>
 <div id="bot" class="bar"><button class="btn" id="prev">&#9664; Prev</button><div id="hud"></div><button class="btn" id="next">Next &#9654;</button></div>
 <div id="index"><h2>Tecnotarô, 78 cards <button class="btn" id="close">Close</button></h2><div id="grid"></div></div>
-<div id="start"><button id="go">Tap to start</button><small>Tilt the phone to look into the card. Swipe or use Prev/Next to change cards. On desktop, move the mouse and use the arrow keys.</small></div>
+<div id="dbg"></div><div id="msg"></div>
+<div id="start"><button id="go">Tap to start</button><small>Tilt the phone to look into the card. Drag the card to explore, use Prev/Next or Index to change cards. On desktop, move the mouse and use the arrow keys.</small></div>
 <script>
-// Depth bands (manifest.json): bg far, moves most and opposite | mid = figure + ground, zero plane | fg near, small, with the tilt.
-// offset = tilt(-1..1, clamped) * depth * window width, both axes. Depths are clamped per card by its halo margin.
-const TILT=4, MAXDEG=22, LERP=0.10;
+// v4. Depth bands (manifest.json): bg far, moves most and opposite | mid = figure + ground, zero plane | fg near, with the tilt.
+// offset = tilt(-1..1, clamped) * depth * window width, both axes. bg depth is clamped per card by its halo margin.
+const V='4', TILT=5, MAXDEG=12, LERP=0.12, FG_BOOST=2.5;
+const Q=new URLSearchParams(location.search), DEBUG=Q.get('debug')==='1';
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const $=id=>document.getElementById(id), card=$('card'), win=$('win'), hud=$('hud');
+const $=id=>document.getElementById(id), card=$('card'), win=$('win'), hud=$('hud'), dbg=$('dbg'), msg=$('msg');
 let deck=[], cur=0, DEPTH={bg:-0.02,mid:0,fg:0.01};
-let tx=0,ty=0,x=0,y=0,base=null,mode='none';
+let tx=0,ty=0,x=0,y=0,base=null,mode='none',perm='not requested',lastO=null,nO=0,started=false;
 const clamp=v=>Math.max(-1,Math.min(1,v));
-const src=(c,n)=>`deck/${c.id}/${n}.webp`;
+const src=(c,n)=>`deck/${c.id}/${n}.webp?v=${V}`;
+const LAYERS=['bg','mid','fg','frame'];
+function say(t){ msg.innerHTML=t; msg.style.display=t?'block':'none'; }
 function show(i){
   cur=(i+deck.length)%deck.length; const c=deck[cur];
   card.style.opacity=.35;
-  const ims=['bg','mid','fg','frame'].map(n=>new Promise(r=>{const im=new Image(); im.onload=im.onerror=r; im.src=src(c,n);}));
-  Promise.all(ims).then(()=>{ if(deck[cur]!==c) return;
-    for(const n of ['bg','mid','fg','frame']) $(n).src=src(c,n);
-    DEPTH=c.depth; card.style.opacity=1; });
+  Promise.all(LAYERS.map(n=>new Promise(r=>{const im=new Image(); im.onload=im.onerror=r; im.src=src(c,n);}))).then(()=>{
+    if(deck[cur]!==c) return;
+    for(const n of LAYERS) $(n).src=src(c,n);
+    DEPTH={bg:c.depth.bg, mid:0, fg:c.depth.fg*FG_BOOST}; card.style.opacity=1; });
   $('name').textContent=`${String(c.index).padStart(2,'0')} ${c.title}`;
-  history.replaceState(null,'','#'+String(c.index).padStart(2,'0'));
-  for(const k of [1,-1]){ const n=deck[(cur+k+deck.length)%deck.length]; for(const l of ['bg','mid','fg','frame']) new Image().src=src(n,l); }
+  history.replaceState(null,'',location.pathname+location.search+'#'+String(c.index).padStart(2,'0'));
+  for(const k of [1,-1]){ const n=deck[(cur+k+deck.length)%deck.length]; for(const l of LAYERS) new Image().src=src(n,l); }
 }
+// gyro
 function onOri(e){
-  if(e.beta==null) return;
-  let g=e.gamma,b=e.beta;
-  if(!base){base={g,b}; mode='gyro'; hud.textContent='gyro on';}
+  nO++; lastO=e;
+  if(e.beta==null||e.gamma==null) return;
+  const g=e.gamma, b=e.beta;
+  if(!base){ base={g,b}; mode='gyro'; hud.textContent='gyro on'; say(''); }
   let dg=g-base.g, db=b-base.b; if(dg>90)dg-=180; if(dg<-90)dg+=180;
   tx=clamp(dg/MAXDEG); ty=clamp(db/MAXDEG);
 }
-addEventListener('mousemove',e=>{ if(mode==='gyro')return; mode='mouse'; tx=clamp(e.clientX/innerWidth*2-1); ty=clamp(e.clientY/innerHeight*2-1); });
-addEventListener('mouseleave',()=>{if(mode==='mouse'){tx=0;ty=0;}});
-// touch: quick horizontal swipe changes card; otherwise (no gyro) drag explores depth
-let t0=null;
-addEventListener('touchstart',e=>{ if($('index').classList.contains('on'))return; const t=e.touches[0]; t0={x:t.clientX,y:t.clientY,t:Date.now()}; },{passive:true});
-addEventListener('touchmove',e=>{ if(!t0||mode==='gyro')return; const t=e.touches[0]; tx=clamp((t.clientX-t0.x)/120); ty=clamp((t.clientY-t0.y)/120); },{passive:true});
-addEventListener('touchend',e=>{ if(!t0)return; const t=e.changedTouches[0], dx=t.clientX-t0.x, dy=t.clientY-t0.y;
-  if(Math.abs(dx)>60 && Math.abs(dx)>1.5*Math.abs(dy) && Date.now()-t0.t<600) show(cur+(dx<0?1:-1));
-  if(mode!=='gyro'){tx=0;ty=0;} t0=null; });
+function deniedMsg(){
+  say('<b>Motion access is off for this site.</b><br>In Safari tap <b>aA</b> in the address bar, then <b>Website Settings</b>, set <b>Motion &amp; Orientation Access</b> to Allow (or Ask), and reload the page. You can still drag the card to explore.');
+}
+function attach(){
+  addEventListener('deviceorientation',onOri,true);
+  setTimeout(()=>{ if(nO===0 && mode!=='gyro') say('No motion data received. Check that Safari has Motion &amp; Orientation Access (aA, Website Settings) and reload. Dragging the card still works.'); },2000);
+}
+// must run synchronously inside the tap: requestPermission is the FIRST call, no await before it
+function start(ev){
+  if(started) return; started=true;
+  $('start').style.display='none';
+  if(reduce){ hud.textContent='Reduce Motion on: static'; return; }
+  const DOE=window.DeviceOrientationEvent;
+  if(DOE && typeof DOE.requestPermission==='function'){
+    perm='asking';
+    DOE.requestPermission().then(r=>{ perm=r; if(r==='granted') attach(); else { deniedMsg(); hud.textContent='motion denied: drag'; } })
+      .catch(err=>{ perm='error: '+err; started=false; $('start').style.display='flex'; say('Motion permission needs a direct tap. Tap "Tap to start" again.'); });
+  } else if(DOE){ perm='not required'; attach(); }
+  else { perm='unsupported'; hud.textContent='no gyro: drag'; }
+}
+$('go').addEventListener('click',start);
+// drag parallax on the card (pointer events); card change only by buttons, index, or a long fast fling
+let p0=null;
+card.addEventListener('pointerdown',e=>{ p0={x:e.clientX,y:e.clientY,t:performance.now(),id:e.pointerId}; card.setPointerCapture(e.pointerId); e.preventDefault(); });
+card.addEventListener('pointermove',e=>{
+  if(p0){ if(mode!=='gyro'){ tx=clamp((e.clientX-p0.x)/110); ty=clamp((e.clientY-p0.y)/110); } }
+  else if(e.pointerType==='mouse' && mode!=='gyro'){ mode='mouse'; tx=clamp(e.clientX/innerWidth*2-1); ty=clamp(e.clientY/innerHeight*2-1); }
+});
+function pend(e){ if(!p0) return; const dx=e.clientX-p0.x, dt=performance.now()-p0.t;
+  if(Math.abs(dx)>innerWidth*0.55 && dt<280) show(cur+(dx<0?1:-1));
+  if(mode!=='gyro'){ tx=0; ty=0; } p0=null; }
+card.addEventListener('pointerup',pend); card.addEventListener('pointercancel',pend);
+addEventListener('mousemove',e=>{ if(mode==='gyro'||p0||e.target.closest('#card'))return; mode='mouse'; tx=clamp(e.clientX/innerWidth*2-1); ty=clamp(e.clientY/innerHeight*2-1); });
+// no zoom: pinch, double tap, dblclick
+for(const ev of ['gesturestart','gesturechange','gestureend']) document.addEventListener(ev,e=>e.preventDefault(),{passive:false});
+document.addEventListener('dblclick',e=>e.preventDefault(),{passive:false});
+let lastEnd=0; document.addEventListener('touchend',e=>{ const n=Date.now(); if(n-lastEnd<350 && !e.target.closest('button,a')) e.preventDefault(); lastEnd=n; },{passive:false});
+document.addEventListener('touchmove',e=>{ if(!e.target.closest('#index')) e.preventDefault(); },{passive:false});
 addEventListener('keydown',e=>{ if(e.key==='ArrowRight')show(cur+1); if(e.key==='ArrowLeft')show(cur-1); });
 $('prev').onclick=()=>show(cur-1); $('next').onclick=()=>show(cur+1);
-$('rc').onclick=()=>{base=null;};
+$('rc').onclick=()=>{ base=null; };
 $('idx').onclick=()=>$('index').classList.add('on'); $('close').onclick=()=>$('index').classList.remove('on');
-async function start(){
-  $('start').style.display='none';
-  if(reduce){hud.textContent='Reduce Motion on: static';return;}
-  if(typeof DeviceOrientationEvent!=='undefined'){
-    try{
-      if(typeof DeviceOrientationEvent.requestPermission==='function'){
-        const r=await DeviceOrientationEvent.requestPermission();
-        if(r!=='granted'){hud.textContent='no motion permission: drag';return;}
-      }
-      addEventListener('deviceorientation',onOri);
-    }catch(err){hud.textContent='gyro unavailable: drag';}
-  }
-}
-$('go').onclick=start;
 const L={bg:$('bg'),mid:$('mid'),fg:$('fg')};
+if(DEBUG) dbg.style.display='block';
 function tick(){
   x+=(tx-x)*LERP; y+=(ty-y)*LERP; const w=win.clientWidth;
   for(const k in L) L[k].style.transform=`translate3d(${(x*DEPTH[k]*w).toFixed(2)}px,${(y*DEPTH[k]*w).toFixed(2)}px,0)`;
   card.style.transform=`rotateY(${(x*TILT).toFixed(2)}deg) rotateX(${(-y*TILT).toFixed(2)}deg)`;
+  if(DEBUG) dbg.textContent=`v${V}  mode ${mode}\nperm ${perm}  secure ${window.isSecureContext}\nevents ${nO}\nbeta ${lastO&&lastO.beta!=null?lastO.beta.toFixed(1):'-'}  gamma ${lastO&&lastO.gamma!=null?lastO.gamma.toFixed(1):'-'}\ntilt ${x.toFixed(2)} ${y.toFixed(2)}\nbg ${(x*DEPTH.bg*w).toFixed(1)}px  fg ${(x*DEPTH.fg*w).toFixed(1)}px`;
   requestAnimationFrame(tick);
 }
-fetch('manifest.json').then(r=>r.json()).then(m=>{
+if(!reduce) requestAnimationFrame(tick);
+fetch('manifest.json?v='+V,{cache:'no-store'}).then(r=>r.json()).then(m=>{
   deck=m.cards;
-  $('grid').innerHTML=deck.map((c,i)=>`<a href="#${String(c.index).padStart(2,'0')}" data-i="${i}"><img loading="lazy" src="deck/${c.id}/thumb.webp" alt=""><br>${String(c.index).padStart(2,'0')} ${c.title}</a>`).join('');
+  $('grid').innerHTML=deck.map((c,i)=>`<a href="#${String(c.index).padStart(2,'0')}" data-i="${i}"><img loading="lazy" src="deck/${c.id}/thumb.webp?v=${V}" alt=""><br>${String(c.index).padStart(2,'0')} ${c.title}</a>`).join('');
   $('grid').onclick=e=>{const a=e.target.closest('a'); if(!a)return; e.preventDefault(); $('index').classList.remove('on'); show(+a.dataset.i);};
   const h=parseInt(location.hash.slice(1)); show(isNaN(h)?0:Math.max(0,deck.findIndex(c=>c.index===h)));
-  if(!reduce) requestAnimationFrame(tick);
-});
+}).catch(err=>say('Could not load the deck manifest: '+err));
 </script>
 </body></html>
