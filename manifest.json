@@ -1,0 +1,14 @@
+{
+  "id": "00-the-fool",
+  "title": "THE FOOL",
+  "aspect": [7, 12],
+  "canvas": [2240, 3840],
+  "window": {"x": 181, "y": 374, "w": 1892, "h": 3090, "cornerRadius": 0.04},
+  "layers": [
+    {"name": "bg",    "file": "bg.png",    "depth": -0.035, "rect": "window", "overscan": 1.10, "blend": "normal"},
+    {"name": "fig",   "file": "fig.png",   "depth":  0.010, "rect": "canvas", "blend": "normal"},
+    {"name": "fg",    "file": "fg.png",    "depth":  0.045, "rect": "window", "blend": "screen"},
+    {"name": "frame", "file": "frame.png", "depth":  0.0,   "rect": "canvas", "blend": "normal", "fixed": true}
+  ],
+  "motion": {"maxTiltDeg": 22, "smoothing": 0.10, "cardTiltDeg": 7}
+}

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#000">
+<title>Tecnotarô Parallax: 00 The Fool</title>
+<style>
+html,body{margin:0;height:100%;background:#000;overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none}
+body{display:flex;align-items:center;justify-content:center;perspective:1400px;
+ padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);box-sizing:border-box;
+ background:radial-gradient(ellipse at 50% 40%,#1a0b24 0%,#000 70%)}
+#card{position:relative;height:min(96dvh,calc(96vw*12/7));aspect-ratio:7/12;transform-style:preserve-3d;will-change:transform}
+#card img{position:absolute;display:block;pointer-events:none;-webkit-user-drag:none}
+#win{position:absolute;left:8.080%;top:9.740%;width:84.464%;height:80.469%;overflow:hidden;border-radius:4%/2.5%}
+#bg{left:-5%;top:-5%;width:110%;height:110%}
+#fig{left:-9.567%;top:-12.104%;width:118.393%;height:124.272%}
+#fg{left:0;top:0;width:100%;height:100%;mix-blend-mode:screen}
+#frame{left:0;top:0;width:100%;height:100%}
+.layer{will-change:transform}
+#start{position:fixed;inset:0;display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;background:rgba(0,0,0,.55);z-index:9;
+ font:600 18px/1.3 -apple-system,system-ui,sans-serif;color:#ffd58a;text-align:center}
+#start button{font:inherit;font-size:20px;letter-spacing:.08em;padding:16px 34px;border-radius:999px;border:2px solid #c9a24a;color:#fff;
+ background:linear-gradient(135deg,#ff2bc8,#20d8ff);box-shadow:0 0 24px #ff2bc8aa,0 0 40px #20d8ff66}
+#start small{color:#9fdcff;font-weight:400;max-width:80vw}
+#hud{position:fixed;bottom:calc(6px + env(safe-area-inset-bottom));left:0;right:0;text-align:center;font:12px -apple-system,system-ui,sans-serif;color:#fff5;z-index:5}
+</style></head><body>
+<div id="card">
+ <div id="win">
+  <img id="bg" class="layer" src="layers/bg.webp" srcset="layers/bg.webp 1x, layers/bg@2x.webp 2x" alt="">
+  <img id="fig" class="layer" src="layers/fig.webp" srcset="layers/fig.webp 1x, layers/fig@2x.webp 2x" alt="The Fool">
+  <img id="fg" class="layer" src="layers/fg.webp" srcset="layers/fg.webp 1x, layers/fg@2x.webp 2x" alt="">
+ </div>
+ <img id="frame" src="layers/frame.webp" srcset="layers/frame.webp 1x, layers/frame@2x.webp 2x" alt="Tecnotarô frame, The Fool">
+</div>
+<div id="start"><button id="go">Tap to start</button><small>Tilt your phone to look into the card. Tap the card to recenter. On desktop, move or drag the mouse.</small></div>
+<div id="hud"></div>
+<script>
+// depth: fraction of the window size each layer travels at full tilt (negative = opposite to tilt)
+const DEPTH={bg:-0.035,fig:0.010,fg:0.045}, TILT=7, MAXDEG=22, LERP=0.10;
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $=id=>document.getElementById(id), card=$('card'), win=$('win'), hud=$('hud');
+let tx=0,ty=0,x=0,y=0,base=null,mode='none';
+const clamp=v=>Math.max(-1,Math.min(1,v));
+function onOri(e){
+  if(e.beta==null) return;
+  // portrait: gamma = left/right, beta = front/back
+  let g=e.gamma, b=e.beta;
+  if(!base){base={g,b}; mode='gyro'; hud.textContent='gyro on, tap card to recenter';}
+  let dg=g-base.g, db=b-base.b;
+  if(dg>90)dg-=180; if(dg<-90)dg+=180;
+  tx=clamp(dg/MAXDEG); ty=clamp(db/MAXDEG);
+}
+function pointer(px,py){ if(mode==='gyro')return; mode='mouse'; tx=clamp((px/innerWidth)*2-1); ty=clamp((py/innerHeight)*2-1); }
+addEventListener('mousemove',e=>pointer(e.clientX,e.clientY));
+addEventListener('touchmove',e=>{const t=e.touches[0]; pointer(t.clientX,t.clientY);},{passive:true});
+addEventListener('mouseleave',()=>{if(mode==='mouse'){tx=0;ty=0;}});
+card.addEventListener('click',()=>{base=null;});
+async function start(){
+  $('start').style.display='none';
+  if(reduce){hud.textContent='Reduce Motion is on: static card';return;}
+  if(typeof DeviceOrientationEvent!=='undefined'){
+    try{
+      if(typeof DeviceOrientationEvent.requestPermission==='function'){
+        const r=await DeviceOrientationEvent.requestPermission();
+        if(r!=='granted'){hud.textContent='motion permission denied: drag to explore';return;}
+      }
+      addEventListener('deviceorientation',onOri);
+      hud.textContent=window.isSecureContext?'tilt the phone':'needs HTTPS for the gyroscope';
+    }catch(err){hud.textContent='gyro unavailable: drag to explore';}
+  }
+  if(document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(()=>{});
+}
+$('go').addEventListener('click',start);
+const L={bg:$('bg'),fig:$('fig'),fg:$('fg')};
+function frame(){
+  x+=(tx-x)*LERP; y+=(ty-y)*LERP;
+  const w=win.clientWidth,h=win.clientHeight;
+  for(const k in L){ L[k].style.transform=`translate3d(${(x*DEPTH[k]*w).toFixed(2)}px,${(y*DEPTH[k]*h).toFixed(2)}px,0)`; }
+  card.style.transform=`rotateY(${(x*TILT).toFixed(2)}deg) rotateX(${(-y*TILT).toFixed(2)}deg)`;
+  requestAnimationFrame(frame);
+}
+if(!reduce) requestAnimationFrame(frame);
+</script>
+</body></html>
