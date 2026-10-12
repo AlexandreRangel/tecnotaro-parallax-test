@@ -15,13 +15,14 @@ for n in "$@"; do
   slug=$(basename "$d"); dst="v3/raw/$slug"; mkdir -p "$dst"
   for l in bg mid figure; do [ -f "$d/$l.png" ] && cp "$d/$l.png" "$dst/"; done
   if [ -f "$d/fg_final.png" ]; then cp "$d/fg_final.png" "$dst/fg.png"; elif [ -f "$d/fg.png" ]; then cp "$d/fg.png" "$dst/"; fi
-  for x in frame.png depth.json; do [ -f "$d/$x" ] && cp "$d/$x" "$dst/"; done
+  for x in frame.png depth.json _workflows.json; do [ -f "$d/$x" ] && cp "$d/$x" "$dst/"; done
   python3 v3/src/v2_build_card.py "$((10#$nn))" --force --key auto --root v3
   built+=("$((10#$nn))")
 done
 PORT=${PORT:-8931}
 python3 -m http.server $PORT --bind 127.0.0.1 >/dev/null 2>&1 & SP=$!; trap 'kill $SP 2>/dev/null' EXIT; sleep 1
 for i in "${built[@]}"; do python3 tools/frame_qa.py "http://127.0.0.1:$PORT/v3" v3/deck "$i-$i" | tee -a /tmp/frame-qa-v3.txt; done
+python3 /workspace/tarot-app/tecnotaro-parallax/v3/work/make_docs.py; cp /workspace/tarot-app/tecnotaro-parallax/v3/PROMPTS.md v3/; mkdir -p v3/gen; cp /workspace/tarot-app/tecnotaro-parallax/v3/work/{gen.py,cards.json,make_docs.py} v3/gen/
 git add v3 publish_v3.sh
 git commit -qm "v3: publish real layers for cards $*"
 git push -q
