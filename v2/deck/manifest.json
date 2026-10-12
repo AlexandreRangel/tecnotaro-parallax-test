@@ -1,0 +1,2269 @@
+{
+ "deck": "Tecnotarô Alexandre Rangel",
+ "version": "v2",
+ "engine": "v2-engine",
+ "canvas": [
+  2240,
+  3840
+ ],
+ "window": {
+  "x": 181,
+  "y": 374,
+  "w": 1892,
+  "h": 3090
+ },
+ "windowMask": "win-mask.png",
+ "layerCanvas": {
+  "overscan": 1.12,
+  "@2x": [
+   2120,
+   3460
+  ],
+  "@1x": [
+   1060,
+   1730
+  ]
+ },
+ "amplitude": 1.15,
+ "order": [
+  "bg",
+  "mid",
+  "figure",
+  "fg",
+  "frame"
+ ],
+ "layers": {
+  "frame": {
+   "moving": false,
+   "z": 50,
+   "blend": "normal",
+   "note": "fixed, topmost, never transformed; its transparent window is the clip mask of every moving layer"
+  },
+  "bg": {
+   "z": 10,
+   "depth": -0.03,
+   "blend": "normal",
+   "rect": 1.12,
+   "note": "far plane, opaque, moves most, opposite to tilt"
+  },
+  "mid": {
+   "z": 20,
+   "depth": -0.015,
+   "blend": "normal",
+   "rect": 1.12,
+   "note": "midground scenery between bg and figure, transparent"
+  },
+  "figure": {
+   "z": 30,
+   "depth": 0.0,
+   "blend": "normal",
+   "rect": 1.12,
+   "note": "character + ground, zero plane"
+  },
+  "fg": {
+   "z": 40,
+   "depth": 0.036,
+   "blend": "normal",
+   "rect": 1.12,
+   "note": "foreground energies and props, large, moves with the tilt"
+  }
+ },
+ "rule": "offset_px = tilt(-1..1) * depth * amplitude * window_width_px, both axes. Displayed layer size = window * max(rect, 1 + 2*|depth|*amplitude + 0.01) so no edge can show.",
+ "motion": {
+  "maxTiltDeg": 12,
+  "smoothing": 0.12,
+  "cardTiltDeg": 5,
+  "reduceMotionScale": 0.5
+ },
+ "files": {
+  "@1x": "{base}{file}.webp",
+  "@2x": "{base}{file}@2x.webp",
+  "default_base": "deck/{id}/"
+ },
+ "cards": [
+  {
+   "id": "00-the-fool",
+   "index": 0,
+   "title": "THE FOOL",
+   "suit": "major",
+   "placeholder": true,
+   "base": "../v1/deck/00-the-fool/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0221,
+    "fg": 0.0265
+   }
+  },
+  {
+   "id": "01-the-magician",
+   "index": 1,
+   "title": "THE MAGICIAN",
+   "suit": "major",
+   "placeholder": true,
+   "base": "../v1/deck/01-the-magician/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0221,
+    "fg": 0.0265
+   }
+  },
+  {
+   "id": "02-the-high-priestess",
+   "index": 2,
+   "title": "THE HIGH PRIESTESS",
+   "suit": "major",
+   "placeholder": true,
+   "base": "../v1/deck/02-the-high-priestess/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0171,
+    "fg": 0.0205
+   }
+  },
+  {
+   "id": "03-the-empress",
+   "index": 3,
+   "title": "THE EMPRESS",
+   "suit": "major",
+   "placeholder": true,
+   "base": "../v1/deck/03-the-empress/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0171,
+    "fg": 0.0205
+   }
+  },
+  {
+   "id": "04-the-emperor",
+   "index": 4,
+   "title": "THE EMPEROR",
+   "suit": "major",
+   "placeholder": true,
+   "base": "../v1/deck/04-the-emperor/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0221,
+    "fg": 0.0265
+   }
+  },
+  {
+   "id": "05-the-pope",
+   "index": 5,
+   "title": "THE POPE",
+   "suit": "major",
+   "placeholder": true,
+   "base": "../v1/deck/05-the-pope/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0171,
+    "fg": 0.0205
+   }
+  },
+  {
+   "id": "06-the-lovers",
+   "index": 6,
+   "title": "THE LOVERS",
+   "suit": "major",
+   "placeholder": true,
+   "base": "../v1/deck/06-the-lovers/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0221,
+    "fg": 0.0265
+   }
+  },
+  {
+   "id": "07-the-chariot",
+   "index": 7,
+   "title": "THE CHARIOT",
+   "suit": "major",
+   "placeholder": true,
+   "base": "../v1/deck/07-the-chariot/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0171,
+    "fg": 0.0205
+   }
+  },
+  {
+   "id": "08-justice",
+   "index": 8,
+   "title": "JUSTICE",
+   "suit": "major",
+   "placeholder": true,
+   "base": "../v1/deck/08-justice/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0171,
+    "fg": 0.0205
+   }
+  },
+  {
+   "id": "09-the-hermit",
+   "index": 9,
+   "title": "THE HERMIT",
+   "suit": "major",
+   "placeholder": true,
+   "base": "../v1/deck/09-the-hermit/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0221,
+    "fg": 0.0265
+   }
+  },
+  {
+   "id": "10-wheel-of-fortune",
+   "index": 10,
+   "title": "WHEEL OF FORTUNE",
+   "suit": "major",
+   "placeholder": true,
+   "base": "../v1/deck/10-wheel-of-fortune/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0171,
+    "fg": 0.0205
+   }
+  },
+  {
+   "id": "11-strength",
+   "index": 11,
+   "title": "STRENGTH",
+   "suit": "major",
+   "placeholder": true,
+   "base": "../v1/deck/11-strength/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0171,
+    "fg": 0.0205
+   }
+  },
+  {
+   "id": "12-the-hanged-man",
+   "index": 12,
+   "title": "THE HANGED MAN",
+   "suit": "major",
+   "placeholder": true,
+   "base": "../v1/deck/12-the-hanged-man/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.025,
+    "fg": 0.03
+   }
+  },
+  {
+   "id": "13-death",
+   "index": 13,
+   "title": "DEATH",
+   "suit": "major",
+   "placeholder": true,
+   "base": "../v1/deck/13-death/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.025,
+    "fg": 0.03
+   }
+  },
+  {
+   "id": "14-temperance",
+   "index": 14,
+   "title": "TEMPERANCE",
+   "suit": "major",
+   "placeholder": true,
+   "base": "../v1/deck/14-temperance/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0171,
+    "fg": 0.0205
+   }
+  },
+  {
+   "id": "15-the-devil",
+   "index": 15,
+   "title": "THE DEVIL",
+   "suit": "major",
+   "placeholder": true,
+   "base": "../v1/deck/15-the-devil/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0171,
+    "fg": 0.0205
+   }
+  },
+  {
+   "id": "16-the-tower",
+   "index": 16,
+   "title": "THE TOWER",
+   "suit": "major",
+   "placeholder": true,
+   "base": "../v1/deck/16-the-tower/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0221,
+    "fg": 0.0265
+   }
+  },
+  {
+   "id": "17-the-star",
+   "index": 17,
+   "title": "THE STAR",
+   "suit": "major",
+   "placeholder": true,
+   "base": "../v1/deck/17-the-star/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.025,
+    "fg": 0.03
+   }
+  },
+  {
+   "id": "18-the-moon",
+   "index": 18,
+   "title": "THE MOON",
+   "suit": "major",
+   "placeholder": true,
+   "base": "../v1/deck/18-the-moon/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.025,
+    "fg": 0.03
+   }
+  },
+  {
+   "id": "19-the-sun",
+   "index": 19,
+   "title": "THE SUN",
+   "suit": "major",
+   "placeholder": true,
+   "base": "../v1/deck/19-the-sun/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.025,
+    "fg": 0.03
+   }
+  },
+  {
+   "id": "20-judgement",
+   "index": 20,
+   "title": "JUDGEMENT",
+   "suit": "major",
+   "placeholder": true,
+   "base": "../v1/deck/20-judgement/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0171,
+    "fg": 0.0205
+   }
+  },
+  {
+   "id": "21-the-world",
+   "index": 21,
+   "title": "THE WORLD",
+   "suit": "major",
+   "placeholder": true,
+   "base": "../v1/deck/21-the-world/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "22-ace-of-wands",
+   "index": 22,
+   "title": "ACE OF WANDS",
+   "suit": "wands",
+   "placeholder": true,
+   "base": "../v1/deck/22-ace-of-wands/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "23-two-of-wands",
+   "index": 23,
+   "title": "TWO OF WANDS",
+   "suit": "wands",
+   "placeholder": true,
+   "base": "../v1/deck/23-two-of-wands/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "24-three-of-wands",
+   "index": 24,
+   "title": "THREE OF WANDS",
+   "suit": "wands",
+   "placeholder": true,
+   "base": "../v1/deck/24-three-of-wands/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "25-four-of-wands",
+   "index": 25,
+   "title": "FOUR OF WANDS",
+   "suit": "wands",
+   "placeholder": true,
+   "base": "../v1/deck/25-four-of-wands/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "26-five-of-wands",
+   "index": 26,
+   "title": "FIVE OF WANDS",
+   "suit": "wands",
+   "placeholder": true,
+   "base": "../v1/deck/26-five-of-wands/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "27-six-of-wands",
+   "index": 27,
+   "title": "SIX OF WANDS",
+   "suit": "wands",
+   "placeholder": true,
+   "base": "../v1/deck/27-six-of-wands/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "28-seven-of-wands",
+   "index": 28,
+   "title": "SEVEN OF WANDS",
+   "suit": "wands",
+   "placeholder": true,
+   "base": "../v1/deck/28-seven-of-wands/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "29-eight-of-wands",
+   "index": 29,
+   "title": "EIGHT OF WANDS",
+   "suit": "wands",
+   "placeholder": true,
+   "base": "../v1/deck/29-eight-of-wands/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "30-nine-of-wands",
+   "index": 30,
+   "title": "NINE OF WANDS",
+   "suit": "wands",
+   "placeholder": true,
+   "base": "../v1/deck/30-nine-of-wands/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "31-ten-of-wands",
+   "index": 31,
+   "title": "TEN OF WANDS",
+   "suit": "wands",
+   "placeholder": true,
+   "base": "../v1/deck/31-ten-of-wands/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "32-page-of-wands",
+   "index": 32,
+   "title": "PAGE OF WANDS",
+   "suit": "wands",
+   "placeholder": true,
+   "base": "../v1/deck/32-page-of-wands/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0171,
+    "fg": 0.0205
+   }
+  },
+  {
+   "id": "33-knight-of-wands",
+   "index": 33,
+   "title": "KNIGHT OF WANDS",
+   "suit": "wands",
+   "placeholder": true,
+   "base": "../v1/deck/33-knight-of-wands/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0221,
+    "fg": 0.0265
+   }
+  },
+  {
+   "id": "34-queen-of-wands",
+   "index": 34,
+   "title": "QUEEN OF WANDS",
+   "suit": "wands",
+   "placeholder": true,
+   "base": "../v1/deck/34-queen-of-wands/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0171,
+    "fg": 0.0205
+   }
+  },
+  {
+   "id": "35-king-of-wands",
+   "index": 35,
+   "title": "KING OF WANDS",
+   "suit": "wands",
+   "placeholder": true,
+   "base": "../v1/deck/35-king-of-wands/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0171,
+    "fg": 0.0205
+   }
+  },
+  {
+   "id": "36-ace-of-cups",
+   "index": 36,
+   "title": "ACE OF CUPS",
+   "suit": "cups",
+   "placeholder": true,
+   "base": "../v1/deck/36-ace-of-cups/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "37-two-of-cups",
+   "index": 37,
+   "title": "TWO OF CUPS",
+   "suit": "cups",
+   "placeholder": true,
+   "base": "../v1/deck/37-two-of-cups/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "38-three-of-cups",
+   "index": 38,
+   "title": "THREE OF CUPS",
+   "suit": "cups",
+   "placeholder": true,
+   "base": "../v1/deck/38-three-of-cups/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "39-four-of-cups",
+   "index": 39,
+   "title": "FOUR OF CUPS",
+   "suit": "cups",
+   "placeholder": true,
+   "base": "../v1/deck/39-four-of-cups/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "40-five-of-cups",
+   "index": 40,
+   "title": "FIVE OF CUPS",
+   "suit": "cups",
+   "placeholder": true,
+   "base": "../v1/deck/40-five-of-cups/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "41-six-of-cups",
+   "index": 41,
+   "title": "SIX OF CUPS",
+   "suit": "cups",
+   "placeholder": true,
+   "base": "../v1/deck/41-six-of-cups/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "42-seven-of-cups",
+   "index": 42,
+   "title": "SEVEN OF CUPS",
+   "suit": "cups",
+   "placeholder": true,
+   "base": "../v1/deck/42-seven-of-cups/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "43-eight-of-cups",
+   "index": 43,
+   "title": "EIGHT OF CUPS",
+   "suit": "cups",
+   "placeholder": true,
+   "base": "../v1/deck/43-eight-of-cups/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "44-nine-of-cups",
+   "index": 44,
+   "title": "NINE OF CUPS",
+   "suit": "cups",
+   "placeholder": true,
+   "base": "../v1/deck/44-nine-of-cups/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "45-ten-of-cups",
+   "index": 45,
+   "title": "TEN OF CUPS",
+   "suit": "cups",
+   "placeholder": true,
+   "base": "../v1/deck/45-ten-of-cups/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "46-page-of-cups",
+   "index": 46,
+   "title": "PAGE OF CUPS",
+   "suit": "cups",
+   "placeholder": true,
+   "base": "../v1/deck/46-page-of-cups/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0221,
+    "fg": 0.0265
+   }
+  },
+  {
+   "id": "47-knight-of-cups",
+   "index": 47,
+   "title": "KNIGHT OF CUPS",
+   "suit": "cups",
+   "placeholder": true,
+   "base": "../v1/deck/47-knight-of-cups/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0221,
+    "fg": 0.0265
+   }
+  },
+  {
+   "id": "48-queen-of-cups",
+   "index": 48,
+   "title": "QUEEN OF CUPS",
+   "suit": "cups",
+   "placeholder": true,
+   "base": "../v1/deck/48-queen-of-cups/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0171,
+    "fg": 0.0205
+   }
+  },
+  {
+   "id": "49-king-of-cups",
+   "index": 49,
+   "title": "KING OF CUPS",
+   "suit": "cups",
+   "placeholder": true,
+   "base": "../v1/deck/49-king-of-cups/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0171,
+    "fg": 0.0205
+   }
+  },
+  {
+   "id": "50-ace-of-swords",
+   "index": 50,
+   "title": "ACE OF SWORDS",
+   "suit": "swords",
+   "placeholder": true,
+   "base": "../v1/deck/50-ace-of-swords/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "51-two-of-swords",
+   "index": 51,
+   "title": "TWO OF SWORDS",
+   "suit": "swords",
+   "placeholder": true,
+   "base": "../v1/deck/51-two-of-swords/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "52-three-of-swords",
+   "index": 52,
+   "title": "THREE OF SWORDS",
+   "suit": "swords",
+   "placeholder": true,
+   "base": "../v1/deck/52-three-of-swords/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "53-four-of-swords",
+   "index": 53,
+   "title": "FOUR OF SWORDS",
+   "suit": "swords",
+   "placeholder": true,
+   "base": "../v1/deck/53-four-of-swords/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "54-five-of-swords",
+   "index": 54,
+   "title": "FIVE OF SWORDS",
+   "suit": "swords",
+   "placeholder": true,
+   "base": "../v1/deck/54-five-of-swords/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "55-six-of-swords",
+   "index": 55,
+   "title": "SIX OF SWORDS",
+   "suit": "swords",
+   "placeholder": true,
+   "base": "../v1/deck/55-six-of-swords/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "56-seven-of-swords",
+   "index": 56,
+   "title": "SEVEN OF SWORDS",
+   "suit": "swords",
+   "placeholder": true,
+   "base": "../v1/deck/56-seven-of-swords/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "57-eight-of-swords",
+   "index": 57,
+   "title": "EIGHT OF SWORDS",
+   "suit": "swords",
+   "placeholder": true,
+   "base": "../v1/deck/57-eight-of-swords/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "58-nine-of-swords",
+   "index": 58,
+   "title": "NINE OF SWORDS",
+   "suit": "swords",
+   "placeholder": true,
+   "base": "../v1/deck/58-nine-of-swords/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "59-ten-of-swords",
+   "index": 59,
+   "title": "TEN OF SWORDS",
+   "suit": "swords",
+   "placeholder": true,
+   "base": "../v1/deck/59-ten-of-swords/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "60-page-of-swords",
+   "index": 60,
+   "title": "PAGE OF SWORDS",
+   "suit": "swords",
+   "placeholder": true,
+   "base": "../v1/deck/60-page-of-swords/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0221,
+    "fg": 0.0265
+   }
+  },
+  {
+   "id": "61-knight-of-swords",
+   "index": 61,
+   "title": "KNIGHT OF SWORDS",
+   "suit": "swords",
+   "placeholder": true,
+   "base": "../v1/deck/61-knight-of-swords/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0171,
+    "fg": 0.0205
+   }
+  },
+  {
+   "id": "62-queen-of-swords",
+   "index": 62,
+   "title": "QUEEN OF SWORDS",
+   "suit": "swords",
+   "placeholder": true,
+   "base": "../v1/deck/62-queen-of-swords/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0171,
+    "fg": 0.0205
+   }
+  },
+  {
+   "id": "63-king-of-swords",
+   "index": 63,
+   "title": "KING OF SWORDS",
+   "suit": "swords",
+   "placeholder": true,
+   "base": "../v1/deck/63-king-of-swords/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0171,
+    "fg": 0.0205
+   }
+  },
+  {
+   "id": "64-ace-of-coins",
+   "index": 64,
+   "title": "ACE OF COINS",
+   "suit": "coins",
+   "placeholder": true,
+   "base": "../v1/deck/64-ace-of-coins/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "65-two-of-coins",
+   "index": 65,
+   "title": "TWO OF COINS",
+   "suit": "coins",
+   "placeholder": true,
+   "base": "../v1/deck/65-two-of-coins/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "66-three-of-coins",
+   "index": 66,
+   "title": "THREE OF COINS",
+   "suit": "coins",
+   "placeholder": true,
+   "base": "../v1/deck/66-three-of-coins/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "67-four-of-coins",
+   "index": 67,
+   "title": "FOUR OF COINS",
+   "suit": "coins",
+   "placeholder": true,
+   "base": "../v1/deck/67-four-of-coins/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "68-five-of-coins",
+   "index": 68,
+   "title": "FIVE OF COINS",
+   "suit": "coins",
+   "placeholder": true,
+   "base": "../v1/deck/68-five-of-coins/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "69-six-of-coins",
+   "index": 69,
+   "title": "SIX OF COINS",
+   "suit": "coins",
+   "placeholder": true,
+   "base": "../v1/deck/69-six-of-coins/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "70-seven-of-coins",
+   "index": 70,
+   "title": "SEVEN OF COINS",
+   "suit": "coins",
+   "placeholder": true,
+   "base": "../v1/deck/70-seven-of-coins/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "71-eight-of-coins",
+   "index": 71,
+   "title": "EIGHT OF COINS",
+   "suit": "coins",
+   "placeholder": true,
+   "base": "../v1/deck/71-eight-of-coins/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "72-nine-of-coins",
+   "index": 72,
+   "title": "NINE OF COINS",
+   "suit": "coins",
+   "placeholder": true,
+   "base": "../v1/deck/72-nine-of-coins/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "73-ten-of-coins",
+   "index": 73,
+   "title": "TEN OF COINS",
+   "suit": "coins",
+   "placeholder": true,
+   "base": "../v1/deck/73-ten-of-coins/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.03,
+    "fg": 0.036
+   }
+  },
+  {
+   "id": "74-page-of-coins",
+   "index": 74,
+   "title": "PAGE OF COINS",
+   "suit": "coins",
+   "placeholder": true,
+   "base": "../v1/deck/74-page-of-coins/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0221,
+    "fg": 0.0265
+   }
+  },
+  {
+   "id": "75-knight-of-coins",
+   "index": 75,
+   "title": "KNIGHT OF COINS",
+   "suit": "coins",
+   "placeholder": true,
+   "base": "../v1/deck/75-knight-of-coins/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0221,
+    "fg": 0.0265
+   }
+  },
+  {
+   "id": "76-queen-of-coins",
+   "index": 76,
+   "title": "QUEEN OF COINS",
+   "suit": "coins",
+   "placeholder": true,
+   "base": "../v1/deck/76-queen-of-coins/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0171,
+    "fg": 0.0205
+   }
+  },
+  {
+   "id": "77-king-of-coins",
+   "index": 77,
+   "title": "KING OF COINS",
+   "suit": "coins",
+   "placeholder": true,
+   "base": "../v1/deck/77-king-of-coins/",
+   "files": {
+    "frame": "frame",
+    "bg": "bg",
+    "mid": null,
+    "figure": "mid",
+    "fg": "fg",
+    "thumb": "thumb"
+   },
+   "rect": {
+    "bg": 1.1,
+    "figure": 1.0,
+    "fg": 1.0
+   },
+   "blend": {
+    "fg": "screen"
+   },
+   "depth": {
+    "bg": -0.0171,
+    "fg": 0.0205
+   }
+  }
+ ]
+}
