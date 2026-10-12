@@ -554,27 +554,25 @@
    "index": 18,
    "title": "THE MOON",
    "suit": "major",
-   "placeholder": true,
-   "base": "../v1/deck/18-the-moon/",
    "files": {
-    "frame": "frame",
     "bg": "bg",
-    "mid": null,
-    "figure": "mid",
+    "mid": "mid",
+    "figure": "figure",
     "fg": "fg",
+    "frame": "frame",
     "thumb": "thumb"
    },
-   "rect": {
-    "bg": 1.1,
-    "figure": 1.0,
-    "fg": 1.0
-   },
-   "blend": {
-    "fg": "screen"
-   },
    "depth": {
-    "bg": -0.025,
-    "fg": 0.03
+    "bg": -0.03,
+    "mid": -0.015,
+    "figure": 0.008,
+    "fg": 0.035
+   },
+   "rect": {
+    "bg": 1.12,
+    "mid": 1.12,
+    "figure": 1.12,
+    "fg": 1.12
    }
   },
   {
@@ -582,27 +580,25 @@
    "index": 19,
    "title": "THE SUN",
    "suit": "major",
-   "placeholder": true,
-   "base": "../v1/deck/19-the-sun/",
    "files": {
-    "frame": "frame",
     "bg": "bg",
-    "mid": null,
-    "figure": "mid",
+    "mid": "mid",
+    "figure": "figure",
     "fg": "fg",
+    "frame": "frame",
     "thumb": "thumb"
    },
-   "rect": {
-    "bg": 1.1,
-    "figure": 1.0,
-    "fg": 1.0
-   },
-   "blend": {
-    "fg": "screen"
-   },
    "depth": {
-    "bg": -0.025,
-    "fg": 0.03
+    "bg": -0.03,
+    "mid": -0.015,
+    "figure": 0.008,
+    "fg": 0.035
+   },
+   "rect": {
+    "bg": 1.12,
+    "mid": 1.12,
+    "figure": 1.12,
+    "fg": 1.12
    }
   },
   {
@@ -610,27 +606,25 @@
    "index": 20,
    "title": "JUDGEMENT",
    "suit": "major",
-   "placeholder": true,
-   "base": "../v1/deck/20-judgement/",
    "files": {
-    "frame": "frame",
     "bg": "bg",
-    "mid": null,
-    "figure": "mid",
+    "mid": "mid",
+    "figure": "figure",
     "fg": "fg",
+    "frame": "frame",
     "thumb": "thumb"
    },
-   "rect": {
-    "bg": 1.1,
-    "figure": 1.0,
-    "fg": 1.0
-   },
-   "blend": {
-    "fg": "screen"
-   },
    "depth": {
-    "bg": -0.0171,
-    "fg": 0.0205
+    "bg": -0.03,
+    "mid": -0.015,
+    "figure": 0.008,
+    "fg": 0.035
+   },
+   "rect": {
+    "bg": 1.12,
+    "mid": 1.12,
+    "figure": 1.12,
+    "fg": 1.12
    }
   },
   {
