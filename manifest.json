@@ -1,6 +1,6 @@
 {
- "id": "00-the-fool",
- "title": "THE FOOL",
+ "deck": "Tecnotarô Alexandre Rangel",
+ "version": 3,
  "aspect": [
   7,
   12
@@ -16,69 +16,2298 @@
   "h": 3090,
   "cornerRadius": 0.04
  },
+ "overscan": 1.1,
+ "files": {
+  "@1x": "{id}/{layer}.webp",
+  "@2x": "{id}/{layer}@2x.webp",
+  "thumb": "{id}/thumb.webp"
+ },
  "layers": [
   {
    "name": "bg",
-   "file": "bg.png",
-   "depth": -0.025,
-   "rect": "window",
-   "overscan": 1.1,
-   "blend": "normal"
+   "rect": "window*overscan",
+   "blend": "normal",
+   "note": "far plane, moves most, opposite to tilt"
   },
   {
    "name": "mid",
-   "file": "mid.png",
-   "depth": 0.0,
    "rect": "window",
    "blend": "normal",
-   "anchor": true,
-   "ground": {
-    "featherTop": 0.655,
-    "opaqueFrom": 0.745
-   },
-   "contactShadows": true
+   "note": "figure or emblem + ground anchor, zero plane"
   },
   {
    "name": "fg",
-   "file": "fg.png",
-   "depth": 0.012,
    "rect": "window",
-   "blend": "screen"
+   "blend": "screen",
+   "note": "sparse particles, small move with the tilt"
   },
   {
    "name": "frame",
-   "file": "frame.png",
-   "depth": 0.0,
    "rect": "canvas",
    "blend": "normal",
-   "fixed": true
+   "note": "fixed"
   }
  ],
+ "rule": "offset = tilt(-1..1, clamped) * depth * window width on both axes; |bg depth| * window width <= 0.95 * halo_margin_px",
  "motion": {
   "maxTiltDeg": 22,
   "smoothing": 0.1,
-  "cardTiltDeg": 4,
-  "clamp": 1.0
+  "cardTiltDeg": 4
  },
- "version": 2,
- "rule": "depth bands: bg (far, moves most, opposite) | mid = figure + ground strip + baked contact shadows (zero plane, anchor) | fg (near, small, same side as tilt) | frame fixed. Offsets = tilt(-1..1) * depth * window width on both axes; |bg depth| * window width must stay below halo_margin_px.",
- "halo_margin_px": 58,
- "contacts": [
-  [
-   575,
-   2729
-  ],
-  [
-   917,
-   2685
-  ],
-  [
-   1213,
-   2803
-  ],
-  [
-   1541,
-   2793
-  ]
+ "ground_edges": {
+  "00-the-fool": {
+   "ground_edge": "fade",
+   "edge_y": 0.7
+  },
+  "01-the-magician": {
+   "ground_edge": "hard",
+   "edge_y": 0.6176
+  },
+  "02-the-high-priestess": {
+   "ground_edge": "hard",
+   "edge_y": 0.7373
+  },
+  "03-the-empress": {
+   "ground_edge": "hard",
+   "edge_y": 0.8101
+  },
+  "04-the-emperor": {
+   "ground_edge": "fade",
+   "edge_y": 0.6557
+  },
+  "05-the-pope": {
+   "ground_edge": "hard",
+   "edge_y": 0.7493
+  },
+  "06-the-lovers": {
+   "ground_edge": "hard",
+   "edge_y": 0.6105
+  },
+  "07-the-chariot": {
+   "ground_edge": "fade",
+   "edge_y": 0.665
+  },
+  "08-justice": {
+   "ground_edge": "hard",
+   "edge_y": 0.8484
+  },
+  "09-the-hermit": {
+   "ground_edge": "hard",
+   "edge_y": 0.6155
+  },
+  "10-wheel-of-fortune": {
+   "ground_edge": "fade",
+   "edge_y": 0.822
+  },
+  "11-strength": {
+   "ground_edge": "fade",
+   "edge_y": 0.7362
+  },
+  "12-the-hanged-man": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "13-death": {
+   "ground_edge": "fade",
+   "edge_y": 0.5932
+  },
+  "14-temperance": {
+   "ground_edge": "fade",
+   "edge_y": 0.668
+  },
+  "15-the-devil": {
+   "ground_edge": "hard",
+   "edge_y": 0.8982
+  },
+  "16-the-tower": {
+   "ground_edge": "fade",
+   "edge_y": 0.8032
+  },
+  "17-the-star": {
+   "ground_edge": "fade",
+   "edge_y": 0.5165
+  },
+  "18-the-moon": {
+   "ground_edge": "hard",
+   "edge_y": 0.5032
+  },
+  "19-the-sun": {
+   "ground_edge": "hard",
+   "edge_y": 0.6104
+  },
+  "20-judgement": {
+   "ground_edge": "hard",
+   "edge_y": 0.8281
+  },
+  "21-the-world": {
+   "ground_edge": "hard",
+   "edge_y": 0.8791
+  },
+  "22-ace-of-wands": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "23-two-of-wands": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "24-three-of-wands": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "25-four-of-wands": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "26-five-of-wands": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "27-six-of-wands": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "28-seven-of-wands": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "29-eight-of-wands": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "30-nine-of-wands": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "31-ten-of-wands": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "32-page-of-wands": {
+   "ground_edge": "fade",
+   "edge_y": 0.8728
+  },
+  "33-knight-of-wands": {
+   "ground_edge": "fade",
+   "edge_y": 0.644
+  },
+  "34-queen-of-wands": {
+   "ground_edge": "hard",
+   "edge_y": 0.6359
+  },
+  "35-king-of-wands": {
+   "ground_edge": "hard",
+   "edge_y": 0.8738
+  },
+  "36-ace-of-cups": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "37-two-of-cups": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "38-three-of-cups": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "39-four-of-cups": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "40-five-of-cups": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "41-six-of-cups": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "42-seven-of-cups": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "43-eight-of-cups": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "44-nine-of-cups": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "45-ten-of-cups": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "46-page-of-cups": {
+   "ground_edge": "fade",
+   "edge_y": 0.7443
+  },
+  "47-knight-of-cups": {
+   "ground_edge": "fade",
+   "edge_y": 0.5269
+  },
+  "48-queen-of-cups": {
+   "ground_edge": "hard",
+   "edge_y": 0.7022
+  },
+  "49-king-of-cups": {
+   "ground_edge": "hard",
+   "edge_y": 0.7366
+  },
+  "50-ace-of-swords": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "51-two-of-swords": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "52-three-of-swords": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "53-four-of-swords": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "54-five-of-swords": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "55-six-of-swords": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "56-seven-of-swords": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "57-eight-of-swords": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "58-nine-of-swords": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "59-ten-of-swords": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "60-page-of-swords": {
+   "ground_edge": "hard",
+   "edge_y": 0.7057
+  },
+  "61-knight-of-swords": {
+   "ground_edge": "fade",
+   "edge_y": 0.6625
+  },
+  "62-queen-of-swords": {
+   "ground_edge": "fade",
+   "edge_y": 0.6521
+  },
+  "63-king-of-swords": {
+   "ground_edge": "hard",
+   "edge_y": 0.782
+  },
+  "64-ace-of-coins": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "65-two-of-coins": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "66-three-of-coins": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "67-four-of-coins": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "68-five-of-coins": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "69-six-of-coins": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "70-seven-of-coins": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "71-eight-of-coins": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "72-nine-of-coins": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "73-ten-of-coins": {
+   "ground_edge": "none",
+   "edge_y": null
+  },
+  "74-page-of-coins": {
+   "ground_edge": "fade",
+   "edge_y": 0.6634
+  },
+  "75-knight-of-coins": {
+   "ground_edge": "hard",
+   "edge_y": 0.5642
+  },
+  "76-queen-of-coins": {
+   "ground_edge": "hard",
+   "edge_y": 0.8932
+  },
+  "77-king-of-coins": {
+   "ground_edge": "hard",
+   "edge_y": 0.7007
+  }
+ },
+ "cards": [
+  {
+   "id": "00-the-fool",
+   "index": 0,
+   "title": "THE FOOL",
+   "suit": "major",
+   "kind": "figure",
+   "ground_edge": "fade",
+   "edge_y": 0.7,
+   "edge_strength": null,
+   "foot_y": 0.8874,
+   "contacts": [
+    [
+     575,
+     2729
+    ],
+    [
+     1258,
+     2803
+    ]
+   ],
+   "hole_frac": 0.259,
+   "halo_margin_px": 44,
+   "depth": {
+    "bg": -0.0221,
+    "mid": 0.0,
+    "fg": 0.0106,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "01-the-magician",
+   "index": 1,
+   "title": "THE MAGICIAN",
+   "suit": "major",
+   "kind": "figure",
+   "ground_edge": "hard",
+   "edge_y": 0.6176,
+   "edge_strength": 5.36,
+   "foot_y": 0.8608,
+   "contacts": [
+    [
+     315,
+     2515
+    ],
+    [
+     875,
+     2723
+    ],
+    [
+     1189,
+     2717
+    ],
+    [
+     1470,
+     2555
+    ],
+    [
+     1594,
+     2536
+    ]
+   ],
+   "hole_frac": 0.222,
+   "halo_margin_px": 44,
+   "depth": {
+    "bg": -0.0221,
+    "mid": 0.0,
+    "fg": 0.0106,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "02-the-high-priestess",
+   "index": 2,
+   "title": "THE HIGH PRIESTESS",
+   "suit": "major",
+   "kind": "figure",
+   "ground_edge": "hard",
+   "edge_y": 0.7373,
+   "edge_strength": 4.62,
+   "foot_y": 0.9961,
+   "contacts": [
+    [
+     933,
+     3089
+    ]
+   ],
+   "hole_frac": 0.318,
+   "halo_margin_px": 34,
+   "depth": {
+    "bg": -0.0171,
+    "mid": 0.0,
+    "fg": 0.0082,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "03-the-empress",
+   "index": 3,
+   "title": "THE EMPRESS",
+   "suit": "major",
+   "kind": "figure",
+   "ground_edge": "hard",
+   "edge_y": 0.8101,
+   "edge_strength": null,
+   "foot_y": 0.8191,
+   "contacts": [
+    [
+     858,
+     2561
+    ],
+    [
+     1208,
+     2561
+    ]
+   ],
+   "hole_frac": 0.387,
+   "halo_margin_px": 34,
+   "depth": {
+    "bg": -0.0171,
+    "mid": 0.0,
+    "fg": 0.0082,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "04-the-emperor",
+   "index": 4,
+   "title": "THE EMPEROR",
+   "suit": "major",
+   "kind": "figure",
+   "ground_edge": "fade",
+   "edge_y": 0.6557,
+   "edge_strength": 2.85,
+   "foot_y": 0.9379,
+   "contacts": [
+    [
+     879,
+     2959
+    ],
+    [
+     1582,
+     2804
+    ]
+   ],
+   "hole_frac": 0.295,
+   "halo_margin_px": 44,
+   "depth": {
+    "bg": -0.0221,
+    "mid": 0.0,
+    "fg": 0.0106,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "05-the-pope",
+   "index": 5,
+   "title": "THE POPE",
+   "suit": "major",
+   "kind": "figure",
+   "ground_edge": "hard",
+   "edge_y": 0.7493,
+   "edge_strength": 12.91,
+   "foot_y": 0.8162,
+   "contacts": [
+    [
+     409,
+     2519
+    ],
+    [
+     715,
+     2377
+    ],
+    [
+     906,
+     2433
+    ],
+    [
+     1128,
+     2415
+    ],
+    [
+     1475,
+     2581
+    ]
+   ],
+   "hole_frac": 0.315,
+   "halo_margin_px": 34,
+   "depth": {
+    "bg": -0.0171,
+    "mid": 0.0,
+    "fg": 0.0082,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "06-the-lovers",
+   "index": 6,
+   "title": "THE LOVERS",
+   "suit": "major",
+   "kind": "figure",
+   "ground_edge": "hard",
+   "edge_y": 0.6105,
+   "edge_strength": 3.93,
+   "foot_y": 0.9372,
+   "contacts": [
+    [
+     505,
+     2869
+    ],
+    [
+     716,
+     2805
+    ],
+    [
+     905,
+     2957
+    ],
+    [
+     1160,
+     2935
+    ],
+    [
+     1578,
+     2921
+    ]
+   ],
+   "hole_frac": 0.267,
+   "halo_margin_px": 44,
+   "depth": {
+    "bg": -0.0221,
+    "mid": 0.0,
+    "fg": 0.0106,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "07-the-chariot",
+   "index": 7,
+   "title": "THE CHARIOT",
+   "suit": "major",
+   "kind": "figure",
+   "ground_edge": "fade",
+   "edge_y": 0.665,
+   "edge_strength": 2.75,
+   "foot_y": 0.8544,
+   "contacts": [
+    [
+     353,
+     2498
+    ],
+    [
+     552,
+     2557
+    ],
+    [
+     1177,
+     2511
+    ],
+    [
+     1315,
+     2745
+    ],
+    [
+     1552,
+     2672
+    ]
+   ],
+   "hole_frac": 0.367,
+   "halo_margin_px": 34,
+   "depth": {
+    "bg": -0.0171,
+    "mid": 0.0,
+    "fg": 0.0082,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "08-justice",
+   "index": 8,
+   "title": "JUSTICE",
+   "suit": "major",
+   "kind": "figure",
+   "ground_edge": "hard",
+   "edge_y": 0.8484,
+   "edge_strength": 5.44,
+   "foot_y": 0.9964,
+   "contacts": [
+    [
+     954,
+     3089
+    ]
+   ],
+   "hole_frac": 0.522,
+   "halo_margin_px": 34,
+   "depth": {
+    "bg": -0.0171,
+    "mid": 0.0,
+    "fg": 0.0082,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "09-the-hermit",
+   "index": 9,
+   "title": "THE HERMIT",
+   "suit": "major",
+   "kind": "figure",
+   "ground_edge": "hard",
+   "edge_y": 0.6155,
+   "edge_strength": 4.14,
+   "foot_y": 0.8699,
+   "contacts": [
+    [
+     882,
+     2641
+    ],
+    [
+     1224,
+     2745
+    ]
+   ],
+   "hole_frac": 0.242,
+   "halo_margin_px": 44,
+   "depth": {
+    "bg": -0.0221,
+    "mid": 0.0,
+    "fg": 0.0106,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "10-wheel-of-fortune",
+   "index": 10,
+   "title": "WHEEL OF FORTUNE",
+   "suit": "major",
+   "kind": "figure",
+   "ground_edge": "fade",
+   "edge_y": 0.822,
+   "edge_strength": 2.11,
+   "foot_y": 0.9304,
+   "contacts": [
+    [
+     934,
+     2903
+    ]
+   ],
+   "hole_frac": 0.406,
+   "halo_margin_px": 34,
+   "depth": {
+    "bg": -0.0171,
+    "mid": 0.0,
+    "fg": 0.0082,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "11-strength",
+   "index": 11,
+   "title": "STRENGTH",
+   "suit": "major",
+   "kind": "figure",
+   "ground_edge": "fade",
+   "edge_y": 0.7362,
+   "edge_strength": 2.6,
+   "foot_y": 0.9968,
+   "contacts": [
+    [
+     935,
+     3089
+    ]
+   ],
+   "hole_frac": 0.332,
+   "halo_margin_px": 34,
+   "depth": {
+    "bg": -0.0171,
+    "mid": 0.0,
+    "fg": 0.0082,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "12-the-hanged-man",
+   "index": 12,
+   "title": "THE HANGED MAN",
+   "suit": "major",
+   "kind": "figure",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": 2.12,
+   "foot_y": 0.7926,
+   "contacts": [],
+   "hole_frac": 0.16,
+   "halo_margin_px": 52,
+   "depth": {
+    "bg": -0.025,
+    "mid": 0.0,
+    "fg": 0.012,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "13-death",
+   "index": 13,
+   "title": "DEATH",
+   "suit": "major",
+   "kind": "figure",
+   "ground_edge": "fade",
+   "edge_y": 0.5932,
+   "edge_strength": 1.87,
+   "foot_y": 0.6916,
+   "contacts": [
+    [
+     872,
+     2097
+    ],
+    [
+     1280,
+     2171
+    ]
+   ],
+   "hole_frac": 0.129,
+   "halo_margin_px": 52,
+   "depth": {
+    "bg": -0.025,
+    "mid": 0.0,
+    "fg": 0.012,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "14-temperance",
+   "index": 14,
+   "title": "TEMPERANCE",
+   "suit": "major",
+   "kind": "figure",
+   "ground_edge": "fade",
+   "edge_y": 0.668,
+   "edge_strength": 2.37,
+   "foot_y": 0.8579,
+   "contacts": [
+    [
+     497,
+     2531
+    ],
+    [
+     998,
+     2733
+    ]
+   ],
+   "hole_frac": 0.387,
+   "halo_margin_px": 34,
+   "depth": {
+    "bg": -0.0171,
+    "mid": 0.0,
+    "fg": 0.0082,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "15-the-devil",
+   "index": 15,
+   "title": "THE DEVIL",
+   "suit": "major",
+   "kind": "figure",
+   "ground_edge": "hard",
+   "edge_y": 0.8982,
+   "edge_strength": 4.09,
+   "foot_y": 0.9689,
+   "contacts": [
+    [
+     730,
+     3089
+    ],
+    [
+     1447,
+     2913
+    ]
+   ],
+   "hole_frac": 0.454,
+   "halo_margin_px": 34,
+   "depth": {
+    "bg": -0.0171,
+    "mid": 0.0,
+    "fg": 0.0082,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "16-the-tower",
+   "index": 16,
+   "title": "THE TOWER",
+   "suit": "major",
+   "kind": "figure",
+   "ground_edge": "fade",
+   "edge_y": 0.8032,
+   "edge_strength": 2.62,
+   "foot_y": 0.8799,
+   "contacts": [
+    [
+     914,
+     2751
+    ]
+   ],
+   "hole_frac": 0.225,
+   "halo_margin_px": 44,
+   "depth": {
+    "bg": -0.0221,
+    "mid": 0.0,
+    "fg": 0.0106,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "17-the-star",
+   "index": 17,
+   "title": "THE STAR",
+   "suit": "major",
+   "kind": "figure",
+   "ground_edge": "fade",
+   "edge_y": 0.5165,
+   "edge_strength": 1.71,
+   "foot_y": 0.6382,
+   "contacts": [
+    [
+     544,
+     1982
+    ]
+   ],
+   "hole_frac": 0.001,
+   "halo_margin_px": 52,
+   "depth": {
+    "bg": -0.025,
+    "mid": 0.0,
+    "fg": 0.012,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "18-the-moon",
+   "index": 18,
+   "title": "THE MOON",
+   "suit": "major",
+   "kind": "figure",
+   "ground_edge": "hard",
+   "edge_y": 0.5032,
+   "edge_strength": 3.81,
+   "foot_y": 0.7595,
+   "contacts": [
+    [
+     154,
+     2311
+    ],
+    [
+     745,
+     2321
+    ],
+    [
+     1248,
+     2387
+    ],
+    [
+     1614,
+     2369
+    ]
+   ],
+   "hole_frac": 0.036,
+   "halo_margin_px": 52,
+   "depth": {
+    "bg": -0.025,
+    "mid": 0.0,
+    "fg": 0.012,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "19-the-sun",
+   "index": 19,
+   "title": "THE SUN",
+   "suit": "major",
+   "kind": "figure",
+   "ground_edge": "hard",
+   "edge_y": 0.6104,
+   "edge_strength": 15.27,
+   "foot_y": 0.9175,
+   "contacts": [
+    [
+     681,
+     2865
+    ],
+    [
+     866,
+     2833
+    ],
+    [
+     1009,
+     2819
+    ],
+    [
+     1222,
+     2844
+    ]
+   ],
+   "hole_frac": 0.054,
+   "halo_margin_px": 52,
+   "depth": {
+    "bg": -0.025,
+    "mid": 0.0,
+    "fg": 0.012,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "20-judgement",
+   "index": 20,
+   "title": "JUDGEMENT",
+   "suit": "major",
+   "kind": "figure",
+   "ground_edge": "hard",
+   "edge_y": 0.8281,
+   "edge_strength": 6.33,
+   "foot_y": 0.8848,
+   "contacts": [
+    [
+     629,
+     2775
+    ]
+   ],
+   "hole_frac": 0.306,
+   "halo_margin_px": 34,
+   "depth": {
+    "bg": -0.0171,
+    "mid": 0.0,
+    "fg": 0.0082,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "21-the-world",
+   "index": 21,
+   "title": "THE WORLD",
+   "suit": "major",
+   "kind": "emblem",
+   "ground_edge": "hard",
+   "edge_y": 0.8791,
+   "edge_strength": null,
+   "foot_y": 0.877,
+   "contacts": [],
+   "hole_frac": 0.188,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "22-ace-of-wands",
+   "index": 22,
+   "title": "ACE OF WANDS",
+   "suit": "wands",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.9971,
+   "contacts": [],
+   "hole_frac": 0.323,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "23-two-of-wands",
+   "index": 23,
+   "title": "TWO OF WANDS",
+   "suit": "wands",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8084,
+   "contacts": [],
+   "hole_frac": 0.137,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "24-three-of-wands",
+   "index": 24,
+   "title": "THREE OF WANDS",
+   "suit": "wands",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8434,
+   "contacts": [],
+   "hole_frac": 0.163,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "25-four-of-wands",
+   "index": 25,
+   "title": "FOUR OF WANDS",
+   "suit": "wands",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8327,
+   "contacts": [],
+   "hole_frac": 0.215,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "26-five-of-wands",
+   "index": 26,
+   "title": "FIVE OF WANDS",
+   "suit": "wands",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8333,
+   "contacts": [],
+   "hole_frac": 0.251,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "27-six-of-wands",
+   "index": 27,
+   "title": "SIX OF WANDS",
+   "suit": "wands",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.832,
+   "contacts": [],
+   "hole_frac": 0.269,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "28-seven-of-wands",
+   "index": 28,
+   "title": "SEVEN OF WANDS",
+   "suit": "wands",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8324,
+   "contacts": [],
+   "hole_frac": 0.292,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "29-eight-of-wands",
+   "index": 29,
+   "title": "EIGHT OF WANDS",
+   "suit": "wands",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8146,
+   "contacts": [],
+   "hole_frac": 0.307,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "30-nine-of-wands",
+   "index": 30,
+   "title": "NINE OF WANDS",
+   "suit": "wands",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8172,
+   "contacts": [],
+   "hole_frac": 0.293,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "31-ten-of-wands",
+   "index": 31,
+   "title": "TEN OF WANDS",
+   "suit": "wands",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.7838,
+   "contacts": [],
+   "hole_frac": 0.227,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "32-page-of-wands",
+   "index": 32,
+   "title": "PAGE OF WANDS",
+   "suit": "wands",
+   "kind": "figure",
+   "ground_edge": "fade",
+   "edge_y": 0.8728,
+   "edge_strength": 2.46,
+   "foot_y": 0.9835,
+   "contacts": [
+    [
+     862,
+     3089
+    ],
+    [
+     1369,
+     3041
+    ]
+   ],
+   "hole_frac": 0.368,
+   "halo_margin_px": 34,
+   "depth": {
+    "bg": -0.0171,
+    "mid": 0.0,
+    "fg": 0.0082,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "33-knight-of-wands",
+   "index": 33,
+   "title": "KNIGHT OF WANDS",
+   "suit": "wands",
+   "kind": "figure",
+   "ground_edge": "fade",
+   "edge_y": 0.644,
+   "edge_strength": 2.45,
+   "foot_y": 0.8783,
+   "contacts": [
+    [
+     590,
+     2647
+    ],
+    [
+     881,
+     2661
+    ],
+    [
+     1255,
+     2781
+    ],
+    [
+     1510,
+     2569
+    ]
+   ],
+   "hole_frac": 0.279,
+   "halo_margin_px": 44,
+   "depth": {
+    "bg": -0.0221,
+    "mid": 0.0,
+    "fg": 0.0106,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "34-queen-of-wands",
+   "index": 34,
+   "title": "QUEEN OF WANDS",
+   "suit": "wands",
+   "kind": "figure",
+   "ground_edge": "hard",
+   "edge_y": 0.6359,
+   "edge_strength": 3.61,
+   "foot_y": 0.9227,
+   "contacts": [
+    [
+     1424,
+     2741
+    ],
+    [
+     1773,
+     3079
+    ]
+   ],
+   "hole_frac": 0.394,
+   "halo_margin_px": 34,
+   "depth": {
+    "bg": -0.0171,
+    "mid": 0.0,
+    "fg": 0.0082,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "35-king-of-wands",
+   "index": 35,
+   "title": "KING OF WANDS",
+   "suit": "wands",
+   "kind": "figure",
+   "ground_edge": "hard",
+   "edge_y": 0.8738,
+   "edge_strength": 4.75,
+   "foot_y": 0.9058,
+   "contacts": [
+    [
+     786,
+     2827
+    ],
+    [
+     1077,
+     2731
+    ],
+    [
+     1329,
+     2853
+    ]
+   ],
+   "hole_frac": 0.454,
+   "halo_margin_px": 34,
+   "depth": {
+    "bg": -0.0171,
+    "mid": 0.0,
+    "fg": 0.0082,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "36-ace-of-cups",
+   "index": 36,
+   "title": "ACE OF CUPS",
+   "suit": "cups",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.9214,
+   "contacts": [],
+   "hole_frac": 0.357,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "37-two-of-cups",
+   "index": 37,
+   "title": "TWO OF CUPS",
+   "suit": "cups",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.7016,
+   "contacts": [],
+   "hole_frac": 0.23,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "38-three-of-cups",
+   "index": 38,
+   "title": "THREE OF CUPS",
+   "suit": "cups",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8463,
+   "contacts": [],
+   "hole_frac": 0.234,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "39-four-of-cups",
+   "index": 39,
+   "title": "FOUR OF CUPS",
+   "suit": "cups",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.855,
+   "contacts": [],
+   "hole_frac": 0.32,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "40-five-of-cups",
+   "index": 40,
+   "title": "FIVE OF CUPS",
+   "suit": "cups",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8615,
+   "contacts": [],
+   "hole_frac": 0.198,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "41-six-of-cups",
+   "index": 41,
+   "title": "SIX OF CUPS",
+   "suit": "cups",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8628,
+   "contacts": [],
+   "hole_frac": 0.237,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "42-seven-of-cups",
+   "index": 42,
+   "title": "SEVEN OF CUPS",
+   "suit": "cups",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8644,
+   "contacts": [],
+   "hole_frac": 0.173,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "43-eight-of-cups",
+   "index": 43,
+   "title": "EIGHT OF CUPS",
+   "suit": "cups",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.865,
+   "contacts": [],
+   "hole_frac": 0.198,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "44-nine-of-cups",
+   "index": 44,
+   "title": "NINE OF CUPS",
+   "suit": "cups",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8644,
+   "contacts": [],
+   "hole_frac": 0.359,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "45-ten-of-cups",
+   "index": 45,
+   "title": "TEN OF CUPS",
+   "suit": "cups",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8644,
+   "contacts": [],
+   "hole_frac": 0.177,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "46-page-of-cups",
+   "index": 46,
+   "title": "PAGE OF CUPS",
+   "suit": "cups",
+   "kind": "figure",
+   "ground_edge": "fade",
+   "edge_y": 0.7443,
+   "edge_strength": 2.49,
+   "foot_y": 0.9951,
+   "contacts": [
+    [
+     770,
+     3089
+    ]
+   ],
+   "hole_frac": 0.263,
+   "halo_margin_px": 44,
+   "depth": {
+    "bg": -0.0221,
+    "mid": 0.0,
+    "fg": 0.0106,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "47-knight-of-cups",
+   "index": 47,
+   "title": "KNIGHT OF CUPS",
+   "suit": "cups",
+   "kind": "figure",
+   "ground_edge": "fade",
+   "edge_y": 0.5269,
+   "edge_strength": 2.71,
+   "foot_y": 0.9003,
+   "contacts": [
+    [
+     550,
+     2793
+    ],
+    [
+     930,
+     2793
+    ],
+    [
+     1368,
+     2849
+    ],
+    [
+     1617,
+     2657
+    ]
+   ],
+   "hole_frac": 0.253,
+   "halo_margin_px": 44,
+   "depth": {
+    "bg": -0.0221,
+    "mid": 0.0,
+    "fg": 0.0106,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "48-queen-of-cups",
+   "index": 48,
+   "title": "QUEEN OF CUPS",
+   "suit": "cups",
+   "kind": "figure",
+   "ground_edge": "hard",
+   "edge_y": 0.7022,
+   "edge_strength": 3.02,
+   "foot_y": 0.9764,
+   "contacts": [
+    [
+     995,
+     3089
+    ]
+   ],
+   "hole_frac": 0.443,
+   "halo_margin_px": 34,
+   "depth": {
+    "bg": -0.0171,
+    "mid": 0.0,
+    "fg": 0.0082,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "49-king-of-cups",
+   "index": 49,
+   "title": "KING OF CUPS",
+   "suit": "cups",
+   "kind": "figure",
+   "ground_edge": "hard",
+   "edge_y": 0.7366,
+   "edge_strength": 10.4,
+   "foot_y": 0.9029,
+   "contacts": [
+    [
+     320,
+     2725
+    ],
+    [
+     734,
+     2827
+    ],
+    [
+     1328,
+     2839
+    ],
+    [
+     1619,
+     2727
+    ]
+   ],
+   "hole_frac": 0.408,
+   "halo_margin_px": 34,
+   "depth": {
+    "bg": -0.0171,
+    "mid": 0.0,
+    "fg": 0.0082,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "50-ace-of-swords",
+   "index": 50,
+   "title": "ACE OF SWORDS",
+   "suit": "swords",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.9958,
+   "contacts": [],
+   "hole_frac": 0.15,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "51-two-of-swords",
+   "index": 51,
+   "title": "TWO OF SWORDS",
+   "suit": "swords",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8835,
+   "contacts": [],
+   "hole_frac": 0.143,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "52-three-of-swords",
+   "index": 52,
+   "title": "THREE OF SWORDS",
+   "suit": "swords",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8812,
+   "contacts": [],
+   "hole_frac": 0.203,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "53-four-of-swords",
+   "index": 53,
+   "title": "FOUR OF SWORDS",
+   "suit": "swords",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8832,
+   "contacts": [],
+   "hole_frac": 0.274,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "54-five-of-swords",
+   "index": 54,
+   "title": "FIVE OF SWORDS",
+   "suit": "swords",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8822,
+   "contacts": [],
+   "hole_frac": 0.324,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "55-six-of-swords",
+   "index": 55,
+   "title": "SIX OF SWORDS",
+   "suit": "swords",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8809,
+   "contacts": [],
+   "hole_frac": 0.404,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "56-seven-of-swords",
+   "index": 56,
+   "title": "SEVEN OF SWORDS",
+   "suit": "swords",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8812,
+   "contacts": [],
+   "hole_frac": 0.421,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "57-eight-of-swords",
+   "index": 57,
+   "title": "EIGHT OF SWORDS",
+   "suit": "swords",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8809,
+   "contacts": [],
+   "hole_frac": 0.523,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "58-nine-of-swords",
+   "index": 58,
+   "title": "NINE OF SWORDS",
+   "suit": "swords",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8822,
+   "contacts": [],
+   "hole_frac": 0.493,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "59-ten-of-swords",
+   "index": 59,
+   "title": "TEN OF SWORDS",
+   "suit": "swords",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8835,
+   "contacts": [],
+   "hole_frac": 0.485,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "60-page-of-swords",
+   "index": 60,
+   "title": "PAGE OF SWORDS",
+   "suit": "swords",
+   "kind": "figure",
+   "ground_edge": "hard",
+   "edge_y": 0.7057,
+   "edge_strength": 3.41,
+   "foot_y": 0.9883,
+   "contacts": [
+    [
+     767,
+     3089
+    ]
+   ],
+   "hole_frac": 0.273,
+   "halo_margin_px": 44,
+   "depth": {
+    "bg": -0.0221,
+    "mid": 0.0,
+    "fg": 0.0106,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "61-knight-of-swords",
+   "index": 61,
+   "title": "KNIGHT OF SWORDS",
+   "suit": "swords",
+   "kind": "figure",
+   "ground_edge": "fade",
+   "edge_y": 0.6625,
+   "edge_strength": 2.64,
+   "foot_y": 0.9071,
+   "contacts": [
+    [
+     575,
+     2727
+    ],
+    [
+     881,
+     2739
+    ],
+    [
+     1281,
+     2877
+    ],
+    [
+     1545,
+     2653
+    ]
+   ],
+   "hole_frac": 0.318,
+   "halo_margin_px": 34,
+   "depth": {
+    "bg": -0.0171,
+    "mid": 0.0,
+    "fg": 0.0082,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "62-queen-of-swords",
+   "index": 62,
+   "title": "QUEEN OF SWORDS",
+   "suit": "swords",
+   "kind": "figure",
+   "ground_edge": "fade",
+   "edge_y": 0.6521,
+   "edge_strength": 2.99,
+   "foot_y": 0.9964,
+   "contacts": [
+    [
+     945,
+     3089
+    ]
+   ],
+   "hole_frac": 0.418,
+   "halo_margin_px": 34,
+   "depth": {
+    "bg": -0.0171,
+    "mid": 0.0,
+    "fg": 0.0082,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "63-king-of-swords",
+   "index": 63,
+   "title": "KING OF SWORDS",
+   "suit": "swords",
+   "kind": "figure",
+   "ground_edge": "hard",
+   "edge_y": 0.782,
+   "edge_strength": 12.39,
+   "foot_y": 0.9013,
+   "contacts": [
+    [
+     312,
+     2709
+    ],
+    [
+     733,
+     2847
+    ],
+    [
+     1475,
+     2815
+    ]
+   ],
+   "hole_frac": 0.426,
+   "halo_margin_px": 34,
+   "depth": {
+    "bg": -0.0171,
+    "mid": 0.0,
+    "fg": 0.0082,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "64-ace-of-coins",
+   "index": 64,
+   "title": "ACE OF COINS",
+   "suit": "coins",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.7521,
+   "contacts": [],
+   "hole_frac": 0.429,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "65-two-of-coins",
+   "index": 65,
+   "title": "TWO OF COINS",
+   "suit": "coins",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.9434,
+   "contacts": [],
+   "hole_frac": 0.43,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "66-three-of-coins",
+   "index": 66,
+   "title": "THREE OF COINS",
+   "suit": "coins",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8579,
+   "contacts": [],
+   "hole_frac": 0.258,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "67-four-of-coins",
+   "index": 67,
+   "title": "FOUR OF COINS",
+   "suit": "coins",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8026,
+   "contacts": [],
+   "hole_frac": 0.341,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "68-five-of-coins",
+   "index": 68,
+   "title": "FIVE OF COINS",
+   "suit": "coins",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8599,
+   "contacts": [],
+   "hole_frac": 0.43,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "69-six-of-coins",
+   "index": 69,
+   "title": "SIX OF COINS",
+   "suit": "coins",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8589,
+   "contacts": [],
+   "hole_frac": 0.508,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "70-seven-of-coins",
+   "index": 70,
+   "title": "SEVEN OF COINS",
+   "suit": "coins",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8647,
+   "contacts": [],
+   "hole_frac": 0.376,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "71-eight-of-coins",
+   "index": 71,
+   "title": "EIGHT OF COINS",
+   "suit": "coins",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8638,
+   "contacts": [],
+   "hole_frac": 0.426,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "72-nine-of-coins",
+   "index": 72,
+   "title": "NINE OF COINS",
+   "suit": "coins",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8676,
+   "contacts": [],
+   "hole_frac": 0.332,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "73-ten-of-coins",
+   "index": 73,
+   "title": "TEN OF COINS",
+   "suit": "coins",
+   "kind": "emblem",
+   "ground_edge": "none",
+   "edge_y": null,
+   "edge_strength": null,
+   "foot_y": 0.8673,
+   "contacts": [],
+   "hole_frac": 0.364,
+   "halo_margin_px": 62,
+   "depth": {
+    "bg": -0.03,
+    "mid": 0.0,
+    "fg": 0.0144,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "74-page-of-coins",
+   "index": 74,
+   "title": "PAGE OF COINS",
+   "suit": "coins",
+   "kind": "figure",
+   "ground_edge": "fade",
+   "edge_y": 0.6634,
+   "edge_strength": 1.78,
+   "foot_y": 0.944,
+   "contacts": [
+    [
+     724,
+     2975
+    ]
+   ],
+   "hole_frac": 0.278,
+   "halo_margin_px": 44,
+   "depth": {
+    "bg": -0.0221,
+    "mid": 0.0,
+    "fg": 0.0106,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "75-knight-of-coins",
+   "index": 75,
+   "title": "KNIGHT OF COINS",
+   "suit": "coins",
+   "kind": "figure",
+   "ground_edge": "hard",
+   "edge_y": 0.5642,
+   "edge_strength": 3.57,
+   "foot_y": 0.9006,
+   "contacts": [
+    [
+     548,
+     2795
+    ],
+    [
+     927,
+     2793
+    ],
+    [
+     1368,
+     2849
+    ],
+    [
+     1616,
+     2657
+    ]
+   ],
+   "hole_frac": 0.235,
+   "halo_margin_px": 44,
+   "depth": {
+    "bg": -0.0221,
+    "mid": 0.0,
+    "fg": 0.0106,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "76-queen-of-coins",
+   "index": 76,
+   "title": "QUEEN OF COINS",
+   "suit": "coins",
+   "kind": "figure",
+   "ground_edge": "hard",
+   "edge_y": 0.8932,
+   "edge_strength": 3.07,
+   "foot_y": 0.9401,
+   "contacts": [
+    [
+     1001,
+     2965
+    ]
+   ],
+   "hole_frac": 0.494,
+   "halo_margin_px": 34,
+   "depth": {
+    "bg": -0.0171,
+    "mid": 0.0,
+    "fg": 0.0082,
+    "frame": 0.0
+   }
+  },
+  {
+   "id": "77-king-of-coins",
+   "index": 77,
+   "title": "KING OF COINS",
+   "suit": "coins",
+   "kind": "figure",
+   "ground_edge": "hard",
+   "edge_y": 0.7007,
+   "edge_strength": 5.26,
+   "foot_y": 0.899,
+   "contacts": [
+    [
+     947,
+     2831
+    ]
+   ],
+   "hole_frac": 0.404,
+   "halo_margin_px": 34,
+   "depth": {
+    "bg": -0.0171,
+    "mid": 0.0,
+    "fg": 0.0082,
+    "frame": 0.0
+   }
+  }
  ]
 }
