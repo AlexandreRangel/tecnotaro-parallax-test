@@ -55,7 +55,7 @@
   },
   "figure": {
    "z": 30,
-   "depth": 0.0,
+   "depth": 0.008,
    "blend": "normal",
    "rect": 1.12,
    "note": "character + ground, zero plane"
