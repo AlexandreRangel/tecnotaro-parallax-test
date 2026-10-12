@@ -67,10 +67,12 @@ window.addEventListener('unhandledrejection',function(e){out('PROMISE '+(e.reaso
 // Displayed layer size = window * max(rect, 1 + 2*|depth|*amplitude + 0.01), so no layer edge can enter the window at max tilt.
 // Keeps all v5 robustness: Reduce Motion = 50%, Motion toggle, touch + pointer drag, permission first in the tap,
 // deviceorientation + devicemotion, on-screen error panel, status line.
-var V='2.0', ENGINE='v2-engine', TILT=5, MAXDEG=12, LERP=0.12, AMPLITUDE=1.15;
+var V='2.1', ENGINE='v2-engine', TILT=5, MAXDEG=12, LERP=0.12, AMPLITUDE=1.15;
 var Q=new URLSearchParams(location.search), DEBUG=Q.get('debug')==='1';
 // test hook: ?pose=x,y forces the tilt (-1..1), ?cardtilt=0 disables the whole-card rotation (frame diff QA)
-var POSE=Q.get('pose')?Q.get('pose').split(',').map(Number):null; if(Q.get('cardtilt')==='0') TILT=0; if(POSE) LERP=1;
+var POSE=Q.get('pose')?Q.get('pose').split(',').map(Number):null; if(Q.get('cardtilt')==='0') TILT=0;
+// frame (moldura) is fixed by default for every input mode; ?moldura=1 or ?frame=1 re-enables the whole-card tilt that moves the frame
+var FRAME_MOTION=Q.get('moldura')==='1'||Q.get('frame')==='1'; if(!FRAME_MOTION) TILT=0; if(POSE) LERP=1;
 var reduce=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
 var $=function(id){return document.getElementById(id)};
 var card=$('card'), win=$('win'), hud=$('hud'), dbg=$('dbg'), msg=$('msg'), stat=$('status');
