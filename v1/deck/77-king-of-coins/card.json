@@ -1,0 +1,25 @@
+{
+ "id": "77-king-of-coins",
+ "index": 77,
+ "title": "KING OF COINS",
+ "suit": "coins",
+ "kind": "figure",
+ "ground_edge": "hard",
+ "edge_y": 0.7007,
+ "edge_strength": 5.26,
+ "foot_y": 0.899,
+ "contacts": [
+  [
+   947,
+   2831
+  ]
+ ],
+ "hole_frac": 0.404,
+ "halo_margin_px": 34,
+ "depth": {
+  "bg": -0.0171,
+  "mid": 0.0,
+  "fg": 0.0082,
+  "frame": 0.0
+ }
+}

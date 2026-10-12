@@ -1,0 +1,25 @@
+{
+ "id": "60-page-of-swords",
+ "index": 60,
+ "title": "PAGE OF SWORDS",
+ "suit": "swords",
+ "kind": "figure",
+ "ground_edge": "hard",
+ "edge_y": 0.7057,
+ "edge_strength": 3.41,
+ "foot_y": 0.9883,
+ "contacts": [
+  [
+   767,
+   3089
+  ]
+ ],
+ "hole_frac": 0.273,
+ "halo_margin_px": 44,
+ "depth": {
+  "bg": -0.0221,
+  "mid": 0.0,
+  "fg": 0.0106,
+  "frame": 0.0
+ }
+}

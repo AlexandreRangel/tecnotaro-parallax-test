@@ -1,0 +1,41 @@
+{
+ "id": "07-the-chariot",
+ "index": 7,
+ "title": "THE CHARIOT",
+ "suit": "major",
+ "kind": "figure",
+ "ground_edge": "fade",
+ "edge_y": 0.665,
+ "edge_strength": 2.75,
+ "foot_y": 0.8544,
+ "contacts": [
+  [
+   353,
+   2498
+  ],
+  [
+   552,
+   2557
+  ],
+  [
+   1177,
+   2511
+  ],
+  [
+   1315,
+   2745
+  ],
+  [
+   1552,
+   2672
+  ]
+ ],
+ "hole_frac": 0.367,
+ "halo_margin_px": 34,
+ "depth": {
+  "bg": -0.0171,
+  "mid": 0.0,
+  "fg": 0.0082,
+  "frame": 0.0
+ }
+}

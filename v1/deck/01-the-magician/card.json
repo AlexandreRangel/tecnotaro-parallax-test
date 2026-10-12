@@ -1,0 +1,41 @@
+{
+ "id": "01-the-magician",
+ "index": 1,
+ "title": "THE MAGICIAN",
+ "suit": "major",
+ "kind": "figure",
+ "ground_edge": "hard",
+ "edge_y": 0.6176,
+ "edge_strength": 5.36,
+ "foot_y": 0.8608,
+ "contacts": [
+  [
+   315,
+   2515
+  ],
+  [
+   875,
+   2723
+  ],
+  [
+   1189,
+   2717
+  ],
+  [
+   1470,
+   2555
+  ],
+  [
+   1594,
+   2536
+  ]
+ ],
+ "hole_frac": 0.222,
+ "halo_margin_px": 44,
+ "depth": {
+  "bg": -0.0221,
+  "mid": 0.0,
+  "fg": 0.0106,
+  "frame": 0.0
+ }
+}

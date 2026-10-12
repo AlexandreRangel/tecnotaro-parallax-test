@@ -1,0 +1,25 @@
+{
+ "id": "76-queen-of-coins",
+ "index": 76,
+ "title": "QUEEN OF COINS",
+ "suit": "coins",
+ "kind": "figure",
+ "ground_edge": "hard",
+ "edge_y": 0.8932,
+ "edge_strength": 3.07,
+ "foot_y": 0.9401,
+ "contacts": [
+  [
+   1001,
+   2965
+  ]
+ ],
+ "hole_frac": 0.494,
+ "halo_margin_px": 34,
+ "depth": {
+  "bg": -0.0171,
+  "mid": 0.0,
+  "fg": 0.0082,
+  "frame": 0.0
+ }
+}

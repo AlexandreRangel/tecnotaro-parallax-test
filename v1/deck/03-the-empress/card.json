@@ -1,0 +1,29 @@
+{
+ "id": "03-the-empress",
+ "index": 3,
+ "title": "THE EMPRESS",
+ "suit": "major",
+ "kind": "figure",
+ "ground_edge": "hard",
+ "edge_y": 0.8101,
+ "edge_strength": null,
+ "foot_y": 0.8191,
+ "contacts": [
+  [
+   858,
+   2561
+  ],
+  [
+   1208,
+   2561
+  ]
+ ],
+ "hole_frac": 0.387,
+ "halo_margin_px": 34,
+ "depth": {
+  "bg": -0.0171,
+  "mid": 0.0,
+  "fg": 0.0082,
+  "frame": 0.0
+ }
+}

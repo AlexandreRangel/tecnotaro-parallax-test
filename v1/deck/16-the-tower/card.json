@@ -1,0 +1,25 @@
+{
+ "id": "16-the-tower",
+ "index": 16,
+ "title": "THE TOWER",
+ "suit": "major",
+ "kind": "figure",
+ "ground_edge": "fade",
+ "edge_y": 0.8032,
+ "edge_strength": 2.62,
+ "foot_y": 0.8799,
+ "contacts": [
+  [
+   914,
+   2751
+  ]
+ ],
+ "hole_frac": 0.225,
+ "halo_margin_px": 44,
+ "depth": {
+  "bg": -0.0221,
+  "mid": 0.0,
+  "fg": 0.0106,
+  "frame": 0.0
+ }
+}

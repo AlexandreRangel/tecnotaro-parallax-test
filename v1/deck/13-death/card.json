@@ -1,0 +1,29 @@
+{
+ "id": "13-death",
+ "index": 13,
+ "title": "DEATH",
+ "suit": "major",
+ "kind": "figure",
+ "ground_edge": "fade",
+ "edge_y": 0.5932,
+ "edge_strength": 1.87,
+ "foot_y": 0.6916,
+ "contacts": [
+  [
+   872,
+   2097
+  ],
+  [
+   1280,
+   2171
+  ]
+ ],
+ "hole_frac": 0.129,
+ "halo_margin_px": 52,
+ "depth": {
+  "bg": -0.025,
+  "mid": 0.0,
+  "fg": 0.012,
+  "frame": 0.0
+ }
+}

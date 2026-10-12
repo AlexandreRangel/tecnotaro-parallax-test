@@ -1,0 +1,41 @@
+{
+ "id": "05-the-pope",
+ "index": 5,
+ "title": "THE POPE",
+ "suit": "major",
+ "kind": "figure",
+ "ground_edge": "hard",
+ "edge_y": 0.7493,
+ "edge_strength": 12.91,
+ "foot_y": 0.8162,
+ "contacts": [
+  [
+   409,
+   2519
+  ],
+  [
+   715,
+   2377
+  ],
+  [
+   906,
+   2433
+  ],
+  [
+   1128,
+   2415
+  ],
+  [
+   1475,
+   2581
+  ]
+ ],
+ "hole_frac": 0.315,
+ "halo_margin_px": 34,
+ "depth": {
+  "bg": -0.0171,
+  "mid": 0.0,
+  "fg": 0.0082,
+  "frame": 0.0
+ }
+}

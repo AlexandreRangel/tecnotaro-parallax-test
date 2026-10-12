@@ -1,0 +1,37 @@
+{
+ "id": "19-the-sun",
+ "index": 19,
+ "title": "THE SUN",
+ "suit": "major",
+ "kind": "figure",
+ "ground_edge": "hard",
+ "edge_y": 0.6104,
+ "edge_strength": 15.27,
+ "foot_y": 0.9175,
+ "contacts": [
+  [
+   681,
+   2865
+  ],
+  [
+   866,
+   2833
+  ],
+  [
+   1009,
+   2819
+  ],
+  [
+   1222,
+   2844
+  ]
+ ],
+ "hole_frac": 0.054,
+ "halo_margin_px": 52,
+ "depth": {
+  "bg": -0.025,
+  "mid": 0.0,
+  "fg": 0.012,
+  "frame": 0.0
+ }
+}

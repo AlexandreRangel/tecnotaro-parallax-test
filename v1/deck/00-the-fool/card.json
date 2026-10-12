@@ -1,0 +1,29 @@
+{
+ "id": "00-the-fool",
+ "index": 0,
+ "title": "THE FOOL",
+ "suit": "major",
+ "kind": "figure",
+ "ground_edge": "fade",
+ "edge_y": 0.7,
+ "edge_strength": null,
+ "foot_y": 0.8874,
+ "contacts": [
+  [
+   575,
+   2729
+  ],
+  [
+   1258,
+   2803
+  ]
+ ],
+ "hole_frac": 0.259,
+ "halo_margin_px": 44,
+ "depth": {
+  "bg": -0.0221,
+  "mid": 0.0,
+  "fg": 0.0106,
+  "frame": 0.0
+ }
+}

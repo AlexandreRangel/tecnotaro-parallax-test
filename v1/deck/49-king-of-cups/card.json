@@ -1,0 +1,37 @@
+{
+ "id": "49-king-of-cups",
+ "index": 49,
+ "title": "KING OF CUPS",
+ "suit": "cups",
+ "kind": "figure",
+ "ground_edge": "hard",
+ "edge_y": 0.7366,
+ "edge_strength": 10.4,
+ "foot_y": 0.9029,
+ "contacts": [
+  [
+   320,
+   2725
+  ],
+  [
+   734,
+   2827
+  ],
+  [
+   1328,
+   2839
+  ],
+  [
+   1619,
+   2727
+  ]
+ ],
+ "hole_frac": 0.408,
+ "halo_margin_px": 34,
+ "depth": {
+  "bg": -0.0171,
+  "mid": 0.0,
+  "fg": 0.0082,
+  "frame": 0.0
+ }
+}

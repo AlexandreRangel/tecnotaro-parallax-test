@@ -1,0 +1,25 @@
+{
+ "id": "74-page-of-coins",
+ "index": 74,
+ "title": "PAGE OF COINS",
+ "suit": "coins",
+ "kind": "figure",
+ "ground_edge": "fade",
+ "edge_y": 0.6634,
+ "edge_strength": 1.78,
+ "foot_y": 0.944,
+ "contacts": [
+  [
+   724,
+   2975
+  ]
+ ],
+ "hole_frac": 0.278,
+ "halo_margin_px": 44,
+ "depth": {
+  "bg": -0.0221,
+  "mid": 0.0,
+  "fg": 0.0106,
+  "frame": 0.0
+ }
+}

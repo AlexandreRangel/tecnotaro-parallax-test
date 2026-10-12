@@ -1,0 +1,29 @@
+{
+ "id": "32-page-of-wands",
+ "index": 32,
+ "title": "PAGE OF WANDS",
+ "suit": "wands",
+ "kind": "figure",
+ "ground_edge": "fade",
+ "edge_y": 0.8728,
+ "edge_strength": 2.46,
+ "foot_y": 0.9835,
+ "contacts": [
+  [
+   862,
+   3089
+  ],
+  [
+   1369,
+   3041
+  ]
+ ],
+ "hole_frac": 0.368,
+ "halo_margin_px": 34,
+ "depth": {
+  "bg": -0.0171,
+  "mid": 0.0,
+  "fg": 0.0082,
+  "frame": 0.0
+ }
+}

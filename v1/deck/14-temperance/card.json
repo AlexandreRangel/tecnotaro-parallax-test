@@ -1,0 +1,29 @@
+{
+ "id": "14-temperance",
+ "index": 14,
+ "title": "TEMPERANCE",
+ "suit": "major",
+ "kind": "figure",
+ "ground_edge": "fade",
+ "edge_y": 0.668,
+ "edge_strength": 2.37,
+ "foot_y": 0.8579,
+ "contacts": [
+  [
+   497,
+   2531
+  ],
+  [
+   998,
+   2733
+  ]
+ ],
+ "hole_frac": 0.387,
+ "halo_margin_px": 34,
+ "depth": {
+  "bg": -0.0171,
+  "mid": 0.0,
+  "fg": 0.0082,
+  "frame": 0.0
+ }
+}

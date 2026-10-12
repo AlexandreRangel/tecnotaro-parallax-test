@@ -1,0 +1,20 @@
+{
+ "id": "12-the-hanged-man",
+ "index": 12,
+ "title": "THE HANGED MAN",
+ "suit": "major",
+ "kind": "figure",
+ "ground_edge": "none",
+ "edge_y": null,
+ "edge_strength": 2.12,
+ "foot_y": 0.7926,
+ "contacts": [],
+ "hole_frac": 0.16,
+ "halo_margin_px": 52,
+ "depth": {
+  "bg": -0.025,
+  "mid": 0.0,
+  "fg": 0.012,
+  "frame": 0.0
+ }
+}

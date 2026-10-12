@@ -1,0 +1,25 @@
+{
+ "id": "11-strength",
+ "index": 11,
+ "title": "STRENGTH",
+ "suit": "major",
+ "kind": "figure",
+ "ground_edge": "fade",
+ "edge_y": 0.7362,
+ "edge_strength": 2.6,
+ "foot_y": 0.9968,
+ "contacts": [
+  [
+   935,
+   3089
+  ]
+ ],
+ "hole_frac": 0.332,
+ "halo_margin_px": 34,
+ "depth": {
+  "bg": -0.0171,
+  "mid": 0.0,
+  "fg": 0.0082,
+  "frame": 0.0
+ }
+}

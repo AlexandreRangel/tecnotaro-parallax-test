@@ -1,0 +1,85 @@
+{
+ "_doc": "per-card overrides. keys: kind (figure|emblem), ground_edge (fade|hard|none), edge_y (fraction of window h), fade_span, extra_boxes [[x0,y0,x1,y1] fractions, extra rembg passes], drop_boxes (remove from mask), keep_boxes (force into mask), bg_depth",
+ "00": {
+  "ground_edge": "fade",
+  "edge_y": 0.7,
+  "fade_span": 0.09,
+  "extra_boxes": [
+   [
+    0.42,
+    0.62,
+    1.0,
+    0.9
+   ]
+  ]
+ },
+ "03": {
+  "ground_edge": "hard",
+  "edge_y": 0.81
+ },
+ "12": {
+  "ground_edge": "none",
+  "extra_boxes": [
+   [
+    0.25,
+    0.25,
+    0.75,
+    0.95
+   ]
+  ]
+ },
+ "21": {
+  "kind": "emblem",
+  "ground_edge": "hard",
+  "edge_y": 0.88,
+  "extra_boxes": [
+   [
+    0.2,
+    0.15,
+    0.85,
+    0.75
+   ],
+   [
+    0,
+    0,
+    0.4,
+    0.27
+   ],
+   [
+    0.6,
+    0,
+    1,
+    0.27
+   ],
+   [
+    0,
+    0.65,
+    0.45,
+    0.92
+   ],
+   [
+    0.55,
+    0.65,
+    1,
+    0.92
+   ]
+  ]
+ },
+ "50": {
+  "ground_edge": "none",
+  "extra_boxes": [
+   [
+    0.25,
+    0.0,
+    0.75,
+    0.72
+   ],
+   [
+    0.55,
+    0.12,
+    1,
+    0.5
+   ]
+  ]
+ }
+}

@@ -1,0 +1,29 @@
+{
+ "id": "09-the-hermit",
+ "index": 9,
+ "title": "THE HERMIT",
+ "suit": "major",
+ "kind": "figure",
+ "ground_edge": "hard",
+ "edge_y": 0.6155,
+ "edge_strength": 4.14,
+ "foot_y": 0.8699,
+ "contacts": [
+  [
+   882,
+   2641
+  ],
+  [
+   1224,
+   2745
+  ]
+ ],
+ "hole_frac": 0.242,
+ "halo_margin_px": 44,
+ "depth": {
+  "bg": -0.0221,
+  "mid": 0.0,
+  "fg": 0.0106,
+  "frame": 0.0
+ }
+}

@@ -1,0 +1,29 @@
+{
+ "id": "04-the-emperor",
+ "index": 4,
+ "title": "THE EMPEROR",
+ "suit": "major",
+ "kind": "figure",
+ "ground_edge": "fade",
+ "edge_y": 0.6557,
+ "edge_strength": 2.85,
+ "foot_y": 0.9379,
+ "contacts": [
+  [
+   879,
+   2959
+  ],
+  [
+   1582,
+   2804
+  ]
+ ],
+ "hole_frac": 0.295,
+ "halo_margin_px": 44,
+ "depth": {
+  "bg": -0.0221,
+  "mid": 0.0,
+  "fg": 0.0106,
+  "frame": 0.0
+ }
+}

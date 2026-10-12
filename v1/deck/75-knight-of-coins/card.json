@@ -1,0 +1,37 @@
+{
+ "id": "75-knight-of-coins",
+ "index": 75,
+ "title": "KNIGHT OF COINS",
+ "suit": "coins",
+ "kind": "figure",
+ "ground_edge": "hard",
+ "edge_y": 0.5642,
+ "edge_strength": 3.57,
+ "foot_y": 0.9006,
+ "contacts": [
+  [
+   548,
+   2795
+  ],
+  [
+   927,
+   2793
+  ],
+  [
+   1368,
+   2849
+  ],
+  [
+   1616,
+   2657
+  ]
+ ],
+ "hole_frac": 0.235,
+ "halo_margin_px": 44,
+ "depth": {
+  "bg": -0.0221,
+  "mid": 0.0,
+  "fg": 0.0106,
+  "frame": 0.0
+ }
+}

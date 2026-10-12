@@ -1,0 +1,25 @@
+{
+ "id": "20-judgement",
+ "index": 20,
+ "title": "JUDGEMENT",
+ "suit": "major",
+ "kind": "figure",
+ "ground_edge": "hard",
+ "edge_y": 0.8281,
+ "edge_strength": 6.33,
+ "foot_y": 0.8848,
+ "contacts": [
+  [
+   629,
+   2775
+  ]
+ ],
+ "hole_frac": 0.306,
+ "halo_margin_px": 34,
+ "depth": {
+  "bg": -0.0171,
+  "mid": 0.0,
+  "fg": 0.0082,
+  "frame": 0.0
+ }
+}

@@ -1,0 +1,25 @@
+{
+ "id": "62-queen-of-swords",
+ "index": 62,
+ "title": "QUEEN OF SWORDS",
+ "suit": "swords",
+ "kind": "figure",
+ "ground_edge": "fade",
+ "edge_y": 0.6521,
+ "edge_strength": 2.99,
+ "foot_y": 0.9964,
+ "contacts": [
+  [
+   945,
+   3089
+  ]
+ ],
+ "hole_frac": 0.418,
+ "halo_margin_px": 34,
+ "depth": {
+  "bg": -0.0171,
+  "mid": 0.0,
+  "fg": 0.0082,
+  "frame": 0.0
+ }
+}

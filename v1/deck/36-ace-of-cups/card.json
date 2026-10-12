@@ -1,0 +1,20 @@
+{
+ "id": "36-ace-of-cups",
+ "index": 36,
+ "title": "ACE OF CUPS",
+ "suit": "cups",
+ "kind": "emblem",
+ "ground_edge": "none",
+ "edge_y": null,
+ "edge_strength": null,
+ "foot_y": 0.9214,
+ "contacts": [],
+ "hole_frac": 0.357,
+ "halo_margin_px": 62,
+ "depth": {
+  "bg": -0.03,
+  "mid": 0.0,
+  "fg": 0.0144,
+  "frame": 0.0
+ }
+}

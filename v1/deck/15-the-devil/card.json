@@ -1,0 +1,29 @@
+{
+ "id": "15-the-devil",
+ "index": 15,
+ "title": "THE DEVIL",
+ "suit": "major",
+ "kind": "figure",
+ "ground_edge": "hard",
+ "edge_y": 0.8982,
+ "edge_strength": 4.09,
+ "foot_y": 0.9689,
+ "contacts": [
+  [
+   730,
+   3089
+  ],
+  [
+   1447,
+   2913
+  ]
+ ],
+ "hole_frac": 0.454,
+ "halo_margin_px": 34,
+ "depth": {
+  "bg": -0.0171,
+  "mid": 0.0,
+  "fg": 0.0082,
+  "frame": 0.0
+ }
+}

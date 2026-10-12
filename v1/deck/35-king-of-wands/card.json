@@ -1,0 +1,33 @@
+{
+ "id": "35-king-of-wands",
+ "index": 35,
+ "title": "KING OF WANDS",
+ "suit": "wands",
+ "kind": "figure",
+ "ground_edge": "hard",
+ "edge_y": 0.8738,
+ "edge_strength": 4.75,
+ "foot_y": 0.9058,
+ "contacts": [
+  [
+   786,
+   2827
+  ],
+  [
+   1077,
+   2731
+  ],
+  [
+   1329,
+   2853
+  ]
+ ],
+ "hole_frac": 0.454,
+ "halo_margin_px": 34,
+ "depth": {
+  "bg": -0.0171,
+  "mid": 0.0,
+  "fg": 0.0082,
+  "frame": 0.0
+ }
+}

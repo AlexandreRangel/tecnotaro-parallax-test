@@ -1,0 +1,25 @@
+{
+ "id": "10-wheel-of-fortune",
+ "index": 10,
+ "title": "WHEEL OF FORTUNE",
+ "suit": "major",
+ "kind": "figure",
+ "ground_edge": "fade",
+ "edge_y": 0.822,
+ "edge_strength": 2.11,
+ "foot_y": 0.9304,
+ "contacts": [
+  [
+   934,
+   2903
+  ]
+ ],
+ "hole_frac": 0.406,
+ "halo_margin_px": 34,
+ "depth": {
+  "bg": -0.0171,
+  "mid": 0.0,
+  "fg": 0.0082,
+  "frame": 0.0
+ }
+}

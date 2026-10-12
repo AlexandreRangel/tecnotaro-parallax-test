@@ -1,0 +1,37 @@
+{
+ "id": "33-knight-of-wands",
+ "index": 33,
+ "title": "KNIGHT OF WANDS",
+ "suit": "wands",
+ "kind": "figure",
+ "ground_edge": "fade",
+ "edge_y": 0.644,
+ "edge_strength": 2.45,
+ "foot_y": 0.8783,
+ "contacts": [
+  [
+   590,
+   2647
+  ],
+  [
+   881,
+   2661
+  ],
+  [
+   1255,
+   2781
+  ],
+  [
+   1510,
+   2569
+  ]
+ ],
+ "hole_frac": 0.279,
+ "halo_margin_px": 44,
+ "depth": {
+  "bg": -0.0221,
+  "mid": 0.0,
+  "fg": 0.0106,
+  "frame": 0.0
+ }
+}

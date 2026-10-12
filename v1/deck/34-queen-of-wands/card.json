@@ -1,0 +1,29 @@
+{
+ "id": "34-queen-of-wands",
+ "index": 34,
+ "title": "QUEEN OF WANDS",
+ "suit": "wands",
+ "kind": "figure",
+ "ground_edge": "hard",
+ "edge_y": 0.6359,
+ "edge_strength": 3.61,
+ "foot_y": 0.9227,
+ "contacts": [
+  [
+   1424,
+   2741
+  ],
+  [
+   1773,
+   3079
+  ]
+ ],
+ "hole_frac": 0.394,
+ "halo_margin_px": 34,
+ "depth": {
+  "bg": -0.0171,
+  "mid": 0.0,
+  "fg": 0.0082,
+  "frame": 0.0
+ }
+}

@@ -1,0 +1,25 @@
+{
+ "id": "08-justice",
+ "index": 8,
+ "title": "JUSTICE",
+ "suit": "major",
+ "kind": "figure",
+ "ground_edge": "hard",
+ "edge_y": 0.8484,
+ "edge_strength": 5.44,
+ "foot_y": 0.9964,
+ "contacts": [
+  [
+   954,
+   3089
+  ]
+ ],
+ "hole_frac": 0.522,
+ "halo_margin_px": 34,
+ "depth": {
+  "bg": -0.0171,
+  "mid": 0.0,
+  "fg": 0.0082,
+  "frame": 0.0
+ }
+}

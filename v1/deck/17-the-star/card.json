@@ -1,0 +1,25 @@
+{
+ "id": "17-the-star",
+ "index": 17,
+ "title": "THE STAR",
+ "suit": "major",
+ "kind": "figure",
+ "ground_edge": "fade",
+ "edge_y": 0.5165,
+ "edge_strength": 1.71,
+ "foot_y": 0.6382,
+ "contacts": [
+  [
+   544,
+   1982
+  ]
+ ],
+ "hole_frac": 0.001,
+ "halo_margin_px": 52,
+ "depth": {
+  "bg": -0.025,
+  "mid": 0.0,
+  "fg": 0.012,
+  "frame": 0.0
+ }
+}

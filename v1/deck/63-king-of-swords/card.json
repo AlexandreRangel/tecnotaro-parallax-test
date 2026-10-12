@@ -1,0 +1,33 @@
+{
+ "id": "63-king-of-swords",
+ "index": 63,
+ "title": "KING OF SWORDS",
+ "suit": "swords",
+ "kind": "figure",
+ "ground_edge": "hard",
+ "edge_y": 0.782,
+ "edge_strength": 12.39,
+ "foot_y": 0.9013,
+ "contacts": [
+  [
+   312,
+   2709
+  ],
+  [
+   733,
+   2847
+  ],
+  [
+   1475,
+   2815
+  ]
+ ],
+ "hole_frac": 0.426,
+ "halo_margin_px": 34,
+ "depth": {
+  "bg": -0.0171,
+  "mid": 0.0,
+  "fg": 0.0082,
+  "frame": 0.0
+ }
+}
