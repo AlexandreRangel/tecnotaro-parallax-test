@@ -52,7 +52,7 @@ window.__err=out;window.onerror=function(m,f,l,c,e){out('ERR '+m+' @'+(f||'').sp
 window.addEventListener('unhandledrejection',function(e){out('PROMISE '+(e.reason&&e.reason.message||e.reason));});})();
 </script>
 </head><body>
-<div id="top" class="bar"><button class="btn" id="idx">Index</button><div id="name"></div><button class="btn" id="rc">Recenter</button></div>
+<div id="top" class="bar"><button class="btn" id="idx">Index</button><div id="name"></div><button class="btn" id="mt">Motion: on</button><button class="btn" id="rc">Recenter</button></div>
 <div id="card">
  <div id="win"><img id="bg" class="layer" alt=""><img id="mid" class="layer" alt=""><img id="fg" class="layer" alt=""></div>
  <img id="frame" alt="">
@@ -166,13 +166,16 @@ window.addEventListener('keydown',function(e){ if(e.key==='ArrowRight')show(cur+
 $('prev').onclick=function(){show(cur-1)}; $('next').onclick=function(){show(cur+1)};
 $('rc').onclick=function(){ base=null; mbase=null; };
 $('idx').onclick=function(){$('index').classList.add('on')}; $('close').onclick=function(){$('index').classList.remove('on')};
+var motionOn=true, AMP=reduce?0.5:1;
+$('mt').onclick=function(){ motionOn=!motionOn; this.textContent='Motion: '+(motionOn?'on':'off'); };
+if(reduce) hud.textContent='Reduce Motion is on: parallax at 50%';
 var L={bg:$('bg'),mid:$('mid'),fg:$('fg')};
 if(DEBUG) dbg.style.display='block';
 var frames=0;
 function tick(){
   try{
     frames++;
-    x+=(tx-x)*LERP; y+=(ty-y)*LERP; var w=win.clientWidth||300;
+    var gt=motionOn?AMP:0; x+=(tx*gt-x)*LERP; y+=(ty*gt-y)*LERP; var w=win.clientWidth||300;
     for(var k in L){ var t='translate3d('+(x*DEPTH[k]*w).toFixed(2)+'px,'+(y*DEPTH[k]*w).toFixed(2)+'px,0)'; L[k].style.webkitTransform=t; L[k].style.transform=t; }
     var ct='rotateY('+(x*TILT).toFixed(2)+'deg) rotateX('+(-y*TILT).toFixed(2)+'deg)'; card.style.webkitTransform=ct; card.style.transform=ct;
     if(frames%6===0) stat.textContent='v'+V+' | perm '+perm+' | mode '+mode+' | touch '+nT+' ptr '+nP+' | ori '+nO+' mot '+nM+(reduce?' | reduce-motion':'');
