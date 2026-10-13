@@ -333,3 +333,10 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): reuse of asset 6ba7549a, hue -15 degrees with green hues folded to cyan/magenta.
 - finish: DEFRINGE=4 EDGE_CHOKE=5 RECOLOR_GREEN=1 RECOLOR_TO=amber (green spill on the gold laurel -> gold) FG_BOOST=0.6 FG_BODY=0.8.
+
+## 51 Dois de Espadas
+- figure (fig 0.9, FIG_ANCHOR=base, FIG_MAXW=2160, KEY_STRICT=1: width-bound, bench and both blades fully inside): blindfolded South Asian woman in a blue silver-embroidered robe seated on a stone bench, arms crossed holding two blue crystal swords (asset ac5e3cdd).
+- bg (crop): night sea with islets and a neon skyline (asset d795d5b4).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): reuse of asset 6ba7549a, mirrored, hue -50 degrees with green hues folded to cyan/magenta.
+- finish: DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.6 FG_BODY=0.8.
