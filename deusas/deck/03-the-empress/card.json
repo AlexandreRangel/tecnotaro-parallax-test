@@ -8,16 +8,19 @@
   "energy",
   "frame"
  ],
- "id": "04-a-imperadora",
- "index": 4,
- "title": "IV THE EMPEROR",
+ "id": "03-the-empress",
+ "index": 3,
+ "title": "III THE EMPRESS",
  "suit": "major",
+ "titleEn": "THE EMPRESS",
+ "titlePt": "A IMPERADORA",
+ "number": "III",
  "files": {
   "bg": "bg",
   "mid": "mid",
   "figure": "figure",
   "energy": "energy",
-  "frame": "frame-A",
+  "frame": "frame",
   "thumb": "thumb"
  },
  "layers": {
@@ -74,12 +77,5 @@
   ]
  },
  "amplitude": 1.15,
- "style": "hq7",
- "titleEn": "THE EMPEROR",
- "titlePt": "A IMPERADORA",
- "number": "IV",
- "frameOptions": {
-  "A": "frame-A",
-  "B": "frame-B"
- }
+ "style": "deusas1"
 }
