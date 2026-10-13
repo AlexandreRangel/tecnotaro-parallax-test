@@ -305,3 +305,17 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): reuse of asset 6ba7549a, flipped both ways, hue -40 degrees with green hues folded to cyan/magenta.
 - finish: DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.6 FG_BODY=0.8.
+
+## 47 Cavaleiro de Copas
+- figure (fig 0.9, FIG_ANCHOR=base, FIG_MAXW=2160, KEY_STRICT=1: width-bound): pink-haired rider in a white suit on a white robot horse, holding a glowing cup (asset f8086743).
+- bg (crop): pastel dreamscape with an aqueduct and crystal spires (asset 26900c85).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): reuse of asset 6ba7549a, mirrored, hue +60 degrees with green hues folded to cyan/magenta.
+- finish: DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.6 FG_BODY=0.8.
+
+## 48 Rainha de Copas
+- figure (fig 0.9, FIG_ANCHOR=base, FIG_MAXW=2160, KEY_STRICT=1): Black queen in a blue circuit gown on a pearl shell throne holding an ornate glowing cup (asset 8e79bef7).
+- bg (crop): pastel coastal sky with crystal rocks (asset ed9a1918).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): reuse of asset 6ba7549a, flipped vertically, hue -70 degrees with green hues folded to cyan/magenta.
+- finish: DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.6 FG_BODY=0.8.
