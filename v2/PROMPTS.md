@@ -361,3 +361,10 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): reuse of asset 6ba7549a, flipped both ways, hue -100 degrees with green hues folded to cyan/magenta.
 - finish: DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.5 FG_BODY=0.85.
+
+## 55 Seis de Espadas
+- figure (FIG_FIT=1080,2441,995 FIG_KEEPALL=1 KEY_STRICT=1: ~92% width, hull at the water surface below the horizon, lower-middle): hooded ferrywoman with a glowing pole steering a black hover boat carrying a hooded mother and child and six upright blue swords (asset 66a38da2).
+- bg (crop): dusk sea with a city on the far shore (asset 96221418), plus a soft contact shadow and faded hull reflection baked under the boat so it sits on the water.
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): reuse of asset 6ba7549a, hue +170 degrees with green hues folded to cyan/magenta.
+- finish: DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.5 FG_BODY=0.85 FIN_HEADBOX=1430,2000,170+990,2410,220.
