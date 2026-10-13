@@ -438,7 +438,14 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 
 ## 65 Dois de Ouros
 - figure (FIG_FIT=1080,2342,1000 FIG_KEEPALL=1 KEY_STRICT=1: anchored near the bottom, coins and infinity ribbon kept): joyful juggler woman in a purple/orange outfit and top hat dancing on a paving patch, two gold pentacle coins linked by a glowing infinity ribbon (asset 34912aa1).
-- bg (crop x 655-1060 of 1280, right ship): golden-hour harbor quay, ships on rough waves (asset c90c2573), plus a soft contact shadow under the paving patch.
+- bg (crop x 560-965 of 1280: ship at the right, clearly visible beside the juggler): golden-hour harbor quay, ships on rough waves (asset c90c2573), plus a soft contact shadow under the paving patch.
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): asset 6ba7549a mirrored, recolored two-tone amber / violet.
 - finish: FIG_DEGREEN=1 DEFRINGE=4 EDGE_CHOKE=5 RECOLOR_GREEN=1 RECOLOR_TO=amber (grass tufts and gold-edge spill -> amber) FG_BOOST=0.5 FG_BODY=0.85 FIN_HEADBOX=1060,1342,240.
+
+## 66 Três de Ouros
+- figure (FIG_FIT=1080,2995,995 FIG_KEEPALL=1 KEY_STRICT=1: ~92% width, round stone platform on the floor at the bottom; green through the arch opening keyed to background): grey-haired architect holding a blue holographic blueprint, a young woman artisan carving, and a robed monk around a carved stone arch with three glowing gold pentacles on a round stone platform (asset 6cc74fd1).
+- bg (default center crop): cathedral under construction with scaffolding and golden light rays (asset 847c3e15), plus a soft contact shadow under the platform.
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): asset 6ba7549a flipped vertically, recolored two-tone amber / violet.
+- finish: FIG_DEGREEN=1 DEFRINGE=4 EDGE_CHOKE=5 RECOLOR_GREEN=1 RECOLOR_TO=amber FG_BOOST=0.5 FG_BODY=0.85 FIN_HEADBOX=565,2345,200+1050,2435,190+1663,2322,200 (all three faces clear).
