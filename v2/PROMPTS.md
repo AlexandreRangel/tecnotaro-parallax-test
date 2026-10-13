@@ -319,3 +319,17 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): reuse of asset 6ba7549a, flipped vertically, hue -70 degrees with green hues folded to cyan/magenta.
 - finish: DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.6 FG_BODY=0.8.
+
+## 49 Rei de Copas
+- figure (fig 0.9, FIG_ANCHOR=base, FIG_MAXW=2160, KEY_STRICT=1): blue-haired king in a blue embroidered coat on a glass and coral throne, holding a sceptre and a glowing cup (asset d88ca424).
+- bg (crop): night sea under a sacred-geometry star sigil (asset 4522ce81).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): reuse of asset 6ba7549a, flipped both ways, hue +110 degrees with green hues folded to cyan/magenta.
+- finish: DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.6 FG_BODY=0.8.
+
+## 50 Ás de Espadas
+- figure (fig 0.9, FIG_ANCHOR=base, FIG_MAXW=2160, KEY_STRICT=1): hand rising from a cloud holding a crystal sword crowned by a golden laurel halo (asset 406fe1dd).
+- bg (crop): blue sky over snowy mountain peaks (asset e9461f10).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): reuse of asset 6ba7549a, hue -15 degrees with green hues folded to cyan/magenta.
+- finish: DEFRINGE=4 EDGE_CHOKE=5 RECOLOR_GREEN=1 RECOLOR_TO=amber (green spill on the gold laurel -> gold) FG_BOOST=0.6 FG_BODY=0.8.

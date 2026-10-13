@@ -1360,27 +1360,25 @@
    "index": 49,
    "title": "KING OF CUPS",
    "suit": "cups",
-   "placeholder": true,
-   "base": "../v1/deck/49-king-of-cups/",
    "files": {
-    "frame": "frame",
     "bg": "bg",
-    "mid": null,
-    "figure": "mid",
+    "mid": "mid",
+    "figure": "figure",
     "fg": "fg",
+    "frame": "frame",
     "thumb": "thumb"
    },
-   "rect": {
-    "bg": 1.1,
-    "figure": 1.0,
-    "fg": 1.0
-   },
-   "blend": {
-    "fg": "screen"
-   },
    "depth": {
-    "bg": -0.0171,
-    "fg": 0.0205
+    "bg": -0.03,
+    "mid": -0.015,
+    "figure": 0.008,
+    "fg": 0.035
+   },
+   "rect": {
+    "bg": 1.12,
+    "mid": 1.12,
+    "figure": 1.12,
+    "fg": 1.12
    }
   },
   {
@@ -1388,27 +1386,25 @@
    "index": 50,
    "title": "ACE OF SWORDS",
    "suit": "swords",
-   "placeholder": true,
-   "base": "../v1/deck/50-ace-of-swords/",
    "files": {
-    "frame": "frame",
     "bg": "bg",
-    "mid": null,
-    "figure": "mid",
+    "mid": "mid",
+    "figure": "figure",
     "fg": "fg",
+    "frame": "frame",
     "thumb": "thumb"
-   },
-   "rect": {
-    "bg": 1.1,
-    "figure": 1.0,
-    "fg": 1.0
-   },
-   "blend": {
-    "fg": "screen"
    },
    "depth": {
     "bg": -0.03,
+    "mid": -0.015,
+    "figure": 0.008,
     "fg": 0.035
+   },
+   "rect": {
+    "bg": 1.12,
+    "mid": 1.12,
+    "figure": 1.12,
+    "fg": 1.12
    }
   },
   {
