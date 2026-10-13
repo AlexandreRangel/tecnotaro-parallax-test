@@ -421,3 +421,10 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): asset 6ba7549a flipped both ways, recolored airy blue-white / violet (saturation x0.55).
 - finish: FIG_DEGREEN=1 DEGREEN_CYAN=1 DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.45 FG_BODY=0.85 FIN_HEADBOX=1083,2340,240.
+
+## 63 Rei de Espadas
+- figure (FIG_FIT=1080,2927,995 FIG_KEEPALL=1 KEY_STRICT=1: ~92% width, platform on the polished floor near the bottom): grey-bearded Black king in blue and silver robes and crystal crown on a chrome throne, holding an upright blue crystal sword (asset 4c91e820).
+- bg (center crop, the city between the glass columns): glass-column hall open to the sky, city below, polished floor (asset 780ae45d), plus a soft contact shadow and a faint blurred reflection of the throne on the floor.
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): asset 6ba7549a mirrored, recolored airy blue-white / violet (saturation x0.55).
+- finish: FIG_DEGREEN=1 DEGREEN_CYAN=1 DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.45 FG_BODY=0.85 FIN_HEADBOX=1102,2425,240.
