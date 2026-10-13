@@ -171,7 +171,7 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 
 
 ## 28 Sete de Paus
-- figure (fig 0.9, FIG_ANCHOR=base, FIG_MAXW=2700): On flat pure chroma green #00FF00, nothing else. Seven of Wands: a grey-braided older woman in a patterned steampunk cloak standing on a dark rock, gripping a glowing brass staff, six brass staff tips with glowing orbs rising from below. (asset 5c5712b4)
+- figure (fig, FIG_FIT=753,2206,1647 KEY_STRICT=1: woman large and shifted left, top staff head inside the card, lower staff tips cropped): On flat pure chroma green #00FF00, nothing else. Seven of Wands: a grey-braided older woman in a patterned steampunk cloak standing on a dark rock, gripping a glowing brass staff, six brass staff tips with glowing orbs rising from below. (asset 5c5712b4)
 - bg (crop): neon steampunk city of brass spires on a rocky ridge under a violet sky with airships and lightning (asset 5a722f12).
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): reuse of asset 6ba7549a, mirrored horizontally and hue shifted +150 degrees.
@@ -185,8 +185,32 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - finish: DEFRINGE=2.
 
 ## 30 Nove de Paus
-- figure (fig 0.9, FIG_ANCHOR=base, KEY_STRICT=1): On flat pure chroma green #00FF00, nothing else. Nine of Wands: a weary bearded man with a bandaged head in a battered steampunk leather coat, holding a lamp staff, eight brass lamp posts standing behind him. (asset 8bc413d4)
+- figure (split layout, KEY_STRICT=1, RAWKEY + work/split30.py + work/layout30.py: man cut out without the posts behind him and scaled to ~3350 px tall, feet flush; one clean lamp post reused at 4 depths in the mid layer, smaller/hazier when farther): On flat pure chroma green #00FF00, nothing else. Nine of Wands: a weary bearded man with a bandaged head in a battered steampunk leather coat, holding a lamp staff, eight brass lamp posts standing behind him. (asset 8bc413d4)
 - bg (crop): fortified brass gate and wall with neon towers, misty mountains and a wet reflective plaza (asset 1c02569d).
-- mid: vazio (aura do fg gerada pelo fin.py).
+- mid: lamp posts from the split cutout (amber lamps), at 4 depths left/right/behind him, plus the fg aura from fin.py.
 - fg (top): reuse of asset 6ba7549a, flipped vertically and hue shifted -25 degrees.
-- finish: DEFRINGE=2 RECOLOR_GREEN=1 RECOLOR_TO=amber (the yellow-green lamp glass survives the key and is recolored to amber; new look.py option).
+- finish: DEFRINGE=2 RECOLOR_GREEN=1 RECOLOR_TO=amber RIM=0.4 (the yellow-green lamp glass survives the key and is recolored to amber; lower rim to avoid the pink outline).
+
+## 31 Dez de Paus
+- figure (fig 0.9, FIG_ANCHOR=base, FIG_MAXW=4200, KEY_STRICT=1: man kept large, staff ends cropped): On flat pure chroma green #00FF00, nothing else. Ten of Wands: a muscular tattooed man with a topknot in steampunk armor straining under a bundle of ten brass staffs with glowing neon tubes. (asset 935a0775)
+- bg (crop): golden-hour road of cobblestones winding up to a hilltop steampunk city of windmills and neon (asset 4066608e).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): reuse of asset 6ba7549a, hue shifted -80 degrees.
+- finish: DEFRINGE=2.
+
+## 32 Pajem de Paus
+- figure (fig 0.9, FIG_ANCHOR=base, KEY_STRICT=1): On flat pure chroma green #00FF00, nothing else. Page of Wands: a smiling curly-haired woman with goggles in a brass-trimmed leather coat holding a staff that sprouts glowing leaves. (asset b732d47c)
+- bg (crop): desert of glowing neon dunes with pyramids and constellation salamanders in a starry sky (asset 2fc3d31e).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): reuse of asset 6ba7549a, flipped both ways and hue shifted +60 degrees.
+- finish: DEFRINGE=2 RECOLOR_GREEN=1 RECOLOR_TO=amber (yellow-green leaves -> amber).
+
+## 33 Cavaleiro de Paus
+- figure (fig 0.9, FIG_ANCHOR=base, KEY_STRICT=1): On flat pure chroma green #00FF00, nothing else. Knight of Wands: a rider in a turban and brass armor on a rearing mechanical brass horse with a flaming mane and tail, raising a staff topped by a glowing orb. (asset d0806d1f)
+- bg (crop): fiery orange desert canyon with brass refinery towers and cyan light streaks in the sky (asset 79268e90).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): reuse of asset 6ba7549a, mirrored and hue shifted -160 degrees.
+- finish: DEFRINGE=2.
+
+## Edge clean (all cards, look.py, from 28-33 on)
+- White fringe cause: rim light added on the outermost contour pixels (brighter than the bg), edge pixels carrying unpremultiplied bright screen/spill color, and leftover screen-green rims. look.py now always chokes the key alpha by EDGE_CHOKE=3 px, takes edge colors from the nearest interior pixel and never lets them be brighter than the interior, keeps the rim light strictly inside (5 px from the contour) and no brighter than the bg, drops leftover screen-green rims, and fills transparent pixels with interior color so resizing can't bleed bright colors.
