@@ -23,6 +23,7 @@ body{display:flex;align-items:center;justify-content:center;perspective:1400px;b
 .layer{will-change:transform}
 /* the ONLY UI: one small row at the very bottom, outside the card */
 #bar{position:fixed;left:0;right:0;bottom:0;height:30px;padding:0 6px env(safe-area-inset-bottom);display:flex;align-items:center;justify-content:center;gap:4px;z-index:6;color:#ffd58a99;font-size:11px;white-space:nowrap}
+#bar,#bar button{touch-action:manipulation}
 #bar button{font:500 11px/1 -apple-system,system-ui,sans-serif;color:#ffd58acc;background:transparent;border:1px solid #c9a24a44;border-radius:999px;padding:4px 8px;min-width:24px}
 #bar button.on{color:#000;background:#c9a24acc;border-color:#c9a24a}
 #bar .sep{width:6px}
@@ -49,11 +50,12 @@ window.addEventListener('unhandledrejection',function(e){out('PROMISE '+(e.reaso
 //  1 -> v1/manifest.json  (v5 format, 3 moving layers bg|mid|fg + frame; normalized here to the v2 model, no figure layer)
 //  2 -> v2/deck/manifest.json, 3 -> v3/deck/manifest.json (v2-engine, bg|mid|figure|fg + frame)
 // Params: ?moldura=1|?frame=1 (frame moves with whole-card tilt; default static), ?debug=1, #NN card, ?pose=x,y, ?cardtilt=0.
-var V='3.2', ENGINE='unified', TILT=5, MAXDEG=12, LERP=0.12, AMPLITUDE=1.15, BOOST=1.03, FRONT_BOOST=1.03, FRONT={fg:1,energy:1};
+var V='3.3', ENGINE='unified', TILT=5, MAXDEG=12, LERP=0.12, AMPLITUDE=1.15, BOOST=1.03, FRONT_BOOST=1.03, FRONT={fg:1,energy:1};
 var Q=new URLSearchParams(location.search), DEBUG=Q.get('debug')==='1';
 var DECKN=({'1':1,'2':2,'3':3})[Q.get('deck')]||2;
 var DIR='./'; DECKN=3;
 var POSE=Q.get('pose')?Q.get('pose').split(',').map(Number):null; if(Q.get('cardtilt')==='0') TILT=0;
+var FRAME_VAR=(/^[AB]$/i.test(Q.get('frame')||'')?Q.get('frame').toUpperCase():(/^[AB]$/i.test(Q.get('moldura')||'')?Q.get('moldura').toUpperCase():'A')); // ?frame=A|B picks the frame option
 var FRAME_MOTION=Q.get('moldura')==='1'||Q.get('frame')==='1'; if(!FRAME_MOTION) TILT=0; if(POSE) LERP=1;
 var reduce=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
 var $=function(id){return document.getElementById(id)};
@@ -64,7 +66,7 @@ function clamp(v){return Math.max(-1,Math.min(1,v))}
 function pad(n){return String(n).padStart(2,'0')}
 function say(t){ hint.innerHTML=t||''; hint.title=hint.textContent; }
 function cbase(c){ return DIR+(c.base||('deck/'+c.id+'/')); }
-function fileOf(c,n){ if(c.files) return (n in c.files)?c.files[n]:null; return n; }
+function fileOf(c,n){ if(n==='frame'&&c.frameOptions&&c.frameOptions[FRAME_VAR]) return c.frameOptions[FRAME_VAR]; if(c.files) return (n in c.files)?c.files[n]:null; return n; }
 function src(c,n){ var f=fileOf(c,n); return f?cbase(c)+f+'.webp?v='+V:null; }
 function layerCfg(c,n){
   var L=M.layers[n]||{};
@@ -179,7 +181,24 @@ if(window.PointerEvent){
 window.addEventListener('blur',function(){ p0=null; pid=null; dragging=false; dx=dy=0; });
 window.addEventListener('mousemove',function(e){ if(mode==='gyro'||dragging)return; if(mode==='none'||mode==='mouse'){ mode='mouse'; gx=clamp(e.clientX/innerWidth*2-1); gy=clamp(e.clientY/innerHeight*2-1); } });
 ['gesturestart','gesturechange','gestureend'].forEach(function(ev){ document.addEventListener(ev,function(e){e.preventDefault()},NP); });
-document.addEventListener('dblclick',function(e){e.preventDefault()},NP);
+// ---- double-tap / double-click navigation: right half = next, left half = previous (show() wraps)
+function dblNav(cx){ show(cur+(cx>=innerWidth/2?1:-1)); }
+var tapD=null, lastTap=null;
+function tapStart(cx,cy){ tapD={x:cx,y:cy,t:performance.now()}; }
+function tapEnd(cx,cy){ if(!tapD) return; var n=performance.now(), d=tapD; tapD=null;
+  if(n-d.t>300 || Math.abs(cx-d.x)>12 || Math.abs(cy-d.y)>12){ lastTap=null; return; }
+  if(lastTap && n-lastTap.t<300 && Math.abs(cx-lastTap.x)<40 && Math.abs(cy-lastTap.y)<40){ lastTap=null; dblNav(cx); }
+  else lastTap={x:cx,y:cy,t:n}; }
+if(window.PointerEvent){
+  document.addEventListener('pointerdown',function(e){ if(e.pointerType==='mouse'||e.target.closest('button,a,#bar')) { tapD=null; return; } tapStart(e.clientX,e.clientY); },true);
+  document.addEventListener('pointerup',function(e){ if(e.pointerType==='mouse') return; tapEnd(e.clientX,e.clientY); },true);
+  document.addEventListener('pointercancel',function(){ tapD=null; },true);
+} else {
+  document.addEventListener('touchstart',function(e){ if(e.touches.length>1||e.target.closest('button,a,#bar')){ tapD=null; return; } var t=e.changedTouches[0]; tapStart(t.clientX,t.clientY); },{passive:true,capture:true});
+  document.addEventListener('touchend',function(e){ var t=e.changedTouches[0]; tapEnd(t.clientX,t.clientY); },{passive:true,capture:true});
+}
+var lastTouchTs=0; document.addEventListener('touchend',function(){ lastTouchTs=Date.now(); },{passive:true,capture:true});
+document.addEventListener('dblclick',function(e){ e.preventDefault(); if(Date.now()-lastTouchTs<800 || e.target.closest('button,a,#bar')) return; dblNav(e.clientX); },NP);
 var lastEnd=0; document.addEventListener('touchend',function(e){ var n=Date.now(); if(n-lastEnd<350 && !e.target.closest('button,a')) e.preventDefault(); lastEnd=n; },NP);
 document.addEventListener('touchmove',function(e){ e.preventDefault(); },NP);
 window.addEventListener('keydown',function(e){ if(e.key==='ArrowRight')show(cur+1); if(e.key==='ArrowLeft')show(cur-1); if(e.key==='r')show(Math.floor(Math.random()*deck.length)); });

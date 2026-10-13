@@ -10,14 +10,14 @@
  ],
  "id": "04-a-imperadora",
  "index": 4,
- "title": "IV A IMPERADORA",
+ "title": "IV THE EMPEROR",
  "suit": "major",
  "files": {
   "bg": "bg",
   "mid": "mid",
   "figure": "figure",
   "energy": "energy",
-  "frame": "frame",
+  "frame": "frame-A",
   "thumb": "thumb"
  },
  "layers": {
@@ -74,5 +74,12 @@
   ]
  },
  "amplitude": 1.15,
- "style": "hq7"
+ "style": "hq7",
+ "titleEn": "THE EMPEROR",
+ "titlePt": "A IMPERADORA",
+ "number": "IV",
+ "frameOptions": {
+  "A": "frame-A",
+  "B": "frame-B"
+ }
 }
