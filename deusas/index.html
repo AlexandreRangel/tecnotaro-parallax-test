@@ -50,7 +50,7 @@ window.addEventListener('unhandledrejection',function(e){out('PROMISE '+(e.reaso
 //  1 -> v1/manifest.json  (v5 format, 3 moving layers bg|mid|fg + frame; normalized here to the v2 model, no figure layer)
 //  2 -> v2/deck/manifest.json, 3 -> v3/deck/manifest.json (v2-engine, bg|mid|figure|fg + frame)
 // Params: ?moldura=1|?frame=1 (frame moves with whole-card tilt; default static), ?debug=1, #NN card, ?pose=x,y, ?cardtilt=0.
-var V='3.3', ENGINE='unified', TILT=5, MAXDEG=12, LERP=0.12, AMPLITUDE=1.15, BOOST=1.03, FRONT_BOOST=1.03, FRONT={fg:1,energy:1};
+var V='3.4', ENGINE='unified', TILT=5, MAXDEG=12, LERP=0.12, AMPLITUDE=1.15, BOOST=1.03, FRONT_BOOST=1.03, FRONT={fg:1,energy:1};
 var Q=new URLSearchParams(location.search), DEBUG=Q.get('debug')==='1';
 var DECKN=({'1':1,'2':2,'3':3})[Q.get('deck')]||2;
 var DIR='./'; DECKN=3;
