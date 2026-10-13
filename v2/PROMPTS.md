@@ -449,3 +449,10 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): asset 6ba7549a flipped vertically, recolored two-tone amber / violet.
 - finish: FIG_DEGREEN=1 DEFRINGE=4 EDGE_CHOKE=5 RECOLOR_GREEN=1 RECOLOR_TO=amber FG_BOOST=0.5 FG_BODY=0.85 FIN_HEADBOX=565,2345,200+1050,2435,190+1663,2322,200 (all three faces clear).
+
+## 67 Quatro de Ouros
+- figure (FIG_FIT=1080,2548,1050 FIG_KEEPALL=1 KEY_STRICT=1: large, ~65% card height, stone patch on the floor at the bottom): Black woman in black and gold techwear seated on a stone block, a gold pentacle on her crown, one held to her chest and two under her feet, on a stone paving patch (asset 71c196e4).
+- bg (crop x 600-1005 of 1280: vault door plus a sliver of city at left): night city and a carved vault door with banners on a stone terrace (asset 45f32cb7), plus a soft contact shadow under the patch.
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): asset 6ba7549a flipped both ways, recolored two-tone amber / violet.
+- finish: FIG_DEGREEN=1 DEFRINGE=4 EDGE_CHOKE=5 RECOLOR_GREEN=1 RECOLOR_TO=amber FG_BOOST=0.5 FG_BODY=0.85 FIN_HEADBOX=1164,1750,230.
