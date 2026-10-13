@@ -385,3 +385,11 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 
 ## 45-55 energy refresh
 - fg energy plates of cards 45-55 rebuilt with work/nogreen.py (same flips and hue shifts as listed per card, but the folded range widened to yellow-green..green -> blue/magenta) so no yellow-green energy remains; figure, bg and finish settings unchanged.
+
+## 58 Nove de Espadas
+- figure (FIG_FIT=1080,2655,950 FIG_KEEPALL=1 KEY_STRICT=1: bed on the floor near the card bottom, nine stacked swords kept): hooded woman sitting up in a dark circuit-quilt tech bed with her face in her hands, nine blue swords stacked horizontally above (asset f583a91b).
+- bg (crop x 600-1005 of 1280: centered on the rainy neon window, the empty bed at left excluded): dark bedroom with a rain-streaked window onto a neon city (asset f40554d9), plus a soft contact shadow under the bed.
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): work/nogreen.py, asset 6ba7549a mirrored, hue -60 degrees.
+- finish: FIG_DEGREEN=1 DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.5 FG_BODY=0.85 FIN_HEADBOX=1080,2460,260 (face and hands clear).
+- 57 finish now also FIG_DEGREEN=1 (work/degreen.py after look.py), so a rebuild keeps the puddle green cleanup.
