@@ -414,3 +414,10 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): asset 6ba7549a mirrored, recolored two-tone blue / violet (speed streaks).
 - finish: FIG_DEGREEN=1 DEGREEN_CYAN=1 DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.4 FG_BODY=0.85 FIN_HEADBOX=1225,2300,230.
+
+## 62 Rainha de Espadas
+- figure (FIG_FIT=1080,2765,995 FIG_KEEPALL=1 KEY_STRICT=1: ~92% width, throne platform on the terrace floor at the bottom): silver-haired queen with a blue crystal crown in a blue gown on a carved stone throne with lion armrests, holding an upright blue sword (asset d0d4a0d2).
+- bg (crop x 718-1123 of 1280, centered on the city, pillar at right excluded): snowy cliff terrace, mountains and a crystal-spired city under a blue sky (asset 90968248), plus a soft contact shadow under the platform.
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): asset 6ba7549a flipped both ways, recolored airy blue-white / violet (saturation x0.55).
+- finish: FIG_DEGREEN=1 DEGREEN_CYAN=1 DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.45 FG_BODY=0.85 FIN_HEADBOX=1083,2340,240.
