@@ -102,6 +102,10 @@ function show(i){
       el.style.left='-'+off; el.style.top='-'+off; el.style.width=(g.s*100).toFixed(3)+'%'; el.style.height=(g.s*100).toFixed(3)+'%';
       el.style.mixBlendMode=g.blend; el.style.zIndex=g.z;
     });
+    // janela por carta (moldura v2: a arte cresce por baixo da moldura); padrao = janela antiga com mascara
+    var WD=[181,374,1892,3090], wv=c.window||WD;
+    win.style.left=(wv[0]/22.4).toFixed(3)+'%'; win.style.top=(wv[1]/38.4).toFixed(3)+'%'; win.style.width=(wv[2]/22.4).toFixed(3)+'%'; win.style.height=(wv[3]/38.4).toFixed(3)+'%';
+    var mu=c.window?'none':'url('+DIR+(M.windowMask||'win-mask.png')+')'; win.style.webkitMaskImage=mu; win.style.maskImage=mu;
     card.style.opacity=1; });
   $('name').textContent=pad(c.index)+' '+c.title;
   document.title='Tecnotarô '+DECKN+' · '+pad(c.index)+' '+c.title;
