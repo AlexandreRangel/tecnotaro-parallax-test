@@ -151,6 +151,105 @@
    }
   },
   {
+   "id": "03-the-empress",
+   "index": 3,
+   "title": "THE EMPRESS",
+   "titleEn": "THE EMPRESS",
+   "suit": "major",
+   "files": {
+    "bg": "bg",
+    "mid": "back",
+    "figure": "mid",
+    "fg": "fg",
+    "frame": "frame",
+    "thumb": "thumb"
+   },
+   "window": [
+    60,
+    120,
+    2120,
+    3600
+   ],
+   "depth": {
+    "bg": -0.045,
+    "mid": -0.02,
+    "figure": 0.0,
+    "fg": 0.045
+   },
+   "rect": {
+    "bg": 1.12,
+    "mid": 1.12,
+    "figure": 1.12,
+    "fg": 1.12
+   }
+  },
+  {
+   "id": "04-the-emperor",
+   "index": 4,
+   "title": "THE EMPEROR",
+   "titleEn": "THE EMPEROR",
+   "suit": "major",
+   "files": {
+    "bg": "bg",
+    "mid": "back",
+    "figure": "mid",
+    "fg": "fg",
+    "frame": "frame",
+    "thumb": "thumb"
+   },
+   "window": [
+    60,
+    120,
+    2120,
+    3600
+   ],
+   "depth": {
+    "bg": -0.045,
+    "mid": -0.02,
+    "figure": 0.0,
+    "fg": 0.045
+   },
+   "rect": {
+    "bg": 1.12,
+    "mid": 1.12,
+    "figure": 1.12,
+    "fg": 1.12
+   }
+  },
+  {
+   "id": "05-the-hierophant",
+   "index": 5,
+   "title": "THE HIEROPHANT",
+   "titleEn": "THE HIEROPHANT",
+   "suit": "major",
+   "files": {
+    "bg": "bg",
+    "mid": "back",
+    "figure": "mid",
+    "fg": "fg",
+    "frame": "frame",
+    "thumb": "thumb"
+   },
+   "window": [
+    60,
+    120,
+    2120,
+    3600
+   ],
+   "depth": {
+    "bg": -0.045,
+    "mid": -0.02,
+    "figure": 0.0,
+    "fg": 0.045
+   },
+   "rect": {
+    "bg": 1.12,
+    "mid": 1.12,
+    "figure": 1.12,
+    "fg": 1.12
+   }
+  },
+  {
    "id": "21-the-world",
    "index": 21,
    "title": "THE WORLD",
