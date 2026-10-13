@@ -263,3 +263,17 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): reuse of asset 6ba7549a, mirrored horizontally and hue shifted -160 degrees.
 - finish: DEFRINGE=4 EDGE_CHOKE=5.
+
+## 41 Seis de Copas
+- figure (fig 0.9, FIG_ANCHOR=base, FIG_MAXW=2160, KEY_STRICT=1): blue-haired man kneeling, giving a glowing flower cup to a child, five cups on a mossy ground patch (asset 79c4236f).
+- bg (crop): overgrown sunlit courtyard with crystal lotus flowers and a glowing mandala floor (asset 2f6bcef2).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): reuse of asset 6ba7549a, flipped vertically and hue shifted +135 degrees.
+- finish: DEFRINGE=4 EDGE_CHOKE=5 RECOLOR_GREEN=1 RECOLOR_TO=amber (moss -> amber, kept in figure) FG_BOOST=0.6 FG_BODY=0.8 (softer energy, cleared over the figures).
+
+## 42 Sete de Copas
+- figure (fig 0.9, FIG_ANCHOR=base, FIG_MAXW=2160, KEY_STRICT=1): woman seen from behind reaching up to seven floating holographic cups in an arc (cups in figure layer) (asset 132db018).
+- bg (crop): cosmic sky with floating castle islands and sacred-geometry circles (asset ff67e7f1).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): reuse of asset 6ba7549a, flipped both ways and hue shifted -120 degrees.
+- finish: DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.6 FG_BODY=0.8.
