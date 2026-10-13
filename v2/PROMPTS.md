@@ -491,3 +491,10 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): asset 6ba7549a flipped vertically, recolored two-tone amber / violet, lighter.
 - finish: FIG_DEGREEN=1 DEFRINGE=4 EDGE_CHOKE=5 RECOLOR_GREEN=1 RECOLOR_TO=amber (vine leaves -> amber) FG_BOOST=0.35 FG_BODY=0.85 FIN_HEADBOX=876,1567,220.
+
+## 73 Dez de Ouros
+- figure (FIG_FIT=1080,2731,995 FIG_KEEPALL=1 KEY_STRICT=1: ~92% width, stone patch on the plaza floor ~120 px above the bottom edge; green inside the arch keyed to background): multigenerational family (seated grandfather, mother, child, father) with a robotic dog under a dark circuit arch set with ten glowing gold pentacles, on a mossy stone patch (asset a16ec497).
+- bg (default center crop on the central palace): golden-hour spired palace plaza with banners (asset a1713f23), plus a soft contact shadow under the patch.
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): asset 6ba7549a flipped both ways, recolored two-tone amber / violet, light.
+- finish: FIG_DEGREEN=1 DEGREEN_CYAN=1 (dark green coats -> teal-blue; RECOLOR_GREEN left off so the coats don't turn amber) DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.35 FG_BODY=0.85 FIN_HEADBOX=790,2594,170+1279,2440,160+1141,2808,140+1635,2303,170.
