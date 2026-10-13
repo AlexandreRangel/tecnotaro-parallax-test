@@ -214,3 +214,17 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 
 ## Edge clean (all cards, look.py, from 28-33 on)
 - White fringe cause: rim light added on the outermost contour pixels (brighter than the bg), edge pixels carrying unpremultiplied bright screen/spill color, and leftover screen-green rims. look.py now always chokes the key alpha by EDGE_CHOKE=3 px, replaces contour pixels that are brighter than the interior (halo) or much darker (despill line) with the nearest interior color, brightness-caps thin parts, keeps the rim light strictly inside (5 px from the contour) and no brighter than the bg, drops leftover screen-green rims, and fills transparent pixels with interior color so resizing can't bleed bright colors.
+
+## 34 Rainha de Paus
+- figure (fig 0.9, FIG_ANCHOR=base, KEY_STRICT=1): On flat pure chroma green #00FF00, nothing else. Queen of Wands: a regal smiling woman with sunflowers in her hair on a brass lion throne, a black mechanical cat at her feet, holding a staff with a green flame. (asset 3da28dea)
+- bg (crop): brass and stained-glass palace hall opening onto a golden steampunk city (asset 50969ae0).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): reuse of asset 6ba7549a, flipped vertically and hue shifted +110 degrees.
+- finish: DEFRINGE=2 RECOLOR_GREEN=1 RECOLOR_TO=amber (green flame -> amber), edge clean.
+
+## 35 Rei de Paus
+- figure (fig 0.9, FIG_ANCHOR=base, KEY_STRICT=1): On flat pure chroma green #00FF00, nothing else. King of Wands: a grey-bearded king in a red brocade coat on a brass salamander throne holding a staff topped by a glowing magenta orb. (asset 5535c431)
+- bg (crop): ornate brass arch framing a sunset sky and neon city spires (asset 6a33ac58).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): reuse of asset 6ba7549a, rotated 180 degrees, mirrored and hue shifted -140 degrees.
+- finish: DEFRINGE=2, edge clean.
