@@ -249,3 +249,17 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): reuse of asset 6ba7549a, flipped vertically and hue shifted -170 degrees (watery cyan/magenta).
 - finish: DEFRINGE=4 EDGE_CHOKE=5 RECOLOR_GREEN=1 RECOLOR_TO=amber (green leaves under harvest -> amber) FIN_HEADBOX=750,2160,210+1100,2200,230+1620,2160,200 (energy carved off all three faces).
+
+## 39 Quatro de Copas
+- figure (fig 0.9, FIG_ANCHOR=base, FIG_MAXW=2160, KEY_STRICT=1): blue-haired man meditating cross-legged under a golden bonsai on a mossy mound, three brass cups before him and a holographic hand offering a fourth cup (asset 9a92bb07).
+- bg (crop): neon city skyline at dusk over a stone terrace with a glowing sigil circle (asset 0313b841).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): reuse of asset 6ba7549a, flipped both ways and hue shifted +165 degrees.
+- finish: DEFRINGE=4 EDGE_CHOKE=5 RECOLOR_GREEN=1 RECOLOR_TO=amber (moss / green holo hand -> amber).
+
+## 40 Cinco de Copas
+- figure (fig 0.9, FIG_ANCHOR=base, FIG_MAXW=2160, KEY_STRICT=1): pink-haired woman in a grey tattered coat looking down at spilled cups glowing magenta, two cups standing behind her (asset b64118e6; grey backdrop flood-replaced with chroma green before keying, spilled cups kept in figure layer).
+- bg (crop): rainy neon canal city with a sacred-geometry spire (asset b97d7520, cropped inside the baked ornamental border, excluding the title, left plaque and bottom emblem).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): reuse of asset 6ba7549a, mirrored horizontally and hue shifted -160 degrees.
+- finish: DEFRINGE=4 EDGE_CHOKE=5.

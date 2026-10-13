@@ -1100,27 +1100,25 @@
    "index": 39,
    "title": "FOUR OF CUPS",
    "suit": "cups",
-   "placeholder": true,
-   "base": "../v1/deck/39-four-of-cups/",
    "files": {
-    "frame": "frame",
     "bg": "bg",
-    "mid": null,
-    "figure": "mid",
+    "mid": "mid",
+    "figure": "figure",
     "fg": "fg",
+    "frame": "frame",
     "thumb": "thumb"
-   },
-   "rect": {
-    "bg": 1.1,
-    "figure": 1.0,
-    "fg": 1.0
-   },
-   "blend": {
-    "fg": "screen"
    },
    "depth": {
     "bg": -0.03,
+    "mid": -0.015,
+    "figure": 0.008,
     "fg": 0.035
+   },
+   "rect": {
+    "bg": 1.12,
+    "mid": 1.12,
+    "figure": 1.12,
+    "fg": 1.12
    }
   },
   {
@@ -1128,27 +1126,25 @@
    "index": 40,
    "title": "FIVE OF CUPS",
    "suit": "cups",
-   "placeholder": true,
-   "base": "../v1/deck/40-five-of-cups/",
    "files": {
-    "frame": "frame",
     "bg": "bg",
-    "mid": null,
-    "figure": "mid",
+    "mid": "mid",
+    "figure": "figure",
     "fg": "fg",
+    "frame": "frame",
     "thumb": "thumb"
-   },
-   "rect": {
-    "bg": 1.1,
-    "figure": 1.0,
-    "fg": 1.0
-   },
-   "blend": {
-    "fg": "screen"
    },
    "depth": {
     "bg": -0.03,
+    "mid": -0.015,
+    "figure": 0.008,
     "fg": 0.035
+   },
+   "rect": {
+    "bg": 1.12,
+    "mid": 1.12,
+    "figure": 1.12,
+    "fg": 1.12
    }
   },
   {
