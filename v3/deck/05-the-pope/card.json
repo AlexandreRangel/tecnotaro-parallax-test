@@ -1,0 +1,78 @@
+{
+ "schema": "tecnotaro-parallax-v3",
+ "layerCount": 4,
+ "order": [
+  "bg",
+  "mid",
+  "figure",
+  "energy",
+  "frame"
+ ],
+ "id": "05-the-pope",
+ "index": 5,
+ "title": "THE POPE",
+ "suit": "major",
+ "files": {
+  "bg": "bg",
+  "mid": "mid",
+  "figure": "figure",
+  "energy": "energy",
+  "frame": "frame",
+  "thumb": "thumb"
+ },
+ "layers": {
+  "bg": {
+   "depth": -0.04,
+   "z": 10,
+   "blend": "normal",
+   "rect": 1.12
+  },
+  "mid": {
+   "depth": -0.018,
+   "z": 20,
+   "blend": "normal",
+   "rect": 1.12
+  },
+  "figure": {
+   "depth": 0.0,
+   "z": 30,
+   "blend": "normal",
+   "rect": 1.12
+  },
+  "energy": {
+   "depth": 0.04,
+   "z": 40,
+   "blend": "normal",
+   "rect": 1.12
+  },
+  "frame": {
+   "moving": false,
+   "z": 50,
+   "blend": "normal"
+  }
+ },
+ "depth": {
+  "bg": -0.04,
+  "mid": -0.018,
+  "figure": 0.0,
+  "energy": 0.04
+ },
+ "rect": {
+  "bg": 1.12,
+  "mid": 1.12,
+  "figure": 1.12,
+  "energy": 1.12
+ },
+ "layerSize": {
+  "@2x": [
+   2120,
+   3460
+  ],
+  "@1x": [
+   1060,
+   1730
+  ]
+ },
+ "amplitude": 1.15,
+ "style": "hq7"
+}
