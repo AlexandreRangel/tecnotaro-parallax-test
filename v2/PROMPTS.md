@@ -393,3 +393,10 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - fg (bottom): work/nogreen.py, asset 6ba7549a mirrored, hue -60 degrees.
 - finish: FIG_DEGREEN=1 DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.5 FG_BODY=0.85 FIN_HEADBOX=1080,2460,260 (face and hands clear).
 - 57 finish now also FIG_DEGREEN=1 (work/degreen.py after look.py), so a rebuild keeps the puddle green cleanup.
+
+## 59 Dez de Espadas
+- figure (FIG_FIT=1080,3312,995 FIG_KEEPALL=1 KEY_STRICT=1: ~92% width, ground patch on the shore near the card bottom): chrome android lying face down on a cracked dark ground patch, ten blue crystal swords in its back, red cloak over its legs (asset fda29038).
+- bg (crop x 330-735 of 1280: sun glow at left, part of the city at right): black sky, golden dawn over the sea, city on the right, dark shore (asset 1ab8cee8), plus a soft contact shadow under the patch.
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): asset 6ba7549a mirrored, recolored two-tone amber/violet (sparse, dark mood).
+- finish: FIG_DEGREEN=1 DEGREEN_CYAN=1 (green-dominant spill clamped, cyan sword glow pushed back to blue; red cloak untouched) DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.35 FG_BODY=0.9 FIN_HEADBOX=500,3330,230.
