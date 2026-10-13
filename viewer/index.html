@@ -49,7 +49,7 @@ window.addEventListener('unhandledrejection',function(e){out('PROMISE '+(e.reaso
 //  1 -> v1/manifest.json  (v5 format, 3 moving layers bg|mid|fg + frame; normalized here to the v2 model, no figure layer)
 //  2 -> v2/deck/manifest.json, 3 -> v3/deck/manifest.json (v2-engine, bg|mid|figure|fg + frame)
 // Params: ?moldura=1|?frame=1 (frame moves with whole-card tilt; default static), ?debug=1, #NN card, ?pose=x,y, ?cardtilt=0.
-var V='3.1', ENGINE='unified', TILT=5, MAXDEG=12, LERP=0.12, AMPLITUDE=1.15;
+var V='3.2', ENGINE='unified', TILT=5, MAXDEG=12, LERP=0.12, AMPLITUDE=1.15, BOOST=1.03, FRONT_BOOST=1.03, FRONT={fg:1,energy:1};
 var Q=new URLSearchParams(location.search), DEBUG=Q.get('debug')==='1';
 var DECKN=({'1':1,'2':2,'3':3})[Q.get('deck')]||2;
 var DIR='../v'+DECKN+'/';
@@ -59,7 +59,7 @@ var reduce=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').
 var $=function(id){return document.getElementById(id)};
 var card=$('card'), win=$('win'), dbg=$('dbg'), hint=$('hint');
 var M=null, deck=[], cur=0, MOVING=['bg','mid','figure','fg'], DEPTH={bg:0,mid:0,figure:0,fg:0};
-var tx=0,ty=0,x=0,y=0,base=null,mbase=null,mode='none',perm='not requested',lastO=null,nO=0,nM=0,nT=0,nP=0,started=false;
+var tx=0,ty=0,gx=0,gy=0,dx=0,dy=0,dragging=false,x=0,y=0,base=null,mbase=null,mode='none',perm='not requested',lastO=null,nO=0,nM=0,nT=0,nP=0,started=false;
 function clamp(v){return Math.max(-1,Math.min(1,v))}
 function pad(n){return String(n).padStart(2,'0')}
 function say(t){ hint.innerHTML=t||''; hint.title=hint.textContent; }
@@ -71,8 +71,9 @@ function layerCfg(c,n){
   var d=(c.depth&&c.depth[n]!=null)?c.depth[n]:(L.depth||0);
   var r=(c.rect&&c.rect[n]!=null)?c.rect[n]:(L.rect||1);
   var b=(c.blend&&c.blend[n])||L.blend||'normal';
-  var s=Math.max(r, 1+2*Math.abs(d)*AMPLITUDE+0.01);
-  return {d:d*AMPLITUDE, s:s, blend:b, z:L.z||0};
+  var de=d*AMPLITUDE*BOOST*(FRONT[n]?FRONT_BOOST:1);
+  var s=Math.max(r, 1+2*Math.abs(de)+0.02); // overscan covers max displacement (|x|<=1) + margin
+  return {d:de, s:s, blend:b, z:L.z||0};
 }
 // v1 (v5 viewer) -> v2 model: bg rect 1.1, mid rect 1, fg rect 1.1 blend screen, fg depth x2.5 (FG_BOOST), amplitude 1, no figure
 function normalizeV1(m){
@@ -114,15 +115,15 @@ function onOri(e){
   var g=e.gamma, b=e.beta;
   if(!base){ base={g:g,b:b}; mode='gyro'; say(''); }
   var dg=g-base.g, db=b-base.b; if(dg>90)dg-=180; if(dg<-90)dg+=180;
-  tx=clamp(dg/MAXDEG); ty=clamp(db/MAXDEG);
+  gx=clamp(dg/MAXDEG); gy=clamp(db/MAXDEG);
 }
 function onMot(e){
   nM++;
   var a=e.accelerationIncludingGravity; if(!a||a.x==null) return;
   if(nO>0 && lastO && lastO.gamma!=null) return;
-  var gx=Math.atan2(a.x,Math.hypot(a.y,a.z))*57.3, gy=Math.atan2(a.y,a.z)*57.3;
-  if(!mbase){ mbase={x:gx,y:gy}; mode='gyro'; say(''); }
-  tx=clamp((gx-mbase.x)/MAXDEG); ty=clamp(-(gy-mbase.y)/MAXDEG);
+  var ax=Math.atan2(a.x,Math.hypot(a.y,a.z))*57.3, ay=Math.atan2(a.y,a.z)*57.3;
+  if(!mbase){ mbase={x:ax,y:ay}; mode='gyro'; say(''); }
+  gx=clamp((ax-mbase.x)/MAXDEG); gy=clamp(-(ay-mbase.y)/MAXDEG);
 }
 var attached=false;
 function attach(){
@@ -151,25 +152,32 @@ function start(){
 }
 if(NEEDPERM){ say("tap for tilt"); ['touchend','click'].forEach(function(ev){ document.addEventListener(ev,start,true); }); }
 else start(); // Android / desktop: no permission needed
-// ---- drag
-var p0=null, touching=false;
-function dStart(cx,cy){ p0={x:cx,y:cy,t:performance.now()}; }
-function dMove(cx,cy){ if(!p0) return; if(mode!=='gyro'){ mode='drag'; tx=clamp((cx-p0.x)/110); ty=clamp((cy-p0.y)/110); } }
-function dEnd(cx){ if(!p0) return; var dx=cx-p0.x, dt=performance.now()-p0.t;
-  if(Math.abs(dx)>innerWidth*0.55 && dt<280) show(cur+(dx<0?1:-1));
-  if(mode!=='gyro'){ tx=0; ty=0; } p0=null; }
+// ---- drag: independent of gyro. While a finger/pointer is down it drives the target; on release
+// the target falls back to the gyro target (LERP smooths the return). Pointer events primary, touch fallback.
+var p0=null, pid=null;
+function dStart(cx,cy){ p0={x:cx,y:cy,t:performance.now()}; dragging=true; dx=0; dy=0; }
+function dMove(cx,cy){ if(!p0) return; dx=clamp((cx-p0.x)/110); dy=clamp((cy-p0.y)/110); }
+function dEnd(cx){ if(!p0){ dragging=false; return; } var ddx=cx-p0.x, dt=performance.now()-p0.t;
+  p0=null; pid=null; dragging=false; dx=0; dy=0;
+  if(Math.abs(ddx)>innerWidth*0.55 && dt<280) show(cur+(ddx<0?1:-1)); }
 var NP={passive:false};
-card.addEventListener('touchstart',function(e){ nT++; touching=true; var t=e.touches[0]; dStart(t.clientX,t.clientY); e.preventDefault(); },NP);
-card.addEventListener('touchmove',function(e){ nT++; var t=e.touches[0]; dMove(t.clientX,t.clientY); e.preventDefault(); },NP);
-function tEnd(e){ nT++; var t=e.changedTouches[0]; dEnd(t?t.clientX:p0?p0.x:0); if(!e.touches.length) setTimeout(function(){touching=false},50); }
-card.addEventListener('touchend',tEnd,NP); card.addEventListener('touchcancel',tEnd,NP);
 if(window.PointerEvent){
-  card.addEventListener('pointerdown',function(e){ nP++; if(touching||e.pointerType==='touch'&&('ontouchstart' in window)) return; dStart(e.clientX,e.clientY); try{card.setPointerCapture(e.pointerId);}catch(_){} });
-  card.addEventListener('pointermove',function(e){ nP++; if(touching) return; if(p0) dMove(e.clientX,e.clientY); });
-  card.addEventListener('pointerup',function(e){ if(!touching) dEnd(e.clientX); });
-  card.addEventListener('pointercancel',function(e){ if(!touching) dEnd(e.clientX); });
+  card.addEventListener('pointerdown',function(e){ nP++; if(pid!==null&&pid!==e.pointerId) return; pid=e.pointerId; dStart(e.clientX,e.clientY); try{card.setPointerCapture(e.pointerId);}catch(_){} },NP);
+  card.addEventListener('pointermove',function(e){ nP++; if(e.pointerId!==pid) return; dMove(e.clientX,e.clientY); },NP);
+  var pEnd=function(e){ if(e.pointerId!==pid) return; try{card.releasePointerCapture(e.pointerId);}catch(_){} dEnd(e.clientX); };
+  card.addEventListener('pointerup',pEnd); card.addEventListener('pointercancel',pEnd); card.addEventListener('lostpointercapture',pEnd);
+  // suppress native touch scrolling/zoom; pointer events do the work (touchend not prevented so the iOS permission tap still fires)
+  card.addEventListener('touchstart',function(e){ nT++; e.preventDefault(); },NP);
+  card.addEventListener('touchmove',function(e){ nT++; e.preventDefault(); },NP);
+} else {
+  var tid=null;
+  card.addEventListener('touchstart',function(e){ nT++; var t=e.changedTouches[0]; if(tid===null){ tid=t.identifier; dStart(t.clientX,t.clientY); } e.preventDefault(); },NP);
+  card.addEventListener('touchmove',function(e){ nT++; for(var i=0;i<e.touches.length;i++){ var t=e.touches[i]; if(t.identifier===tid) dMove(t.clientX,t.clientY); } e.preventDefault(); },NP);
+  var tEnd=function(e){ nT++; for(var i=0;i<e.changedTouches.length;i++){ var t=e.changedTouches[i]; if(t.identifier===tid){ tid=null; dEnd(t.clientX); } } if(!e.touches.length){ tid=null; if(dragging) dEnd(p0?p0.x:0); } };
+  card.addEventListener('touchend',tEnd,NP); card.addEventListener('touchcancel',tEnd,NP);
 }
-window.addEventListener('mousemove',function(e){ if(mode==='gyro'||p0||touching)return; if(mode==='none'||mode==='mouse'){ mode='mouse'; tx=clamp(e.clientX/innerWidth*2-1); ty=clamp(e.clientY/innerHeight*2-1); } });
+window.addEventListener('blur',function(){ p0=null; pid=null; dragging=false; dx=dy=0; });
+window.addEventListener('mousemove',function(e){ if(mode==='gyro'||dragging)return; if(mode==='none'||mode==='mouse'){ mode='mouse'; gx=clamp(e.clientX/innerWidth*2-1); gy=clamp(e.clientY/innerHeight*2-1); } });
 ['gesturestart','gesturechange','gestureend'].forEach(function(ev){ document.addEventListener(ev,function(e){e.preventDefault()},NP); });
 document.addEventListener('dblclick',function(e){e.preventDefault()},NP);
 var lastEnd=0; document.addEventListener('touchend',function(e){ var n=Date.now(); if(n-lastEnd<350 && !e.target.closest('button,a')) e.preventDefault(); lastEnd=n; },NP);
@@ -189,11 +197,11 @@ var frames=0;
 function tick(){
   try{
     frames++;
-    if(POSE){tx=POSE[0];ty=POSE[1];mode='test';}
+    if(POSE){tx=POSE[0];ty=POSE[1];mode='test';} else if(dragging){tx=dx;ty=dy;} else {tx=gx;ty=gy;}
     x+=(tx*AMP-x)*LERP; y+=(ty*AMP-y)*LERP; var w=win.clientWidth||300;
     for(var k in L){ var t='translate3d('+(x*DEPTH[k]*w).toFixed(2)+'px,'+(y*DEPTH[k]*w).toFixed(2)+'px,0)'; L[k].style.webkitTransform=t; L[k].style.transform=t; }
     var ct='rotateY('+(x*TILT).toFixed(2)+'deg) rotateX('+(-y*TILT).toFixed(2)+'deg)'; card.style.webkitTransform=ct; card.style.transform=ct;
-    if(DEBUG && frames%3===0) dbg.textContent=ENGINE+' '+V+' deck '+DECKN+' ('+deck.length+' cards)  mode '+mode+'  frame '+(FRAME_MOTION?'moving':'static')+'\nperm '+perm+'  ori '+nO+' mot '+nM+'  touch '+nT+' ptr '+nP+(reduce?'  reduce-motion':'')+'\nbeta '+(lastO&&lastO.beta!=null?lastO.beta.toFixed(1):'-')+'  gamma '+(lastO&&lastO.gamma!=null?lastO.gamma.toFixed(1):'-')+'  tilt '+x.toFixed(2)+' '+y.toFixed(2);
+    if(DEBUG && frames%3===0) dbg.textContent=ENGINE+' '+V+' deck '+DECKN+' ('+deck.length+' cards)  mode '+mode+(dragging?'+drag':'')+'  frame '+(FRAME_MOTION?'moving':'static')+'\nperm '+perm+'  ori '+nO+' mot '+nM+'  touch '+nT+' ptr '+nP+(reduce?'  reduce-motion':'')+'\nbeta '+(lastO&&lastO.beta!=null?lastO.beta.toFixed(1):'-')+'  gamma '+(lastO&&lastO.gamma!=null?lastO.gamma.toFixed(1):'-')+'  tilt '+x.toFixed(2)+' '+y.toFixed(2);
   }catch(err){ window.__err&&__err('tick: '+err.message); }
   requestAnimationFrame(tick);
 }
