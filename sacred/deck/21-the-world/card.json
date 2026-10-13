@@ -6,26 +6,28 @@
  "suit": "major",
  "files": {
   "bg": "bg",
-  "mid": "mid",
-  "figure": null,
+  "mid": null,
+  "figure": "mid",
   "fg": "fg",
   "frame": "frame",
   "thumb": "thumb"
  },
  "window": [
   60,
-  190,
+  120,
   2120,
-  3460
+  3600
  ],
  "depth": {
-  "bg": -0.04,
-  "mid": -0.012,
+  "bg": -0.045,
+  "mid": -0.02,
+  "figure": 0.0,
   "fg": 0.045
  },
  "rect": {
   "bg": 1.12,
   "mid": 1.12,
+  "figure": 1.12,
   "fg": 1.12
  }
 }

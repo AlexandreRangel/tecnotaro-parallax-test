@@ -1,6 +1,6 @@
 {
  "deck": "Sacred Geometry Tarot, Alexandre Rangel",
- "version": "sacred-test",
+ "version": "sacred-78",
  "engine": "v2-engine",
  "canvas": [
   2240,
@@ -11,19 +11,30 @@
  "order": [
   "bg",
   "mid",
+  "figure",
   "fg",
   "frame"
  ],
+ "layerNames": {
+  "mid": "back plane",
+  "figure": "main subject"
+ },
  "layers": {
   "bg": {
    "z": 10,
-   "depth": -0.04,
+   "depth": -0.045,
    "blend": "normal",
    "rect": 1.12
   },
   "mid": {
    "z": 20,
-   "depth": -0.012,
+   "depth": -0.02,
+   "blend": "normal",
+   "rect": 1.12
+  },
+  "figure": {
+   "z": 30,
+   "depth": 0.0,
    "blend": "normal",
    "rect": 1.12
   },
@@ -41,6 +52,39 @@
  },
  "cards": [
   {
+   "id": "00-the-fool",
+   "index": 0,
+   "title": "THE FOOL",
+   "titleEn": "THE FOOL",
+   "suit": "major",
+   "files": {
+    "bg": "bg",
+    "mid": "back",
+    "figure": "mid",
+    "fg": "fg",
+    "frame": "frame",
+    "thumb": "thumb"
+   },
+   "window": [
+    60,
+    120,
+    2120,
+    3600
+   ],
+   "depth": {
+    "bg": -0.045,
+    "mid": -0.02,
+    "figure": 0.0,
+    "fg": 0.045
+   },
+   "rect": {
+    "bg": 1.12,
+    "mid": 1.12,
+    "figure": 1.12,
+    "fg": 1.12
+   }
+  },
+  {
    "id": "21-the-world",
    "index": 21,
    "title": "THE WORLD",
@@ -48,88 +92,94 @@
    "suit": "major",
    "files": {
     "bg": "bg",
-    "mid": "mid",
-    "figure": null,
+    "mid": null,
+    "figure": "mid",
     "fg": "fg",
     "frame": "frame",
     "thumb": "thumb"
    },
    "window": [
     60,
-    190,
+    120,
     2120,
-    3460
+    3600
    ],
    "depth": {
-    "bg": -0.04,
-    "mid": -0.012,
+    "bg": -0.045,
+    "mid": -0.02,
+    "figure": 0.0,
     "fg": 0.045
    },
    "rect": {
     "bg": 1.12,
     "mid": 1.12,
+    "figure": 1.12,
     "fg": 1.12
    }
   },
   {
-   "id": "ace-of-cups",
+   "id": "36-ace-of-cups",
    "index": 36,
    "title": "ACE OF CUPS",
    "titleEn": "ACE OF CUPS",
    "suit": "cups",
    "files": {
     "bg": "bg",
-    "mid": "mid",
-    "figure": null,
+    "mid": null,
+    "figure": "mid",
     "fg": "fg",
     "frame": "frame",
     "thumb": "thumb"
    },
    "window": [
     60,
-    190,
+    120,
     2120,
-    3460
+    3600
    ],
    "depth": {
-    "bg": -0.04,
-    "mid": -0.012,
+    "bg": -0.045,
+    "mid": -0.02,
+    "figure": 0.0,
     "fg": 0.045
    },
    "rect": {
     "bg": 1.12,
     "mid": 1.12,
+    "figure": 1.12,
     "fg": 1.12
    }
   },
   {
-   "id": "queen-of-pentacles",
+   "id": "76-queen-of-pentacles",
    "index": 76,
    "title": "QUEEN OF PENTACLES",
    "titleEn": "QUEEN OF PENTACLES",
    "suit": "pentacles",
    "files": {
     "bg": "bg",
-    "mid": "mid",
-    "figure": null,
+    "mid": null,
+    "figure": "mid",
     "fg": "fg",
     "frame": "frame",
     "thumb": "thumb"
    },
    "window": [
     60,
-    190,
+    120,
     2120,
-    3460
+    3600
    ],
    "depth": {
-    "bg": -0.04,
-    "mid": -0.012,
+    "bg": -0.045,
+    "mid": -0.02,
+    "figure": 0.0,
     "fg": 0.045
    },
    "rect": {
     "bg": 1.12,
     "mid": 1.12,
+    "figure": 1.12,
     "fg": 1.12
    }
   }

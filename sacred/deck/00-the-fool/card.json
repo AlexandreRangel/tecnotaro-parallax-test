@@ -1,0 +1,33 @@
+{
+ "id": "00-the-fool",
+ "index": 0,
+ "title": "THE FOOL",
+ "titleEn": "THE FOOL",
+ "suit": "major",
+ "files": {
+  "bg": "bg",
+  "mid": "back",
+  "figure": "mid",
+  "fg": "fg",
+  "frame": "frame",
+  "thumb": "thumb"
+ },
+ "window": [
+  60,
+  120,
+  2120,
+  3600
+ ],
+ "depth": {
+  "bg": -0.045,
+  "mid": -0.02,
+  "figure": 0.0,
+  "fg": 0.045
+ },
+ "rect": {
+  "bg": 1.12,
+  "mid": 1.12,
+  "figure": 1.12,
+  "fg": 1.12
+ }
+}
