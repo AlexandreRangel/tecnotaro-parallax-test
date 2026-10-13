@@ -1,0 +1,137 @@
+{
+ "deck": "Sacred Geometry Tarot, Alexandre Rangel",
+ "version": "sacred-test",
+ "engine": "v2-engine",
+ "canvas": [
+  2240,
+  3840
+ ],
+ "windowMask": "win-mask.png",
+ "amplitude": 1.15,
+ "order": [
+  "bg",
+  "mid",
+  "fg",
+  "frame"
+ ],
+ "layers": {
+  "bg": {
+   "z": 10,
+   "depth": -0.04,
+   "blend": "normal",
+   "rect": 1.12
+  },
+  "mid": {
+   "z": 20,
+   "depth": -0.012,
+   "blend": "normal",
+   "rect": 1.12
+  },
+  "fg": {
+   "z": 40,
+   "depth": 0.045,
+   "blend": "normal",
+   "rect": 1.12
+  },
+  "frame": {
+   "moving": false,
+   "z": 50,
+   "blend": "normal"
+  }
+ },
+ "cards": [
+  {
+   "id": "21-the-world",
+   "index": 21,
+   "title": "THE WORLD",
+   "titleEn": "THE WORLD",
+   "suit": "major",
+   "files": {
+    "bg": "bg",
+    "mid": "mid",
+    "figure": null,
+    "fg": "fg",
+    "frame": "frame",
+    "thumb": "thumb"
+   },
+   "window": [
+    60,
+    190,
+    2120,
+    3460
+   ],
+   "depth": {
+    "bg": -0.04,
+    "mid": -0.012,
+    "fg": 0.045
+   },
+   "rect": {
+    "bg": 1.12,
+    "mid": 1.12,
+    "fg": 1.12
+   }
+  },
+  {
+   "id": "ace-of-cups",
+   "index": 36,
+   "title": "ACE OF CUPS",
+   "titleEn": "ACE OF CUPS",
+   "suit": "cups",
+   "files": {
+    "bg": "bg",
+    "mid": "mid",
+    "figure": null,
+    "fg": "fg",
+    "frame": "frame",
+    "thumb": "thumb"
+   },
+   "window": [
+    60,
+    190,
+    2120,
+    3460
+   ],
+   "depth": {
+    "bg": -0.04,
+    "mid": -0.012,
+    "fg": 0.045
+   },
+   "rect": {
+    "bg": 1.12,
+    "mid": 1.12,
+    "fg": 1.12
+   }
+  },
+  {
+   "id": "queen-of-pentacles",
+   "index": 76,
+   "title": "QUEEN OF PENTACLES",
+   "titleEn": "QUEEN OF PENTACLES",
+   "suit": "pentacles",
+   "files": {
+    "bg": "bg",
+    "mid": "mid",
+    "figure": null,
+    "fg": "fg",
+    "frame": "frame",
+    "thumb": "thumb"
+   },
+   "window": [
+    60,
+    190,
+    2120,
+    3460
+   ],
+   "depth": {
+    "bg": -0.04,
+    "mid": -0.012,
+    "fg": 0.045
+   },
+   "rect": {
+    "bg": 1.12,
+    "mid": 1.12,
+    "fg": 1.12
+   }
+  }
+ ]
+}
