@@ -368,3 +368,10 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): reuse of asset 6ba7549a, hue +170 degrees with green hues folded to cyan/magenta.
 - finish: DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.5 FG_BODY=0.85 FIN_HEADBOX=1430,2000,170+990,2410,220.
+
+## 56 Sete de Espadas
+- figure (FIG_FIT=1080,2685,1000 FIG_KEEPALL=1 KEY_STRICT=1: dirt patch on the muddy ground near the card bottom, ground swords kept): grinning hooded thief in black neon-trimmed gear sneaking off with five blue crystal swords, two swords left stuck in a dirt patch (asset 2eb35d59).
+- bg (crop, centered on the path): night camp with tents and violet banners on muddy ground (asset 5cb21545), plus a soft elliptical contact shadow baked under the dirt patch.
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): reuse of asset 6ba7549a, mirrored, hue -140 degrees with yellow-green..green hues folded to blue/magenta.
+- finish: DEFRINGE=4 EDGE_CHOKE=5 RECOLOR_GREEN=1 RECOLOR_TO=amber (grass tufts in the dirt patch) FG_BOOST=0.5 FG_BODY=0.85 FIN_HEADBOX=767,1792,230.
