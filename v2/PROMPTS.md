@@ -349,8 +349,15 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - finish: DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.6 FG_BODY=0.8.
 
 ## 53 Quatro de Espadas
-- figure (FIG_FIT=1080,2450,995 FIG_KEEPALL=1 KEY_STRICT=1: ~92% card width, lower-middle; three hanging swords kept, their cut tops feathered 40 px): knight in silver tech armor resting on a carved stone tech tomb, a glowing sword below him, three swords hanging above (asset 376132fd).
+- figure (FIG_FIT=1080,2750,995 FIG_KEEPALL=1 KEY_STRICT=1: ~92% card width, tomb base resting on the chapel floor (no floating); three hanging swords kept, their cut tops feathered 40 px): knight in silver tech armor resting on a carved stone tech tomb, a glowing sword below him, three swords hanging above (asset 376132fd).
 - bg (crop): cyber chapel, centered on the circuit stained-glass window (asset c1f575b5).
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): reuse of asset 6ba7549a, mirrored, hue +150 degrees with green hues folded to cyan/magenta.
-- finish: DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.4 FG_BODY=0.85 FIN_HEADBOX=270,2180,200 (calm, light energy).
+- finish: DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.4 FG_BODY=0.85 FIN_HEADBOX=430,2640,220 (calm, light energy).
+
+## 54 Cinco de Espadas
+- figure (fig 0.9, FIG_ANCHOR=base, FIG_MAXW=2160, FIG_KEEPALL=1, KEY_STRICT=1: grounded, rock pile at the bottom; swords over the shoulder kept): red-haired man in a black circuit trench coat standing on a pile of dark rocks, three blue crystal swords over his shoulder and two on the ground (asset ca48af3c).
+- bg (crop x 440-845 of 1280): stormy coast with two distant walking figures and a neon city at right (asset d4ad7d99).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): reuse of asset 6ba7549a, flipped both ways, hue -100 degrees with green hues folded to cyan/magenta.
+- finish: DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.5 FG_BODY=0.85.
