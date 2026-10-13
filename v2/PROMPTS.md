@@ -407,3 +407,10 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): asset 6ba7549a flipped vertically, recolored airy cyan-white / violet (saturation x0.55) for a daytime look.
 - finish: FIG_DEGREEN=1 DEGREEN_CYAN=1 DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.45 FG_BODY=0.85 FIN_HEADBOX=1180,860,260.
+
+## 61 Cavaleiro de Espadas
+- figure (FIG_FIT=1080,2703,995 FIG_KEEPALL=1 KEY_STRICT=1: ~92% width, hooves just above the dusty ground in the lower card): knight in silver-blue armor and circuit cape on a galloping silver robot horse, raised blue crystal sword (asset 9dfe251d).
+- bg (crop x 230-635 of 1280, keeps the castle towers): stormy plain with wind-bent cypress trees (asset 6f25322b), plus a soft ground shadow ~130 px below the hooves and light dust puffs kicked up at the hind and front hooves.
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): asset 6ba7549a mirrored, recolored two-tone blue / violet (speed streaks).
+- finish: FIG_DEGREEN=1 DEGREEN_CYAN=1 DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.4 FG_BODY=0.85 FIN_HEADBOX=1225,2300,230.
