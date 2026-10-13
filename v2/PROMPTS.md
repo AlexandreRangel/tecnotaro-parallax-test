@@ -375,3 +375,10 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): reuse of asset 6ba7549a, mirrored, hue -140 degrees with yellow-green..green hues folded to blue/magenta.
 - finish: DEFRINGE=4 EDGE_CHOKE=5 RECOLOR_GREEN=1 RECOLOR_TO=amber (grass tufts in the dirt patch) FG_BOOST=0.5 FG_BODY=0.85 FIN_HEADBOX=767,1792,230.
+
+## 57 Oito de Espadas
+- figure (FIG_FIT=1080,3060,1000 FIG_KEEPALL=1 KEY_STRICT=1: ~92% width, puddle on the marsh near the card bottom): blindfolded woman in a silver suit and translucent cape wrapped in violet light ribbons, walking through a dark wet puddle ringed by eight upright swords (asset 119782cb).
+- bg (crop x 700-1105 of 1280, keeps the castle): misty marsh with a spired castle-city on a hill (asset 0a8fd54f), plus a soft elliptical contact shadow under the puddle.
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): work/nogreen.py, asset 6ba7549a flipped vertically, hue +40 degrees, yellow-green..green folded to blue/magenta.
+- finish: DEFRINGE=4 EDGE_CHOKE=5 RECOLOR_GREEN=1 (green glints in the puddle -> cyan) FG_BOOST=0.5 FG_BODY=0.85 FIN_HEADBOX=1077,2470,200.
