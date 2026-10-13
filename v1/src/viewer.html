@@ -44,7 +44,7 @@ body{display:flex;align-items:center;justify-content:center;perspective:1400px;b
 #card *{pointer-events:none}
 #card{pointer-events:auto}
 #err{position:fixed;left:6px;right:6px;top:calc(48px + env(safe-area-inset-top));z-index:20;max-height:30vh;overflow:auto;font:11px/1.35 ui-monospace,Menlo,monospace;color:#fff;background:#a00d;padding:6px 8px;border-radius:6px;white-space:pre-wrap;display:none;pointer-events:auto}
-#status{position:fixed;left:0;right:0;bottom:calc(52px + env(safe-area-inset-bottom));z-index:7;font:10px/1.3 ui-monospace,Menlo,monospace;color:#9f9;text-align:center;pointer-events:none;white-space:nowrap;overflow:hidden}
+#status{display:none;position:fixed;left:0;right:0;bottom:calc(52px + env(safe-area-inset-bottom));z-index:7;font:10px/1.3 ui-monospace,Menlo,monospace;color:#9f9;text-align:center;pointer-events:none;white-space:nowrap;overflow:hidden}
 </style><script>
 // v5 error catcher: installed first so later failures are visible on screen
 (function(){var box=null;function out(t){try{box=box||document.getElementById('err');if(!box){setTimeout(function(){out(t)},50);return;}box.style.display='block';box.textContent+=t+'\n';}catch(_){}}
@@ -65,8 +65,10 @@ window.addEventListener('unhandledrejection',function(e){out('PROMISE '+(e.reaso
 // v5. Depth bands (manifest.json): bg far, moves most and opposite | mid = figure + ground, zero plane | fg near, with the tilt.
 // Robust input: touch events (non-passive) + pointer fallback on the whole card; gyro via deviceorientation + devicemotion.
 // Reduced motion no longer disables everything (in v4 it killed the render loop and all input on iPhones with Reduce Motion on).
-var V='5', TILT=5, MAXDEG=12, LERP=0.12, FG_BOOST=2.5;
+var V='5.2', TILT=5, MAXDEG=12, LERP=0.12, FG_BOOST=2.5;
 var Q=new URLSearchParams(location.search), DEBUG=Q.get('debug')==='1';
+// status/debug line at the card bottom is hidden unless ?debug=1
+if(DEBUG) document.addEventListener('DOMContentLoaded',function(){var e=document.getElementById('status'); if(e) e.style.display='block';});
 var reduce=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
 var $=function(id){return document.getElementById(id)};
 var card=$('card'), win=$('win'), hud=$('hud'), dbg=$('dbg'), msg=$('msg'), stat=$('status');
