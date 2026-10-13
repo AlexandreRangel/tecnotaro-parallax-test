@@ -484,3 +484,10 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): asset 6ba7549a mirrored, recolored two-tone amber / violet.
 - finish: FIG_DEGREEN=1 DEFRINGE=4 EDGE_CHOKE=5 RECOLOR_GREEN=1 RECOLOR_TO=amber FG_BOOST=0.5 FG_BODY=0.85 FIN_HEADBOX=1159,1701,220.
+
+## 72 Nove de Ouros
+- figure (FIG_FIT=1080,2515,1050 FIG_KEEPALL=1 KEY_STRICT=1: ~62% card height, width-bound, stone patch on the terrace floor above the bottom edge; green through the trellis keyed): woman in a purple and gold gown with a robotic falcon on her hand, beside a golden trellis with nine gold pentacles and grapes, on a stone patch (asset 02c0b80f).
+- bg (crop x 598-1003 of 1280, centered on the spired villa): golden-hour vineyard terrace with a spired villa on a hill (asset 6f08cb25), plus a soft contact shadow under the patch.
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): asset 6ba7549a flipped vertically, recolored two-tone amber / violet, lighter.
+- finish: FIG_DEGREEN=1 DEFRINGE=4 EDGE_CHOKE=5 RECOLOR_GREEN=1 RECOLOR_TO=amber (vine leaves -> amber) FG_BOOST=0.35 FG_BODY=0.85 FIN_HEADBOX=876,1567,220.
