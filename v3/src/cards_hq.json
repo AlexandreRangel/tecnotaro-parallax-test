@@ -3,287 +3,309 @@
   "n": 0,
   "slug": "00-the-fool",
   "kind": "major",
-  "fig": "a slim playful Black man in his fifties with short grey hair and grey stubble, laughing, wearing a purple and cyan jester hood with two small brass bells, light patched blue steampunk coat, small brass backpack with a glowing amber lantern, holding a brass walking staff with a glowing cyan crystal, mid stride with a light dancing step, a small brass robot dog leaping at his feet",
+  "fig": "a slim playful Black man in his fifties, clean shaven, short bright blue hair, laughing, simple cyan hoodie with glowing LED trim and a small jester hood with two tiny light bells, plain trousers, sneakers, small backpack with a holographic map, holding a light walking stick with a glowing crystal tip, light dancing step, a small robot dog leaping at his feet, standing on a small mound of glowing earth, with subtle glowing LED circuit lines and small cybernetic accents",
   "bg": "rainy neon megacity canyon street at night lit bright, glowing magenta and cyan skyscraper signs fading into luminous haze",
   "mid": "tall brass and glass cyberpunk tenement buildings with neon windows",
   "prop": "lantern",
   "energy": "cyan and magenta",
   "face": true,
   "near": "glowing neon mushrooms and brass flowers",
-  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines"
+  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines",
+  "midobj": "a tall slim brass lamp post with glowing neon arrow shapes and floating holographic crystals"
  },
  {
   "n": 1,
   "slug": "01-the-magician",
   "kind": "major",
-  "fig": "a slim confident Mediterranean woman in her forties with a short dark pixie haircut, sly smile, magenta neon lemniscate glowing above her head, standing behind a brass inventor workbench, raising a glowing wand, on the table a cup, a coin, a small brass blade and holographic dice, playful gesture",
+  "fig": "a slim confident Mediterranean woman in her forties with a short dark pixie haircut, sly smile, opulent magenta and gold coat with glowing circuitry embroidery, neon lemniscate hologram above her head, standing behind a brass and glass tech workbench, raising a glowing wand, on the table a cup, a coin, a small blade and holographic dice, with subtle glowing LED circuit lines and small cybernetic accents",
   "bg": "bright neon alchemist laboratory city skyline with floating holograms and cyan nebula sky",
   "mid": "brass shelves with glowing flasks and copper pipes, cogs",
   "prop": "cable",
   "energy": "magenta and cyan",
   "face": true,
   "near": "brass gears and glowing crystals",
-  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines"
+  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines",
+  "midobj": "tall brass stands holding floating holographic screens and glowing alchemical flasks, left and right"
  },
  {
   "n": 2,
   "slug": "02-the-high-priestess",
   "kind": "major",
-  "fig": "a serene slim Indian woman in her sixties with a long silver braid, eyes half closed in meditation, enigmatic half smile, seated cross legged on a brass throne, tall brass tiara with cyan neon rings, open glowing data book on her lap, flowing blue and violet robes",
+  "fig": "a serene slim Indian woman in her sixties with short silver hair, eyes half closed in meditation, simple blue tunic with glowing data lines, thin LED circlet, seated cross legged on a low stone seat, open glowing holographic book on her lap, with subtle glowing LED circuit lines and small cybernetic accents",
   "bg": "vast luminous library temple with glowing blue veil curtains and starry cyan nebula",
   "mid": "tall brass bookshelves and gothic arches",
   "prop": "pipe",
   "energy": "cyan and violet",
   "face": true,
   "near": "potted bioluminescent plants in brass pots",
-  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines"
+  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines",
+  "midobj": "two tall pillars, one dark and one light, with glowing neon glyph rings, and a translucent veil of light between them, left and right"
  },
  {
   "n": 3,
   "slug": "03-the-empress",
   "kind": "major",
-  "fig": "a joyful curvy Afro-Brazilian woman in her forties, seated on an ornate throne among glowing vertical farm wheat, magenta and gold gown, holding a brass sceptre with a glowing orb, amber mechanical wings behind her, hands touching ripe wheat",
+  "fig": "a joyful Afro-Brazilian woman in her forties with short natural hair, opulent magenta and gold gown with LED embroidery, seated on an ornate tech throne with amber holographic wings, holding a sceptre with a glowing orb, ripe glowing wheat around her feet, with subtle glowing LED circuit lines and small cybernetic accents",
   "bg": "radiant garden palace under bright magenta and gold nebula sky",
   "mid": "ornate brass greenhouse arches with glowing flowers",
   "prop": "lantern",
   "energy": "amber and magenta",
   "face": true,
   "near": "a brass gramophone horn and glowing musical notes",
-  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines"
+  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines",
+  "midobj": "tall stalks of glowing bioluminescent wheat and hydroponic towers with neon grow lights, left and right"
  },
  {
   "n": 4,
   "slug": "04-the-emperor",
   "kind": "major",
-  "fig": "a calm slim Scandinavian man in his sixties with a short white beard, long purple and brass coat, simple brass crown, seated on a brass cube throne, holding a sceptre with a glowing globe, relaxed architect with blueprints",
+  "fig": "a calm slim Scandinavian man in his sixties, clean shaven, short silver hair, opulent purple and brass jacket with glowing circuitry, simple LED crown, seated on a brass cube throne, holding a sceptre with a holographic globe, with subtle glowing LED circuit lines and small cybernetic accents",
   "bg": "imperial neon citadel skyline with brass towers under bright blue and amber sky",
   "mid": "massive brass fortress walls and columns",
   "prop": "pipe",
   "energy": "amber and cyan",
   "face": true,
   "near": "paint brushes and glowing color jars",
-  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines"
+  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines",
+  "midobj": "four tall brass columns with glowing blueprint holograms floating between them, left and right"
  },
  {
   "n": 5,
   "slug": "05-the-pope",
   "kind": "major",
-  "fig": "a gentle Middle Eastern man in his seventies in red and gold robes, triple brass crown with neon rings, seated between two brass columns, raising two fingers in blessing, holding a brass staff, two adult students listening in front of him seen from behind",
+  "fig": "a gentle Middle Eastern man in his seventies with a short white goatee, red and gold robe with glowing data patterns, LED triple ring crown, seated, raising two fingers in blessing, holding a light staff, two adult students with tablets listening in front of him seen from behind, with subtle glowing LED circuit lines and small cybernetic accents",
   "bg": "grand neon cathedral interior with stained glass glowing magenta and gold",
   "mid": "brass organ pipes and gothic arches",
   "prop": "lantern",
   "energy": "amber and magenta",
   "face": true,
   "near": "brass beehive and glowing bees",
-  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines"
+  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines",
+  "midobj": "two tall stone columns with glowing neon keys and floating hologram scrolls, left and right"
  },
  {
   "n": 6,
   "slug": "06-the-lovers",
   "kind": "major",
-  "fig": "a slim Latino man in his forties standing between two women, a Black woman in her forties with a short natural haircut and a white redhead woman in her fifties, tender smiles, colorful steampunk neon clothing, a small winged cupid drone glowing above them",
+  "fig": "a slim Latino man in his forties with short pink hair, simple shirt with glowing LED piping, standing between two women, a Black woman in her forties with a short natural haircut and a white redhead woman in her fifties with a short bob, simple modern clothes, tender smiles, holding hands, with subtle glowing LED circuit lines and small cybernetic accents",
   "bg": "bright radiant sun halo over a neon city boulevard with pink clouds",
   "mid": "ornate brass arches with neon hearts and filigree",
   "prop": "cable",
   "energy": "magenta and amber",
   "face": true,
   "near": "a small brass synthesizer with glowing keys",
-  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines"
+  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines",
+  "midobj": "a winged cupid drone of light hovering high above, and two flowering trees with neon blossoms, left and right"
  },
  {
   "n": 7,
   "slug": "07-the-chariot",
   "kind": "major",
-  "fig": "a proud slim Polynesian woman in her forties with short curly hair in a flowing cyan coat with crescent moon brass ornaments, joyful, standing in a square brass hover chariot pulled by two mechanical horses, one magenta and one cyan",
+  "fig": "a joyful slim Polynesian woman in her forties with short curly hair, simple cyan jumpsuit with glowing crescent moon LED panels, standing in a small square hover chariot of brass and glass, with subtle glowing LED circuit lines and small cybernetic accents",
   "bg": "neon highway megacity under bright cyan sky with light trails",
   "mid": "brass gates and towers along an avenue",
   "prop": "pipe",
   "energy": "cyan and magenta",
   "face": true,
   "near": "meditation singing bowls of brass with incense smoke",
-  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines"
+  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines",
+  "midobj": "two mechanical horse automatons, one magenta and one cyan, with glowing circuitry, standing apart left and right"
  },
  {
   "n": 8,
   "slug": "08-justice",
   "kind": "major",
-  "fig": "a composed slim South African woman in her fifties with short cropped grey hair, seated frontally on a throne, holding a raised glowing cyan sword upright in her right hand and brass scales in her left, amber halo, blue and brass robes",
+  "fig": "a composed slim South African woman in her fifties with short cropped grey hair, simple blue tunic with glowing LED trim, seated frontally on a plain stone seat, holding a glowing cyan blade upright in her right hand and holographic scales in her left, with subtle glowing LED circuit lines and small cybernetic accents",
   "bg": "luminous neon courthouse hall with tall windows of cyan light",
   "mid": "two great brass columns and arches",
   "prop": "lantern",
   "energy": "cyan and amber",
   "face": true,
   "near": "glowing neon mushrooms and brass flowers",
-  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines"
+  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines",
+  "midobj": "two tall pillars with glowing balance symbols and floating data streams, left and right"
  },
  {
   "n": 9,
   "slug": "09-the-hermit",
   "kind": "major",
-  "fig": "a weathered slim Native American man in his seventies with long grey hair, dark hooded long coat with brass fittings, walking with a brass staff, holding up a glowing amber lantern, peaceful smile",
+  "fig": "a slim Native American man in his seventies, clean shaven, long grey hair, simple dark hooded cloak with glowing LED seams, walking with a light staff, holding up a lantern with a glowing star inside, peaceful smile, standing on a small rocky mound, with subtle glowing LED circuit lines and small cybernetic accents",
   "bg": "rainy neon alley city at night lit brightly, cyan haze and magenta signs",
   "mid": "old brass street lamps and dripping pipes and buildings",
   "prop": "cable",
   "energy": "amber and cyan",
   "face": true,
   "near": "brass gears and glowing crystals",
-  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines"
+  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines",
+  "midobj": "tall glowing crystal formations and a thin LED lamp post, left and right"
  },
  {
   "n": 10,
   "slug": "10-wheel-of-fortune",
   "kind": "major",
-  "fig": "a giant ornate brass cogwheel of fortune with glowing neon spokes and a crank handle, a playful monkey android climbing up one side, a dog android sliding down the other, a brass sphinx automaton sitting calmly on top",
+  "fig": "a giant ornate brass cogwheel of fortune with glowing neon spokes and holographic symbols, a playful monkey android climbing one side, a dog android sliding down the other, a small brass sphinx automaton on top, with subtle glowing LED circuit lines and small cybernetic accents",
   "bg": "swirling cosmic neon nebula over a futuristic city",
   "mid": "floating brass gears and clockwork machinery",
   "prop": "pipe",
   "energy": "magenta and cyan",
   "face": false,
   "near": "potted bioluminescent plants in brass pots",
-  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines"
+  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines",
+  "midobj": "floating clouds with tech glyphs and four small holographic creature emblems, left and right"
  },
  {
   "n": 11,
   "slug": "11-strength",
   "kind": "major",
-  "fig": "a slim Irish woman in her fifties with short red hair, calm smile, wide brimmed hat with lemniscate brim, black and magenta dress, gently stroking the head of a large friendly mechanical brass lion with glowing cyan eyes",
+  "fig": "a slim Irish woman in her fifties with short red hair, calm smile, simple black and magenta dress with glowing circuitry, lemniscate hologram over her head, gently stroking the head of a friendly mechanical lion with glowing cyan eyes, with subtle glowing LED circuit lines and small cybernetic accents",
   "bg": "bright neon jungle garden city with cyan and pink sky",
   "mid": "brass greenhouse ruins with overgrown glowing vines",
   "prop": "lantern",
   "energy": "amber and magenta",
   "face": true,
   "near": "a brass gramophone horn and glowing musical notes",
-  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines"
+  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines",
+  "midobj": "flowering vines with neon blossoms on tall slender trellises, left and right"
  },
  {
   "n": 12,
   "slug": "12-the-hanged-man",
   "kind": "major",
-  "fig": "a slim Arab man in his forties hanging upside down by one ankle from a brass beam like an acrobat, other leg crossed, hands behind back, serene smiling face, glowing coins falling from his pockets",
+  "fig": "a slim Arab man in his forties, clean shaven, short blue hair, simple white clothes with glowing LED lines, hanging upside down by one ankle from a light beam like an acrobat, serene smile, glowing coins falling, with subtle glowing LED circuit lines and small cybernetic accents",
   "bg": "neon city of green data rain and bright cyan sky",
   "mid": "two tall brass pillars with gears",
   "prop": "cable",
   "energy": "cyan and green",
   "face": true,
   "near": "paint brushes and glowing color jars",
-  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines"
+  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines",
+  "midobj": "two tall living trees with glowing circuit bark, left and right"
  },
  {
   "n": 13,
   "slug": "13-death",
   "kind": "major",
-  "fig": "a tall elegant chrome skeletal android gardener with glowing magenta joints harvesting glowing flowers with a long curved brass harvesting scythe, in a field of brass seeds and new sprouts, transformation and renewal",
+  "fig": "a tall elegant chrome android gardener with glowing magenta joints harvesting glowing flowers with a long curved harvesting blade, new sprouts at its feet, with subtle glowing LED circuit lines and small cybernetic accents",
   "bg": "ruined neon city skyline under bright violet and cyan sky",
   "mid": "broken brass machines and ruined arches",
   "prop": "pipe",
   "energy": "magenta and violet",
   "face": true,
   "near": "brass beehive and glowing bees",
-  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines"
+  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines",
+  "midobj": "tall glowing sunflowers and dandelion seeds of light floating, left and right"
  },
  {
   "n": 14,
   "slug": "14-temperance",
   "kind": "major",
-  "fig": "an androgynous winged angel of Ethiopian descent in their forties with short hair, peaceful gaze, white and gold robes, mechanical feathered wings, pouring glowing cyan liquid from one brass vessel into another",
+  "fig": "an androgynous angel of Ethiopian descent in their forties with short hair, peaceful gaze, simple white robe with glowing LED lines, holographic feathered wings, pouring glowing cyan liquid from one vessel into another, one foot on a stone, with subtle glowing LED circuit lines and small cybernetic accents",
   "bg": "heavenly bright sky of pink and cyan clouds over a luminous city",
   "mid": "brass aqueduct arches with glowing water",
   "prop": "lantern",
   "energy": "cyan and gold",
   "face": true,
   "near": "a small brass synthesizer with glowing keys",
-  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines"
+  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines",
+  "midobj": "tall glowing irises and a small waterfall of light, left and right"
  },
  {
   "n": 15,
   "slug": "15-the-devil",
   "kind": "major",
-  "fig": "a slim theatrical Hispanic man in his fifties with curling brass horns and bat-like brass mechanical wings, mischievous grin, standing on a brass pedestal holding a glowing torch, two small horned adults, a man and a woman, loosely tied with glowing ribbons at the base",
+  "fig": "a slim theatrical Hispanic man in his fifties, clean shaven, short pink hair, small glowing LED horns, holographic bat wings, mischievous grin, simple black outfit with neon lines, standing on a small pedestal holding a glowing torch, two small horned adults loosely tied with glowing ribbons at the base, with subtle glowing LED circuit lines and small cybernetic accents",
   "bg": "infernal neon city with red and magenta glowing fog",
   "mid": "brass furnaces and smokestacks with chains",
   "prop": "cable",
   "energy": "red and magenta",
   "face": true,
   "near": "meditation singing bowls of brass with incense smoke",
-  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines"
+  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines",
+  "midobj": "tall neon signs shaped like flames and tangled glowing cables on stands, left and right"
  },
  {
   "n": 16,
   "slug": "16-the-tower",
   "kind": "major",
-  "fig": "a tall brass and glass tower struck by a bolt of neon lightning, its crown roof flying off in sparks and glowing confetti, two adults gliding down with glowing parachute umbrellas",
+  "fig": "a tall glass and brass tower struck by neon lightning, its roof flying off in glowing confetti, two adults gliding down with glowing parachute umbrellas, with subtle glowing LED circuit lines and small cybernetic accents",
   "bg": "stormy bright magenta and cyan sky over a megacity",
   "mid": "distant brass skyscrapers and scaffolding",
   "prop": "pipe",
   "energy": "cyan and magenta",
   "face": false,
   "near": "glowing neon mushrooms and brass flowers",
-  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines"
+  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines",
+  "midobj": "jagged glowing lightning rods and falling data fragments, left and right"
  },
  {
   "n": 17,
   "slug": "17-the-star",
   "kind": "major",
-  "fig": "a graceful slim Black woman in her forties with a short natural haircut kneeling by a glowing pool, flowing translucent cyan robe, pouring water from two brass jugs, one into the pool and one onto the land, a big star above",
+  "fig": "a graceful slim Black woman in her forties with a short natural haircut, simple translucent cyan tunic with glowing lines, kneeling by a glowing pool on a small mound, pouring water from two jugs, with subtle glowing LED circuit lines and small cybernetic accents",
   "bg": "starry bright night sky with eight glowing stars and one large central star, cyan and pink nebula",
   "mid": "brass garden fountains and a mechanical tree with a small brass bird",
   "prop": "lantern",
   "energy": "cyan and pink",
   "face": true,
   "near": "brass gears and glowing crystals",
-  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines"
+  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines",
+  "midobj": "a big glowing star and small stars of light hanging high, a slim tree with a neon bird, left and right"
  },
  {
   "n": 18,
   "slug": "18-the-moon",
   "kind": "major",
-  "fig": "two mechanical brass dogs howling up at a huge glowing moon, a brass crayfish emerging from a glowing pool between them, two brass towers",
+  "fig": "two mechanical dogs howling up, a crayfish robot emerging from a glowing pool between them, on a small mound, with subtle glowing LED circuit lines and small cybernetic accents",
   "bg": "large glowing crescent moon with a serene profile face in a cyan and magenta sky with falling droplets",
   "mid": "two brass towers on the left and right with neon windows",
   "prop": "pipe",
   "energy": "cyan and violet",
   "face": false,
   "near": "potted bioluminescent plants in brass pots",
-  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines"
+  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines",
+  "midobj": "two tall slender towers with glowing windows and a huge holographic moon above, left and right"
  },
  {
   "n": 19,
   "slug": "19-the-sun",
   "kind": "major",
-  "fig": "a joyful adult man and woman in their forties of different ethnicities, the woman with short hair, dancing together hand in hand in front of a low brass brick wall under a huge sun, colorful steampunk clothing",
+  "fig": "a joyful adult man in his forties with short blue hair and a woman in her forties with short hair, different ethnicities, simple bright clothes with glowing LED trim, dancing hand in hand on a small mound, with subtle glowing LED circuit lines and small cybernetic accents",
   "bg": "a radiant brass sun with a calm face and glowing golden rays in a bright amber and magenta sky",
   "mid": "rooftops and brass domes in warm light",
   "prop": "lantern",
   "energy": "amber and gold",
   "face": true,
   "near": "a brass gramophone horn and glowing musical notes",
-  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines"
+  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines",
+  "midobj": "a low brick wall with neon circuitry and tall glowing sunflowers, left and right"
  },
  {
   "n": 20,
   "slug": "20-judgement",
   "kind": "major",
-  "fig": "three mature adults rising from an open brass capsule with arms raised in awe, above them a winged angel blowing a brass trumpet with a flag",
+  "fig": "three mature adults in simple clothes rising from an open glowing tech capsule with arms raised in awe, with subtle glowing LED circuit lines and small cybernetic accents",
   "bg": "bright clouds of pink and cyan light opening in the sky",
   "mid": "ruined brass cathedral arches",
   "prop": "cable",
   "energy": "pink and cyan",
   "face": true,
   "near": "paint brushes and glowing color jars",
-  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines"
+  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines",
+  "midobj": "a winged angel of light blowing a trumpet with a holographic flag high above, and tall glowing antennas, left and right"
  },
  {
   "n": 21,
   "slug": "21-the-world",
   "kind": "major",
-  "fig": "a graceful dancing slim woman of mixed race in her forties with short hair wrapped in a flowing magenta scarf, holding a wand, inside an oval wreath of glowing neon leaves",
+  "fig": "a graceful dancing slim woman of mixed race in her forties with short hair, wrapped in a flowing magenta scarf with LED threads, holding two glowing wands, with subtle glowing LED circuit lines and small cybernetic accents",
   "bg": "cosmic bright nebula with planets in magenta and cyan",
   "mid": "four brass automaton heads of an angel, an eagle, a lion and an ox on brass pedestals at the corners",
   "prop": "pipe",
   "energy": "magenta and cyan",
   "face": true,
   "near": "brass beehive and glowing bees",
-  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines"
+  "ground": "polished wet brass and stone plaza floor with glowing cyan circuit lines",
+  "midobj": "an oval wreath of glowing neon leaves and four holographic emblems in the corners, angel, eagle, bull and lion"
  },
  {
   "n": 22,
@@ -294,11 +316,12 @@
   "obj": "brass baton staff with glowing amber core and mechanical vines",
   "mid": "brass trellis towers and wooden scaffolds with glowing vines",
   "kind": "ace",
-  "fig": "a single elegant hand of a mature Black woman emerging from a glowing neon cloud, gripping one large knotted brass baton with glowing amber core, leaves falling",
+  "fig": "a single elegant hand of a mature Black woman emerging from a glowing neon cloud, gripping one large knotted glowing tech baton with glowing amber core, leaves falling, with subtle glowing LED circuit lines and small cybernetic accents",
   "face": false,
   "hand": true,
   "near": "a small brass synthesizer with glowing keys",
-  "ground": "rich farm soil with glowing sprouts and brass irrigation pipes"
+  "ground": "rich farm soil with glowing sprouts and brass irrigation pipes",
+  "midobj": "two tall slender holographic plant towers with neon leaves, left and right"
  },
  {
   "n": 23,
@@ -312,7 +335,8 @@
   "count": 2,
   "face": false,
   "near": "meditation singing bowls of brass with incense smoke",
-  "ground": "rich farm soil with glowing sprouts and brass irrigation pipes"
+  "ground": "rich farm soil with glowing sprouts and brass irrigation pipes",
+  "midobj": "tall glowing antenna masts with neon vines, left and right"
  },
  {
   "n": 24,
@@ -326,7 +350,8 @@
   "count": 3,
   "face": false,
   "near": "glowing neon mushrooms and brass flowers",
-  "ground": "rich farm soil with glowing sprouts and brass irrigation pipes"
+  "ground": "rich farm soil with glowing sprouts and brass irrigation pipes",
+  "midobj": "tall glowing antenna masts with neon vines, left and right"
  },
  {
   "n": 25,
@@ -340,7 +365,8 @@
   "count": 4,
   "face": false,
   "near": "brass gears and glowing crystals",
-  "ground": "rich farm soil with glowing sprouts and brass irrigation pipes"
+  "ground": "rich farm soil with glowing sprouts and brass irrigation pipes",
+  "midobj": "tall glowing antenna masts with neon vines, left and right"
  },
  {
   "n": 26,
@@ -354,7 +380,8 @@
   "count": 5,
   "face": false,
   "near": "potted bioluminescent plants in brass pots",
-  "ground": "rich farm soil with glowing sprouts and brass irrigation pipes"
+  "ground": "rich farm soil with glowing sprouts and brass irrigation pipes",
+  "midobj": "tall glowing antenna masts with neon vines, left and right"
  },
  {
   "n": 27,
@@ -368,7 +395,8 @@
   "count": 6,
   "face": false,
   "near": "a brass gramophone horn and glowing musical notes",
-  "ground": "rich farm soil with glowing sprouts and brass irrigation pipes"
+  "ground": "rich farm soil with glowing sprouts and brass irrigation pipes",
+  "midobj": "tall glowing antenna masts with neon vines, left and right"
  },
  {
   "n": 28,
@@ -382,7 +410,8 @@
   "count": 7,
   "face": false,
   "near": "paint brushes and glowing color jars",
-  "ground": "rich farm soil with glowing sprouts and brass irrigation pipes"
+  "ground": "rich farm soil with glowing sprouts and brass irrigation pipes",
+  "midobj": "tall glowing antenna masts with neon vines, left and right"
  },
  {
   "n": 29,
@@ -396,7 +425,8 @@
   "count": 8,
   "face": false,
   "near": "brass beehive and glowing bees",
-  "ground": "rich farm soil with glowing sprouts and brass irrigation pipes"
+  "ground": "rich farm soil with glowing sprouts and brass irrigation pipes",
+  "midobj": "tall glowing antenna masts with neon vines, left and right"
  },
  {
   "n": 30,
@@ -410,7 +440,8 @@
   "count": 9,
   "face": false,
   "near": "a small brass synthesizer with glowing keys",
-  "ground": "rich farm soil with glowing sprouts and brass irrigation pipes"
+  "ground": "rich farm soil with glowing sprouts and brass irrigation pipes",
+  "midobj": "tall glowing antenna masts with neon vines, left and right"
  },
  {
   "n": 31,
@@ -424,7 +455,8 @@
   "count": 10,
   "face": false,
   "near": "meditation singing bowls of brass with incense smoke",
-  "ground": "rich farm soil with glowing sprouts and brass irrigation pipes"
+  "ground": "rich farm soil with glowing sprouts and brass irrigation pipes",
+  "midobj": "tall glowing antenna masts with neon vines, left and right"
  },
  {
   "n": 32,
@@ -435,11 +467,12 @@
   "obj": "brass baton staff with glowing amber core and mechanical vines",
   "mid": "brass trellis towers and wooden scaffolds with glowing vines",
   "kind": "court",
-  "fig": "a slim Native Brazilian man in his thirties in a long blue steampunk coat and hat, standing holding a tall brass baton planted on the ground, tending glowing vines growing on it",
+  "fig": "a slim Native Brazilian man in his thirties, clean shaven, short pink hair, simple blue work jacket with glowing LED trim, holding a tall glowing staff planted in the ground, tending neon vines growing on it, with subtle glowing LED circuit lines and small cybernetic accents",
   "face": true,
   "hand": false,
   "near": "glowing neon mushrooms and brass flowers",
-  "ground": "rich farm soil with glowing sprouts and brass irrigation pipes"
+  "ground": "rich farm soil with glowing sprouts and brass irrigation pipes",
+  "midobj": "tall glowing staves planted in the ground with neon vines, left and right"
  },
  {
   "n": 33,
@@ -450,11 +483,12 @@
   "obj": "brass baton staff with glowing amber core and mechanical vines",
   "mid": "brass trellis towers and wooden scaffolds with glowing vines",
   "kind": "court",
-  "fig": "a joyful slim Moroccan woman in her forties with short hair riding a prancing mechanical brass horse, holding a glowing baton aloft like a torch, celebrating",
+  "fig": "a joyful slim Moroccan woman in her forties with short hair, simple amber jumpsuit with glowing circuitry, riding a prancing mechanical horse, holding a glowing staff aloft like a torch, with subtle glowing LED circuit lines and small cybernetic accents",
   "face": true,
   "hand": false,
   "near": "brass gears and glowing crystals",
-  "ground": "rich farm soil with glowing sprouts and brass irrigation pipes"
+  "ground": "rich farm soil with glowing sprouts and brass irrigation pipes",
+  "midobj": "tall glowing staves planted in the ground with neon vines, left and right"
  },
  {
   "n": 34,
@@ -465,11 +499,12 @@
   "obj": "brass baton staff with glowing amber core and mechanical vines",
   "mid": "brass trellis towers and wooden scaffolds with glowing vines",
   "kind": "court",
-  "fig": "a warm Italian woman in her fifties in a colorful magenta and gold gown seated on a throne, holding a large brass baton, sly smile, a mechanical cat at her feet",
+  "fig": "a warm Italian woman in her fifties with a short grey bob, simple green and gold dress with LED trim, seated on a plain wooden seat, holding a tall glowing staff, a mechanical cat at her feet, with subtle glowing LED circuit lines and small cybernetic accents",
   "face": true,
   "hand": false,
   "near": "potted bioluminescent plants in brass pots",
-  "ground": "rich farm soil with glowing sprouts and brass irrigation pipes"
+  "ground": "rich farm soil with glowing sprouts and brass irrigation pipes",
+  "midobj": "tall glowing staves planted in the ground with neon vines, left and right"
  },
  {
   "n": 35,
@@ -480,11 +515,12 @@
   "obj": "brass baton staff with glowing amber core and mechanical vines",
   "mid": "brass trellis towers and wooden scaffolds with glowing vines",
   "kind": "court",
-  "fig": "a bearded Nigerian man in his sixties in purple and gold robes seated in a brass throne, holding a glowing brass baton, wise gaze",
+  "fig": "a Nigerian man in his sixties with a short white goatee, simple purple tunic with glowing lines, seated, holding a glowing staff, wise gaze, with subtle glowing LED circuit lines and small cybernetic accents",
   "face": true,
   "hand": false,
   "near": "a brass gramophone horn and glowing musical notes",
-  "ground": "rich farm soil with glowing sprouts and brass irrigation pipes"
+  "ground": "rich farm soil with glowing sprouts and brass irrigation pipes",
+  "midobj": "tall glowing staves planted in the ground with neon vines, left and right"
  },
  {
   "n": 36,
@@ -495,11 +531,12 @@
   "obj": "ornate brass goblet chalice glowing with cyan liquid",
   "mid": "brass canal bridges and fountain arches",
   "kind": "ace",
-  "fig": "a single large ornate brass goblet shaped like a cathedral overflowing with glowing cyan liquid, resting on a brass pedestal, symmetrical, perfect proportions",
+  "fig": "a single large ornate glowing tech goblet shaped like a cathedral overflowing with glowing cyan liquid, resting on a glowing tech pedestal, symmetrical, perfect proportions, with subtle glowing LED circuit lines and small cybernetic accents",
   "face": false,
   "hand": false,
   "near": "paint brushes and glowing color jars",
-  "ground": "shallow glowing water over brass tiles with lily pads"
+  "ground": "shallow glowing water over brass tiles with lily pads",
+  "midobj": "two tall slender holographic plant towers with neon leaves, left and right"
  },
  {
   "n": 37,
@@ -513,7 +550,8 @@
   "count": 2,
   "face": false,
   "near": "brass beehive and glowing bees",
-  "ground": "shallow glowing water over brass tiles with lily pads"
+  "ground": "shallow glowing water over brass tiles with lily pads",
+  "midobj": "slender fountains of glowing water on stands, left and right"
  },
  {
   "n": 38,
@@ -527,7 +565,8 @@
   "count": 3,
   "face": false,
   "near": "a small brass synthesizer with glowing keys",
-  "ground": "shallow glowing water over brass tiles with lily pads"
+  "ground": "shallow glowing water over brass tiles with lily pads",
+  "midobj": "slender fountains of glowing water on stands, left and right"
  },
  {
   "n": 39,
@@ -541,7 +580,8 @@
   "count": 4,
   "face": false,
   "near": "meditation singing bowls of brass with incense smoke",
-  "ground": "shallow glowing water over brass tiles with lily pads"
+  "ground": "shallow glowing water over brass tiles with lily pads",
+  "midobj": "slender fountains of glowing water on stands, left and right"
  },
  {
   "n": 40,
@@ -555,7 +595,8 @@
   "count": 5,
   "face": false,
   "near": "glowing neon mushrooms and brass flowers",
-  "ground": "shallow glowing water over brass tiles with lily pads"
+  "ground": "shallow glowing water over brass tiles with lily pads",
+  "midobj": "slender fountains of glowing water on stands, left and right"
  },
  {
   "n": 41,
@@ -569,7 +610,8 @@
   "count": 6,
   "face": false,
   "near": "brass gears and glowing crystals",
-  "ground": "shallow glowing water over brass tiles with lily pads"
+  "ground": "shallow glowing water over brass tiles with lily pads",
+  "midobj": "slender fountains of glowing water on stands, left and right"
  },
  {
   "n": 42,
@@ -583,7 +625,8 @@
   "count": 7,
   "face": false,
   "near": "potted bioluminescent plants in brass pots",
-  "ground": "shallow glowing water over brass tiles with lily pads"
+  "ground": "shallow glowing water over brass tiles with lily pads",
+  "midobj": "slender fountains of glowing water on stands, left and right"
  },
  {
   "n": 43,
@@ -597,7 +640,8 @@
   "count": 8,
   "face": false,
   "near": "a brass gramophone horn and glowing musical notes",
-  "ground": "shallow glowing water over brass tiles with lily pads"
+  "ground": "shallow glowing water over brass tiles with lily pads",
+  "midobj": "slender fountains of glowing water on stands, left and right"
  },
  {
   "n": 44,
@@ -611,7 +655,8 @@
   "count": 9,
   "face": false,
   "near": "paint brushes and glowing color jars",
-  "ground": "shallow glowing water over brass tiles with lily pads"
+  "ground": "shallow glowing water over brass tiles with lily pads",
+  "midobj": "slender fountains of glowing water on stands, left and right"
  },
  {
   "n": 45,
@@ -625,7 +670,8 @@
   "count": 10,
   "face": false,
   "near": "brass beehive and glowing bees",
-  "ground": "shallow glowing water over brass tiles with lily pads"
+  "ground": "shallow glowing water over brass tiles with lily pads",
+  "midobj": "slender fountains of glowing water on stands, left and right"
  },
  {
   "n": 46,
@@ -636,11 +682,12 @@
   "obj": "ornate brass goblet chalice glowing with cyan liquid",
   "mid": "brass canal bridges and fountain arches",
   "kind": "court",
-  "fig": "a slim woman of Spanish descent in her forties with a short dark bob haircut, dreamy gaze, long dark steampunk coat, standing holding one open brass cup in both hands",
+  "fig": "a slim woman of Spanish descent in her forties with a short dark bob, simple long coat with LED piping, standing holding one glowing cup in both hands, dreamy gaze, with subtle glowing LED circuit lines and small cybernetic accents",
   "face": true,
   "hand": false,
   "near": "a small brass synthesizer with glowing keys",
-  "ground": "shallow glowing water over brass tiles with lily pads"
+  "ground": "shallow glowing water over brass tiles with lily pads",
+  "midobj": "tall stands holding glowing cups and small fountains of light, left and right"
  },
  {
   "n": 47,
@@ -651,11 +698,12 @@
   "obj": "ornate brass goblet chalice glowing with cyan liquid",
   "mid": "brass canal bridges and fountain arches",
   "kind": "court",
-  "fig": "a romantic Persian man in his forties riding a calm mechanical brass horse, offering a glowing goblet, playing music",
+  "fig": "a romantic Persian man in his forties, clean shaven, short blue hair, simple white shirt with glowing lines, riding a calm mechanical horse, offering a glowing cup, with subtle glowing LED circuit lines and small cybernetic accents",
   "face": true,
   "hand": false,
   "near": "meditation singing bowls of brass with incense smoke",
-  "ground": "shallow glowing water over brass tiles with lily pads"
+  "ground": "shallow glowing water over brass tiles with lily pads",
+  "midobj": "tall stands holding glowing cups and small fountains of light, left and right"
  },
  {
   "n": 48,
@@ -666,11 +714,12 @@
   "obj": "ornate brass goblet chalice glowing with cyan liquid",
   "mid": "brass canal bridges and fountain arches",
   "kind": "court",
-  "fig": "an Afro-Caribbean woman in her forties with short red curly hair in a flowing blue gown seated, holding a covered ornate brass goblet, tender expression",
+  "fig": "an Afro-Caribbean woman in her forties with short red curly hair, simple blue dress with glowing lines, seated, holding a covered glowing cup, tender expression, with subtle glowing LED circuit lines and small cybernetic accents",
   "face": true,
   "hand": false,
   "near": "glowing neon mushrooms and brass flowers",
-  "ground": "shallow glowing water over brass tiles with lily pads"
+  "ground": "shallow glowing water over brass tiles with lily pads",
+  "midobj": "tall stands holding glowing cups and small fountains of light, left and right"
  },
  {
   "n": 49,
@@ -681,11 +730,12 @@
   "obj": "ornate brass goblet chalice glowing with cyan liquid",
   "mid": "brass canal bridges and fountain arches",
   "kind": "court",
-  "fig": "a kind Greek man in his sixties with white beard in blue robes seated on a brass throne at the water's edge, holding a glowing goblet",
+  "fig": "a kind Greek man in his sixties, clean shaven, short white hair, simple blue tunic with LED trim, seated on a stone seat at the water's edge, holding a glowing cup, with subtle glowing LED circuit lines and small cybernetic accents",
   "face": true,
   "hand": false,
   "near": "brass gears and glowing crystals",
-  "ground": "shallow glowing water over brass tiles with lily pads"
+  "ground": "shallow glowing water over brass tiles with lily pads",
+  "midobj": "tall stands holding glowing cups and small fountains of light, left and right"
  },
  {
   "n": 50,
@@ -696,11 +746,12 @@
   "obj": "neon-edged curved brass saber sword with ornate hilt",
   "mid": "brass fortress battlements and wind turbines",
   "kind": "ace",
-  "fig": "a single elegant hand of a mature Latino man with exactly five fingers emerging from a glowing neon cloud, holding upright one neon-edged brass sword through a brass crown with olive and palm branches",
+  "fig": "a single elegant hand of a mature Latino man with exactly five fingers emerging from a glowing neon cloud, holding upright one neon-edged glowing tech sword through a glowing tech crown with olive and palm branches, with subtle glowing LED circuit lines and small cybernetic accents",
   "face": false,
   "hand": true,
   "near": "potted bioluminescent plants in brass pots",
-  "ground": "windy pale stone terrace with brass inlays and blowing petals"
+  "ground": "windy pale stone terrace with brass inlays and blowing petals",
+  "midobj": "two tall slender holographic plant towers with neon leaves, left and right"
  },
  {
   "n": 51,
@@ -714,7 +765,8 @@
   "count": 2,
   "face": false,
   "near": "a brass gramophone horn and glowing musical notes",
-  "ground": "windy pale stone terrace with brass inlays and blowing petals"
+  "ground": "windy pale stone terrace with brass inlays and blowing petals",
+  "midobj": "tall slender wind turbines with glowing blades, left and right"
  },
  {
   "n": 52,
@@ -728,7 +780,8 @@
   "count": 3,
   "face": false,
   "near": "paint brushes and glowing color jars",
-  "ground": "windy pale stone terrace with brass inlays and blowing petals"
+  "ground": "windy pale stone terrace with brass inlays and blowing petals",
+  "midobj": "tall slender wind turbines with glowing blades, left and right"
  },
  {
   "n": 53,
@@ -742,7 +795,8 @@
   "count": 4,
   "face": false,
   "near": "brass beehive and glowing bees",
-  "ground": "windy pale stone terrace with brass inlays and blowing petals"
+  "ground": "windy pale stone terrace with brass inlays and blowing petals",
+  "midobj": "tall slender wind turbines with glowing blades, left and right"
  },
  {
   "n": 54,
@@ -756,7 +810,8 @@
   "count": 5,
   "face": false,
   "near": "a small brass synthesizer with glowing keys",
-  "ground": "windy pale stone terrace with brass inlays and blowing petals"
+  "ground": "windy pale stone terrace with brass inlays and blowing petals",
+  "midobj": "tall slender wind turbines with glowing blades, left and right"
  },
  {
   "n": 55,
@@ -770,7 +825,8 @@
   "count": 6,
   "face": false,
   "near": "meditation singing bowls of brass with incense smoke",
-  "ground": "windy pale stone terrace with brass inlays and blowing petals"
+  "ground": "windy pale stone terrace with brass inlays and blowing petals",
+  "midobj": "tall slender wind turbines with glowing blades, left and right"
  },
  {
   "n": 56,
@@ -784,7 +840,8 @@
   "count": 7,
   "face": false,
   "near": "glowing neon mushrooms and brass flowers",
-  "ground": "windy pale stone terrace with brass inlays and blowing petals"
+  "ground": "windy pale stone terrace with brass inlays and blowing petals",
+  "midobj": "tall slender wind turbines with glowing blades, left and right"
  },
  {
   "n": 57,
@@ -798,7 +855,8 @@
   "count": 8,
   "face": false,
   "near": "brass gears and glowing crystals",
-  "ground": "windy pale stone terrace with brass inlays and blowing petals"
+  "ground": "windy pale stone terrace with brass inlays and blowing petals",
+  "midobj": "tall slender wind turbines with glowing blades, left and right"
  },
  {
   "n": 58,
@@ -812,7 +870,8 @@
   "count": 9,
   "face": false,
   "near": "potted bioluminescent plants in brass pots",
-  "ground": "windy pale stone terrace with brass inlays and blowing petals"
+  "ground": "windy pale stone terrace with brass inlays and blowing petals",
+  "midobj": "tall slender wind turbines with glowing blades, left and right"
  },
  {
   "n": 59,
@@ -826,7 +885,8 @@
   "count": 10,
   "face": false,
   "near": "a brass gramophone horn and glowing musical notes",
-  "ground": "windy pale stone terrace with brass inlays and blowing petals"
+  "ground": "windy pale stone terrace with brass inlays and blowing petals",
+  "midobj": "tall slender wind turbines with glowing blades, left and right"
  },
  {
   "n": 60,
@@ -837,11 +897,12 @@
   "obj": "neon-edged curved brass saber sword with ornate hilt",
   "mid": "brass fortress battlements and wind turbines",
   "kind": "court",
-  "fig": "a sharp-eyed slim Turkish woman in her forties with short silver hair, long flowing dark steampunk coat, holding a glowing cyan blade upright like a conductor's baton, alert and curious",
+  "fig": "a sharp-eyed slim Turkish woman in her forties with short silver hair, simple dark coat with glowing seams, holding a glowing cyan blade upright like a conductor's baton, curious, with subtle glowing LED circuit lines and small cybernetic accents",
   "face": true,
   "hand": false,
   "near": "paint brushes and glowing color jars",
-  "ground": "windy pale stone terrace with brass inlays and blowing petals"
+  "ground": "windy pale stone terrace with brass inlays and blowing petals",
+  "midobj": "tall slender wind turbines with glowing blades and floating light feathers, left and right"
  },
  {
   "n": 61,
@@ -852,11 +913,12 @@
   "obj": "neon-edged curved brass saber sword with ornate hilt",
   "mid": "brass fortress battlements and wind turbines",
   "kind": "court",
-  "fig": "a slim Ukrainian man in his forties in a flowing blue steampunk coat riding a galloping mechanical horse through the wind, holding a glowing blade pointing forward like a compass, joyful",
+  "fig": "a slim Ukrainian man in his forties, clean shaven, short blue hair, simple windbreaker with LED lines, riding a galloping mechanical horse, holding a glowing blade pointing forward like a compass, joyful, with subtle glowing LED circuit lines and small cybernetic accents",
   "face": true,
   "hand": false,
   "near": "brass beehive and glowing bees",
-  "ground": "windy pale stone terrace with brass inlays and blowing petals"
+  "ground": "windy pale stone terrace with brass inlays and blowing petals",
+  "midobj": "tall slender wind turbines with glowing blades and floating light feathers, left and right"
  },
  {
   "n": 62,
@@ -867,11 +929,12 @@
   "obj": "neon-edged curved brass saber sword with ornate hilt",
   "mid": "brass fortress battlements and wind turbines",
   "kind": "court",
-  "fig": "an elegant Jamaican woman in her fifties with short silver hair in a pale blue gown seated, holding an upright glowing sword, clear gaze",
+  "fig": "an elegant Jamaican woman in her fifties with short silver hair, simple pale blue dress with glowing lines, seated, holding an upright glowing blade, clear gaze, with subtle glowing LED circuit lines and small cybernetic accents",
   "face": true,
   "hand": false,
   "near": "a small brass synthesizer with glowing keys",
-  "ground": "windy pale stone terrace with brass inlays and blowing petals"
+  "ground": "windy pale stone terrace with brass inlays and blowing petals",
+  "midobj": "tall slender wind turbines with glowing blades and floating light feathers, left and right"
  },
  {
   "n": 63,
@@ -882,11 +945,12 @@
   "obj": "neon-edged curved brass saber sword with ornate hilt",
   "mid": "brass fortress battlements and wind turbines",
   "kind": "court",
-  "fig": "a lean Egyptian man in his sixties in silver and blue robes seated on a throne, holding a glowing sword and a sceptre, thoughtful expression",
+  "fig": "a lean Egyptian man in his sixties, clean shaven, short grey hair, simple silver tunic with LED trim, seated, holding a glowing blade, thoughtful, with subtle glowing LED circuit lines and small cybernetic accents",
   "face": true,
   "hand": false,
   "near": "meditation singing bowls of brass with incense smoke",
-  "ground": "windy pale stone terrace with brass inlays and blowing petals"
+  "ground": "windy pale stone terrace with brass inlays and blowing petals",
+  "midobj": "tall slender wind turbines with glowing blades and floating light feathers, left and right"
  },
  {
   "n": 64,
@@ -897,11 +961,12 @@
   "obj": "large ornate brass coin engraved with a glowing magenta pentacle flower circuit",
   "mid": "brass mint buildings with domes and gears",
   "kind": "ace",
-  "fig": "one very large ornate brass coin engraved with a glowing magenta pentacle flower circuit, framed by mechanical vines and glowing flowers, symmetrical",
+  "fig": "one very large ornate glowing tech coin engraved with a glowing magenta pentacle flower circuit, framed by mechanical vines and glowing flowers, symmetrical, with subtle glowing LED circuit lines and small cybernetic accents",
   "face": false,
   "hand": false,
   "near": "glowing neon mushrooms and brass flowers",
-  "ground": "lush garden ground with moss, flowers and scattered brass gears"
+  "ground": "lush garden ground with moss, flowers and scattered brass gears",
+  "midobj": "two tall slender holographic plant towers with neon leaves, left and right"
  },
  {
   "n": 65,
@@ -915,7 +980,8 @@
   "count": 2,
   "face": false,
   "near": "brass gears and glowing crystals",
-  "ground": "lush garden ground with moss, flowers and scattered brass gears"
+  "ground": "lush garden ground with moss, flowers and scattered brass gears",
+  "midobj": "hydroponic towers with glowing leaves and coin shaped fruits, left and right"
  },
  {
   "n": 66,
@@ -929,7 +995,8 @@
   "count": 3,
   "face": false,
   "near": "potted bioluminescent plants in brass pots",
-  "ground": "lush garden ground with moss, flowers and scattered brass gears"
+  "ground": "lush garden ground with moss, flowers and scattered brass gears",
+  "midobj": "hydroponic towers with glowing leaves and coin shaped fruits, left and right"
  },
  {
   "n": 67,
@@ -943,7 +1010,8 @@
   "count": 4,
   "face": false,
   "near": "a brass gramophone horn and glowing musical notes",
-  "ground": "lush garden ground with moss, flowers and scattered brass gears"
+  "ground": "lush garden ground with moss, flowers and scattered brass gears",
+  "midobj": "hydroponic towers with glowing leaves and coin shaped fruits, left and right"
  },
  {
   "n": 68,
@@ -957,7 +1025,8 @@
   "count": 5,
   "face": false,
   "near": "paint brushes and glowing color jars",
-  "ground": "lush garden ground with moss, flowers and scattered brass gears"
+  "ground": "lush garden ground with moss, flowers and scattered brass gears",
+  "midobj": "hydroponic towers with glowing leaves and coin shaped fruits, left and right"
  },
  {
   "n": 69,
@@ -971,7 +1040,8 @@
   "count": 6,
   "face": false,
   "near": "brass beehive and glowing bees",
-  "ground": "lush garden ground with moss, flowers and scattered brass gears"
+  "ground": "lush garden ground with moss, flowers and scattered brass gears",
+  "midobj": "hydroponic towers with glowing leaves and coin shaped fruits, left and right"
  },
  {
   "n": 70,
@@ -985,7 +1055,8 @@
   "count": 7,
   "face": false,
   "near": "a small brass synthesizer with glowing keys",
-  "ground": "lush garden ground with moss, flowers and scattered brass gears"
+  "ground": "lush garden ground with moss, flowers and scattered brass gears",
+  "midobj": "hydroponic towers with glowing leaves and coin shaped fruits, left and right"
  },
  {
   "n": 71,
@@ -999,7 +1070,8 @@
   "count": 8,
   "face": false,
   "near": "meditation singing bowls of brass with incense smoke",
-  "ground": "lush garden ground with moss, flowers and scattered brass gears"
+  "ground": "lush garden ground with moss, flowers and scattered brass gears",
+  "midobj": "hydroponic towers with glowing leaves and coin shaped fruits, left and right"
  },
  {
   "n": 72,
@@ -1013,7 +1085,8 @@
   "count": 9,
   "face": false,
   "near": "glowing neon mushrooms and brass flowers",
-  "ground": "lush garden ground with moss, flowers and scattered brass gears"
+  "ground": "lush garden ground with moss, flowers and scattered brass gears",
+  "midobj": "hydroponic towers with glowing leaves and coin shaped fruits, left and right"
  },
  {
   "n": 73,
@@ -1027,7 +1100,8 @@
   "count": 10,
   "face": false,
   "near": "brass gears and glowing crystals",
-  "ground": "lush garden ground with moss, flowers and scattered brass gears"
+  "ground": "lush garden ground with moss, flowers and scattered brass gears",
+  "midobj": "hydroponic towers with glowing leaves and coin shaped fruits, left and right"
  },
  {
   "n": 74,
@@ -1038,11 +1112,12 @@
   "obj": "large ornate brass coin engraved with a glowing magenta pentacle flower circuit",
   "mid": "brass mint buildings with domes and gears",
   "kind": "court",
-  "fig": "a thoughtful Mexican man in his thirties in a blue steampunk coat, standing in a glowing farm field, contemplating a glowing brass coin held up in one hand",
+  "fig": "a thoughtful Mexican man in his thirties, clean shaven, short pink hair, simple overalls with glowing LED trim, standing in a glowing farm plot, contemplating a glowing coin held up, with subtle glowing LED circuit lines and small cybernetic accents",
   "face": true,
   "hand": false,
   "near": "potted bioluminescent plants in brass pots",
-  "ground": "lush garden ground with moss, flowers and scattered brass gears"
+  "ground": "lush garden ground with moss, flowers and scattered brass gears",
+  "midobj": "hydroponic plant towers with glowing coins growing like fruit, left and right"
  },
  {
   "n": 75,
@@ -1053,11 +1128,12 @@
   "obj": "large ornate brass coin engraved with a glowing magenta pentacle flower circuit",
   "mid": "brass mint buildings with domes and gears",
   "kind": "court",
-  "fig": "a calm Ghanaian woman in her forties with short hair riding a slow mechanical brass horse through glowing ploughed fields, holding a brass coin",
+  "fig": "a calm Ghanaian woman in her forties with short hair, simple work clothes with glowing lines, riding a slow mechanical horse over glowing furrows, holding a coin, with subtle glowing LED circuit lines and small cybernetic accents",
   "face": true,
   "hand": false,
   "near": "a brass gramophone horn and glowing musical notes",
-  "ground": "lush garden ground with moss, flowers and scattered brass gears"
+  "ground": "lush garden ground with moss, flowers and scattered brass gears",
+  "midobj": "hydroponic plant towers with glowing coins growing like fruit, left and right"
  },
  {
   "n": 76,
@@ -1068,11 +1144,12 @@
   "obj": "large ornate brass coin engraved with a glowing magenta pentacle flower circuit",
   "mid": "brass mint buildings with domes and gears",
   "kind": "court",
-  "fig": "a warm Portuguese woman in her fifties in a green and gold gown seated in a blooming garden, holding a large brass coin, warm smile",
+  "fig": "a warm Portuguese woman in her fifties with a short grey bob, simple green dress with LED trim, seated in a garden, holding a large glowing coin, warm smile, with subtle glowing LED circuit lines and small cybernetic accents",
   "face": true,
   "hand": false,
   "near": "paint brushes and glowing color jars",
-  "ground": "lush garden ground with moss, flowers and scattered brass gears"
+  "ground": "lush garden ground with moss, flowers and scattered brass gears",
+  "midobj": "hydroponic plant towers with glowing coins growing like fruit, left and right"
  },
  {
   "n": 77,
@@ -1083,10 +1160,11 @@
   "obj": "large ornate brass coin engraved with a glowing magenta pentacle flower circuit",
   "mid": "brass mint buildings with domes and gears",
   "kind": "court",
-  "fig": "a prosperous Lebanese man in his sixties with white beard in red and gold robes seated on a throne among grape vines, holding a large brass coin, content expression",
+  "fig": "a Lebanese man in his sixties with a short white goatee, simple red tunic with glowing lines, seated among grape vines, holding a large glowing coin, content, with subtle glowing LED circuit lines and small cybernetic accents",
   "face": true,
   "hand": false,
   "near": "brass beehive and glowing bees",
-  "ground": "lush garden ground with moss, flowers and scattered brass gears"
+  "ground": "lush garden ground with moss, flowers and scattered brass gears",
+  "midobj": "hydroponic plant towers with glowing coins growing like fruit, left and right"
  }
 ]

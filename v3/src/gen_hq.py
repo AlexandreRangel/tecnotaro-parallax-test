@@ -1,4 +1,4 @@
-# Tecno Tarot Parallax 3, HQ 4 layer generator. Runs on Blackwell next to ComfyUI.
+# Tecno Tarot Parallax 3, HQ 4 layer generator (bg, mid on green, figure, energy). Runs on Blackwell next to ComfyUI.
 # python gen_hq.py A B [layers] ; layers: bg,mid,figure,energy (4 moving layers + static frame)
 import json,sys,os,time,io,random,subprocess,urllib.request,urllib.parse
 import numpy as np
@@ -11,9 +11,9 @@ BW,BH=1024,1664          # base txt2img
 HW,HH=1600,2600          # hires pass
 CK=r'_SDXL_1_0\Juggernaut_XL\juggernautXL_ragnarokBy.safetensors'
 STYLE=("Tecnotaro tarot art by Alexandre Rangel, playful energetic fluid mood, transhumanist cyberpunk steampunk world, polished brass and copper, glowing neon magenta, cyan and amber, "
- "very bright luminous high-key lighting, vivid saturated colors, painterly digital illustration, crisp fine details, sharp focus, masterpiece")
+ "magic and technology, sacred geometry as glowing neon line-work and holograms (Flower of Life, Metatron cube, golden spirals, mandala grids), neon LED circuitry, holographic interfaces, cybernetic accents, very bright luminous high-key lighting, vivid saturated colors, painterly digital illustration, crisp fine details, sharp focus, masterpiece")
 NEG=("text, letters, words, caption, watermark, signature, logo, border, frame, card frame, margin, young, teenager, child, kid, childlike, youthful face, east asian, asian, "
- "war, military, soldier, army, armor, armour, helmet, bandana, gun, rifle, weapon, combat, fighting pose, violence, blood, gore, muscular, bodybuilder, bulky, "
+ "war, military, soldier, army, armor, armour, helmet, bandana, gun, rifle, weapon, combat, fighting pose, violence, blood, gore, muscular, bodybuilder, bulky, heavy layered drapery, cape, heavy boots, "
  "deformed, distorted face, bad anatomy, extra limbs, extra legs, extra arms, extra fingers, missing fingers, fused fingers, mutated hands, "
  "photo, photorealistic, blurry, soft focus, lowres, jpeg artifacts, dark, murky, underexposed, muddy, grainy, cropped head")
 NOFIG="pedestrians, signage, neon text, shop signs, person, people, human, man, woman, figure, character, face, animal, creature, silhouette, crowd"
@@ -125,6 +125,17 @@ def cut(img):
         inner=np.asarray(Image.fromarray((f*255).astype(np.uint8)).filter(ImageFilter.MinFilter(5))).astype(np.float32)/255
         lum=f.mean(2); f[edge]=np.where((lum[edge]>inner[edge].mean(1)+0.15)[:,None],inner[edge],f[edge])
     return Image.fromarray((np.dstack([f,a])*255).astype(np.uint8),'RGBA')
+def greenkey(img):
+    """strict chroma key on green with despill and 1 px choke, no fringe"""
+    c=np.asarray(img.convert('RGB')).astype(np.float32)
+    r,g,b=c[...,0],c[...,1],c[...,2]; dom=g-np.maximum(r,b)
+    a=np.clip(1-(dom-20)/50,0,1)
+    a=np.asarray(Image.fromarray((a*255).astype(np.uint8)).filter(ImageFilter.MinFilter(3)).filter(ImageFilter.GaussianBlur(0.7))).astype(np.float32)/255
+    c[...,1]=np.minimum(g,np.maximum(r,b)*1.02+4)
+    return Image.fromarray(np.dstack([np.clip(c,0,255),a*255]).astype(np.uint8),'RGBA')
+def despill(im):
+    a=np.asarray(im).astype(np.float32); r,g,b=a[...,0],a[...,1],a[...,2]
+    a[...,1]=np.minimum(g,np.maximum(r,b)+6); return Image.fromarray(a.astype(np.uint8),'RGBA')
 def lumakey(img,gain=1.3,gamma=0.95):
     c=np.clip((np.asarray(img).astype(np.float32)/255-0.05)/0.95,0,1)
     a=np.clip(c.max(2)*gain,0,1)**gamma; f=np.clip(c/np.maximum(a,1e-3)[...,None],0,1)
@@ -160,31 +171,21 @@ def do_card(c,only=None):
     want=lambda k: only is None or k in only
     S=lambda k,im: im.save(os.path.join(d,k+'.png'))
     if want('bg'):
-        LAYER[0]='sky'
-        im=render(f"far distant background only, nobody, luminous sky and far horizon of {c['bg']}, huge glowing nebula clouds of {E} light, distant hazy floating islands and airships, soft atmospheric depth, {STYLE}",NEG+", "+NOFIG+", buildings in foreground",seed)
-        S('_sky',sharpen(fit(im,(W,H)),1.2,50))
-    if want('bg'):
-        LAYER[0]='city'
-        im=render(f"wide panoramic distant skyline silhouette of {c['mid']} and towers with glowing windows, seen from far away, horizontal band of architecture, {GREY}, {STYLE}",NEG+", "+NOFIG+", sky, clouds",seed+11)
-        pc=cut(im); pc=pc.crop(pc.getbbox()); k=W*1.05/pc.width; pc=pc.resize((int(pc.width*k),int(pc.height*k)),Image.LANCZOS)
-        if pc.height>H*0.45: k=H*0.45/pc.height; pc=pc.resize((int(pc.width*k),int(pc.height*k)),Image.LANCZOS)
-        # light atmospheric haze so it reads far
-        a=np.asarray(pc).astype(np.float32); a[...,:3]=a[...,:3]*0.8+np.array([200,170,235])*0.2; pc=Image.fromarray(a.astype(np.uint8),'RGBA')
-        S('_city',place(pc,(W-pc.width)//2,int(H*0.66)-pc.height))
+        LAYER[0]='bg'   # one vertical render, card ratio, no wide crop
+        im=render(f"vertical portrait composition, far distant background only, nobody, {c['bg']}, Blade Runner techno-noir neon megacity with arches, colonnades, futuristic temple-like towers, misty atmosphere, rain glow, holographic signs without readable text, bright and playful not dystopian, luminous sky with glowing nebula clouds of {E} light, distant holographic billboards without text, LED lit towers, floating drones and data streams far away, soft atmospheric depth, {STYLE}",NEG+", "+NOFIG,seed)
+        sharpen(fit(im,(W,H)),1.2,50).save(os.path.join(d,'bg.png'))
     if want('mid'):
-        LAYER[0]='mid'; lay=Image.new('RGBA',(W,H),(0,0,0,0))
+        LAYER[0]='mid'  # detached objects ~50 cm behind the character; each rendered complete in its own pass on green, then keyed
+        item=c['midobj'].replace(', left and right','').replace(' left and right','')
+        lay=Image.new('RGBA',(W,H),(0,0,0,0))
         for side in (0,1):
-            im=render(f"one tall isolated {c['mid']}, single architectural set piece, full height from base to top, side view, {GREY}, {STYLE}",NEG+", "+NOFIG+", sky, clouds, scenery background",seed+21+side*5)
-            pc=cut(im); pc=pc.crop(pc.getbbox()); k=min(H*rng.uniform(0.6,0.78)/pc.height,W*0.36/pc.width); pc=pc.resize((int(pc.width*k),int(pc.height*k)),Image.LANCZOS)
-            x=-int(pc.width*rng.uniform(0.1,0.25)) if side==0 else W-int(pc.width*rng.uniform(0.75,0.9))
-            lay.alpha_composite(place(pc,x,int(H*0.80)-pc.height))
+            im=render(f"vertical portrait composition, one single tall isolated element: {item}, complete and fully visible from top to bottom, centered, no text, flat solid pure green #00FF00 chroma key background, {STYLE}",NEG+", "+NOFIG+", green objects, text, letters, scenery, sky, floor, multiple scenes",seed+21+side*5)
+            im.save(os.path.join(d,f'_raw_mid{side}.png'))
+            pc=despill(cut(sharpen(im))); pc=pc.crop(pc.getbbox())
+            k=min(H*rng.uniform(0.62,0.80)/pc.height,W*0.40/pc.width); pc=pc.resize((int(pc.width*k),int(pc.height*k)),Image.LANCZOS)
+            x=-int(pc.width*rng.uniform(0.0,0.15)) if side==0 else W-int(pc.width*rng.uniform(0.85,1.0))
+            lay.alpha_composite(place(pc,x,int(H*rng.uniform(0.80,0.88))-pc.height))
         S('mid',lay)
-    if want('figure'):
-        LAYER[0]='ground'
-        im=render(f"empty ground surface only, {c['ground']}, wide low angle view of the floor receding to the horizon, detailed textures, nobody, {STYLE}",NEG+", "+NOFIG+", sky, buildings",seed+31)
-        g=fit(im,(W,int(H*0.42))); lay=Image.new('RGBA',(W,H),(0,0,0,0)); lay.paste(g,(0,H-g.height))
-        y=np.arange(H)[:,None]/H; m=np.clip((y-0.60)/0.07,0,1)*np.ones((1,W))
-        S('_ground',sharpen(mult_alpha(lay,m),1.2,50))
     if want('figure'):
         LAYER[0]='figure'
         if c['kind']=='pip':
@@ -193,7 +194,7 @@ def do_card(c,only=None):
             fig=arrange(cut(sharpen(im)),c['suit'],c['count'],rng); info['faces']=[]
         else:
             person=c['kind'] in('major','court') and not c['n'] in (10,16,18)
-            shot=("full body from head to feet, the character fills the entire frame height, large and close, feet at the bottom edge, realistic adult proportions, normal head size, slim body"
+            shot=("vertical portrait, full body from head to feet standing on a small ground mound, the character fills the entire frame height, large and close, realistic adult proportions, normal head size, slim body, simple humble clothing"
                   if person else "full composition, centered, large in frame, filling the image")
             im=render(f"{c['fig']}, {shot}, {GREY}, {STYLE}",NEG+", scenery, buildings, city, sky, small head, tiny figure, distant, floor shadow",seed+41,face=person or c['kind']=='ace',hand=person or c['kind']=='ace')
             im=sharpen(im); im.save(os.path.join(d,'_raw_figure.png')); fc=cut(im); fc=fc.crop(fc.getbbox())
@@ -240,10 +241,7 @@ def do_card(c,only=None):
             m*=1-0.85*fa
         S('energy',mult_alpha(en,m))
     L_=lambda k: Image.open(os.path.join(d,k+'.png')).convert('RGBA')
-    if want('bg'):      # bg = far sky + distant skyline, flattened
-        im=L_('_sky'); im.alpha_composite(L_('_city')); im.convert('RGB').save(os.path.join(d,'bg.png'))
-    if want('figure'):  # figure = ground band + character standing on it
-        im=L_('_ground'); im.alpha_composite(L_('_fig')); im.save(os.path.join(d,'figure.png'))
+    if want('figure'): L_('_fig').save(os.path.join(d,'figure.png'))  # character + attached things (seat, held objects, ground mound)
     wp=os.path.join(d,'_workflows.json'); old=json.load(open(wp)) if os.path.exists(wp) else []
     done={e['layer'] for e in LOG}; json.dump([e for e in old if e['layer'] not in done]+LOG,open(wp,'w'),indent=1)
     comp=Image.new('RGBA',(W,H))
