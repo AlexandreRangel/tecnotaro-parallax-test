@@ -347,3 +347,10 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): reuse of asset 6ba7549a, flipped vertically, hue -25 degrees with green hues folded to cyan/magenta.
 - finish: DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.6 FG_BODY=0.8.
+
+## 53 Quatro de Espadas
+- figure (FIG_FIT=1080,2450,995 FIG_KEEPALL=1 KEY_STRICT=1: ~92% card width, lower-middle; three hanging swords kept, their cut tops feathered 40 px): knight in silver tech armor resting on a carved stone tech tomb, a glowing sword below him, three swords hanging above (asset 376132fd).
+- bg (crop): cyber chapel, centered on the circuit stained-glass window (asset c1f575b5).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): reuse of asset 6ba7549a, mirrored, hue +150 degrees with green hues folded to cyan/magenta.
+- finish: DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.4 FG_BODY=0.85 FIN_HEADBOX=270,2180,200 (calm, light energy).
