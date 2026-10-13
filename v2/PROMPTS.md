@@ -235,3 +235,17 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): reuse of asset 6ba7549a, flipped both ways and hue shifted +175 degrees (watery cyan/magenta).
 - finish: DEFRINGE=4 EDGE_CHOKE=5 RECOLOR_GREEN=1 RECOLOR_TO=amber (small green leaves -> amber).
+
+## 37 Dois de Copas
+- figure (fig 0.9, FIG_ANCHOR=base, FIG_MAXW=2160, KEY_STRICT=1: both figures fully visible, width-bound as large as possible): On flat pure chroma green #00FF00, nothing else. Two of Cups (Marseille numbering): a woman in a white cyan-piped steampunk suit and a pink-haired man in a white magenta-piped suit facing each other, each holding a glowing chalice, a holographic caduceus between them on a mossy mound. Realistic adult proportions, highly detailed faces. Cyberpunk steampunk illustration, neon rim light. Feet at the bottom. (asset 8223bbd4)
+- bg (crop): luminous neon lagoon city with cyan water reflections and magenta sky (asset c5d1bc2e).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): reuse of asset 6ba7549a, mirrored horizontally and hue shifted +155 degrees (watery cyan/magenta).
+- finish: DEFRINGE=4 EDGE_CHOKE=5 FIN_HEADBOX=420,1200,230+1750,1170,230 (energy carved off both faces).
+
+## 38 Três de Copas
+- figure (fig 0.9, FIG_ANCHOR=base, FIG_MAXW=2160, KEY_STRICT=1: width-bound, cups at top fully inside the card): On flat pure chroma green #00FF00, nothing else. Three of Cups (Marseille numbering): three joyful women toasting with raised ornate brass chalices, standing on a harvest of grapes and pumpkins with green leaves. Realistic adult proportions, highly detailed faces. Cyberpunk steampunk illustration, neon rim light. Base flush with the bottom edge. (asset 3f8392cb)
+- bg (crop): luminous neon lagoon city / harvest night scene (asset e844db8a).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): reuse of asset 6ba7549a, flipped vertically and hue shifted -170 degrees (watery cyan/magenta).
+- finish: DEFRINGE=4 EDGE_CHOKE=5 RECOLOR_GREEN=1 RECOLOR_TO=amber (green leaves under harvest -> amber) FIN_HEADBOX=750,2160,210+1100,2200,230+1620,2160,200 (energy carved off all three faces).
