@@ -498,3 +498,10 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): asset 6ba7549a flipped both ways, recolored two-tone amber / violet, light.
 - finish: FIG_DEGREEN=1 DEGREEN_CYAN=1 (dark green coats -> teal-blue; RECOLOR_GREEN left off so the coats don't turn amber) DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.35 FG_BODY=0.85 FIN_HEADBOX=790,2594,170+1279,2440,160+1141,2808,140+1635,2303,170.
+
+## 74 Valete de Ouros
+- figure (FIG_FIT=1080,2354,1060 FIG_KEEPALL=1 KEY_STRICT=1: tall, ~70% card height (width-bound), grassy soil patch on the earth path ~150 px above the bottom): young man with locs in a purple and gold coat raising a gold pentacle coin, on a grassy soil patch (asset 0874036f).
+- bg (default center crop on the path): golden wheat fields with a dirt path and spired towers at sunset (asset d1eff395), plus a soft contact shadow under the patch.
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): asset 6ba7549a mirrored, recolored two-tone amber / violet.
+- finish: FIG_DEGREEN=1 DEFRINGE=3 EDGE_CHOKE=3 (thin grass blades kept) RECOLOR_GREEN=1 RECOLOR_TO=amber (grass -> golden) FG_BOOST=0.45 FG_BODY=0.85 FIN_HEADBOX=1182,1142,230.
