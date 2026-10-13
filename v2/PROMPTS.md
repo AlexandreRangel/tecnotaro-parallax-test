@@ -505,3 +505,10 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): asset 6ba7549a mirrored, recolored two-tone amber / violet.
 - finish: FIG_DEGREEN=1 DEFRINGE=3 EDGE_CHOKE=3 (thin grass blades kept) RECOLOR_GREEN=1 RECOLOR_TO=amber (grass -> golden) FG_BOOST=0.45 FG_BODY=0.85 FIN_HEADBOX=1182,1142,230.
+
+## 75 Cavaleiro de Ouros
+- figure (FIG_FIT=1080,2749,994 FIG_KEEPALL=1 KEY_STRICT=1: ~92% width, soil patch ~150 px above the bottom on the furrows): Korean woman knight in black and gold armor on a black robotic horse, holding a gold pentacle coin (asset 114c2c05).
+- bg (crop x700-1106 of 1280, the tallest spires): glowing furrowed fields under a violet dusk sky with a dark spired city (asset 1834e7da), plus a soft contact shadow under the patch.
+- mid: vazio.
+- fg (bottom): asset 6ba7549a flipped, two-tone amber / violet, plus an extra radial energy patch centred on the coin (749,2064) with a hole around the face.
+- finish: FIG_DEGREEN=1 DEFRINGE=3 EDGE_CHOKE=3 RECOLOR_GREEN=1 RECOLOR_TO=amber FG_BOOST=0.45 FG_BODY=0.7 FIN_HEADBOX=1146,1871,230.
