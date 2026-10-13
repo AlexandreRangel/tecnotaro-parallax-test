@@ -23,6 +23,6 @@ PORT=${PORT:-8931}
 python3 -m http.server $PORT --bind 127.0.0.1 >/dev/null 2>&1 & SP=$!; trap 'kill $SP 2>/dev/null' EXIT; sleep 1
 for i in "${built[@]}"; do python3 tools/frame_qa.py "http://127.0.0.1:$PORT/v2" v2/deck "$i-$i" | tee -a /tmp/frame-qa-batch.txt; done
 git add v2 publish_batch.sh
-git commit -qm "v2: publish real layers for cards $*"
+git commit -qm "${MSG:-v2: publish real layers for cards $*}"
 git push -q
 echo "Live: https://alexandrerangel.github.io/tecnotaro-parallax-test/v2/#${built[0]}"

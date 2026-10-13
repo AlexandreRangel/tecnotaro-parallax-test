@@ -382,3 +382,6 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): work/nogreen.py, asset 6ba7549a flipped vertically, hue +40 degrees, yellow-green..green folded to blue/magenta.
 - finish: DEFRINGE=4 EDGE_CHOKE=5 RECOLOR_GREEN=1 (green glints in the puddle -> cyan) FG_BOOST=0.5 FG_BODY=0.85 FIN_HEADBOX=1077,2470,200.
+
+## 45-55 energy refresh
+- fg energy plates of cards 45-55 rebuilt with work/nogreen.py (same flips and hue shifts as listed per card, but the folded range widened to yellow-green..green -> blue/magenta) so no yellow-green energy remains; figure, bg and finish settings unchanged.
