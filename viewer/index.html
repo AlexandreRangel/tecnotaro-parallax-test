@@ -49,7 +49,7 @@ window.addEventListener('unhandledrejection',function(e){out('PROMISE '+(e.reaso
 //  1 -> v1/manifest.json  (v5 format, 3 moving layers bg|mid|fg + frame; normalized here to the v2 model, no figure layer)
 //  2 -> v2/deck/manifest.json, 3 -> v3/deck/manifest.json (v2-engine, bg|mid|figure|fg + frame)
 // Params: ?moldura=1|?frame=1 (frame moves with whole-card tilt; default static), ?debug=1, #NN card, ?pose=x,y, ?cardtilt=0.
-var V='3.0', ENGINE='unified', TILT=5, MAXDEG=12, LERP=0.12, AMPLITUDE=1.15;
+var V='3.1', ENGINE='unified', TILT=5, MAXDEG=12, LERP=0.12, AMPLITUDE=1.15;
 var Q=new URLSearchParams(location.search), DEBUG=Q.get('debug')==='1';
 var DECKN=({'1':1,'2':2,'3':3})[Q.get('deck')]||2;
 var DIR='../v'+DECKN+'/';
@@ -64,7 +64,7 @@ function clamp(v){return Math.max(-1,Math.min(1,v))}
 function pad(n){return String(n).padStart(2,'0')}
 function say(t){ hint.innerHTML=t||''; hint.title=hint.textContent; }
 function cbase(c){ return DIR+(c.base||('deck/'+c.id+'/')); }
-function fileOf(c,n){ return c.files&&(n in c.files)?c.files[n]:n; }
+function fileOf(c,n){ if(c.files) return (n in c.files)?c.files[n]:null; return n; }
 function src(c,n){ var f=fileOf(c,n); return f?cbase(c)+f+'.webp?v='+V:null; }
 function layerCfg(c,n){
   var L=M.layers[n]||{};
@@ -202,7 +202,10 @@ var MURL=DECKN===1?DIR+'manifest.json':DIR+'deck/manifest.json';
 fetch(MURL+'?v='+V,{cache:'no-store'}).then(function(r){return r.json()}).then(function(m){
   if(DECKN===1) m=normalizeV1(m);
   M=m; deck=m.cards; AMPLITUDE=m.amplitude||1;
-  if(m.order){ MOVING=m.order.filter(function(n){return n!=='frame'}); MOVING.forEach(function(n){ if($(n)) win.appendChild($(n)); }); }
+  if(m.order){ MOVING=m.order.filter(function(n){return n!=='frame'});
+    deck.forEach(function(c){ Object.keys(c.files||{}).forEach(function(k){ if(k!=='frame'&&k!=='thumb'&&c.files[k]&&MOVING.indexOf(k)<0) MOVING.push(k); }); });
+    MOVING.forEach(function(n){ var el=$(n); if(!el){ el=document.createElement('img'); el.id=n; el.className='layer'; el.alt=''; } win.appendChild(el); L[n]=el; if(DEPTH[n]==null) DEPTH[n]=0; });
+    Object.keys(L).forEach(function(k){ if(MOVING.indexOf(k)<0){ L[k].removeAttribute('src'); L[k].classList.add('empty'); DEPTH[k]=0; } }); }
   var u='url('+DIR+(m.windowMask||'win-mask.png')+')'; win.style.webkitMaskImage=u; win.style.maskImage=u;
   var i=byHash(); show(i<0?0:i);
 }).catch(function(err){ say('could not load deck '+DECKN); window.__err&&__err('manifest: '+err); });

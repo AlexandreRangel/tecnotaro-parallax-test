@@ -47,3 +47,8 @@ For each card it: reads the raw plates, removes the background of mid/figure/fg 
 
 The frame is the topmost element, never transformed. All moving layers live inside `#win`, which is clipped by `win-mask.png` (the inverted frame alpha, cropped to the window) via CSS `mask-image`. The whole card tilt is a flat (non preserve-3d) transform, so the browser never depth sorts the frame against the layers.
 Check with `python3 tools/frame_qa.py http://localhost:PORT/v2 v1/deck`: renders every card at the 8 max tilt poses and requires the opaque frame pixels to be identical to the neutral render.
+
+## v3 HQ (schema tecnotaro-parallax-v3)
+
+Exactly 4 moving layers + static frame, back to front: `bg` (far sky + distant skyline, opaque, depth -0.040), `mid` (architecture just behind the character, depth -0.018), `figure` (character with its ground band, reaches the card base, depth 0), `energy` (front energy, luma keyed, faded over the body and cut out around every detected face, depth +0.040), `frame` (fixed, never moves). Explicit `schema`, `layerCount`, `order` and per layer depth/z/blend in `deck/manifest.json` and each `card.json`.
+Generator: `src/gen_hq.py` (runs on Blackwell next to ComfyUI, Juggernaut XL Ragnarok, txt2img 1024x1664 40 steps, 4xNomos upscale, hires img2img 1600x2600 28 steps denoise 0.34, YOLO face and hand detailer at 1024 px, BiRefNet strict key with 1 px choke and defringe, unsharp mask, final 2120x3460). Content prompts in `src/cards_hq.json`. Build: `src/v3_build_hq.py NN RAWDIR`. Placeholder cards still pointing to v1 layers use the legacy `fg` name.

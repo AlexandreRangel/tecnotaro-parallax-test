@@ -29,7 +29,7 @@
   "bg",
   "mid",
   "figure",
-  "fg",
+  "energy",
   "frame"
  ],
  "layers": {
@@ -41,24 +41,21 @@
   },
   "bg": {
    "z": 10,
-   "depth": -0.03,
+   "depth": -0.04,
    "blend": "normal",
-   "rect": 1.12,
-   "note": "far plane, opaque, moves most, opposite to tilt"
+   "rect": 1.12
   },
   "mid": {
    "z": 20,
-   "depth": -0.015,
+   "depth": -0.018,
    "blend": "normal",
-   "rect": 1.12,
-   "note": "midground scenery between bg and figure, transparent"
+   "rect": 1.12
   },
   "figure": {
    "z": 30,
    "depth": 0.0,
    "blend": "normal",
-   "rect": 1.12,
-   "note": "character + ground, zero plane"
+   "rect": 1.12
   },
   "fg": {
    "z": 40,
@@ -66,6 +63,12 @@
    "blend": "normal",
    "rect": 1.12,
    "note": "foreground energies and props, large, moves with the tilt"
+  },
+  "energy": {
+   "z": 40,
+   "depth": 0.04,
+   "blend": "normal",
+   "rect": 1.12
   }
  },
  "rule": "offset_px = tilt(-1..1) * depth * amplitude * window_width_px, both axes. Displayed layer size = window * max(rect, 1 + 2*|depth|*amplitude + 0.01) so no edge can show.",
@@ -82,6 +85,15 @@
  },
  "cards": [
   {
+   "schema": "tecnotaro-parallax-v3",
+   "layerCount": 4,
+   "order": [
+    "bg",
+    "mid",
+    "figure",
+    "energy",
+    "frame"
+   ],
    "id": "00-the-fool",
    "index": 0,
    "title": "THE FOOL",
@@ -90,21 +102,52 @@
     "bg": "bg",
     "mid": "mid",
     "figure": "figure",
-    "fg": "fg",
+    "energy": "energy",
     "frame": "frame",
     "thumb": "thumb"
    },
+   "layers": {
+    "bg": {
+     "depth": -0.04,
+     "z": 10,
+     "blend": "normal",
+     "rect": 1.12
+    },
+    "mid": {
+     "depth": -0.018,
+     "z": 20,
+     "blend": "normal",
+     "rect": 1.12
+    },
+    "figure": {
+     "depth": 0.0,
+     "z": 30,
+     "blend": "normal",
+     "rect": 1.12
+    },
+    "energy": {
+     "depth": 0.04,
+     "z": 40,
+     "blend": "normal",
+     "rect": 1.12
+    },
+    "frame": {
+     "moving": false,
+     "z": 50,
+     "blend": "normal"
+    }
+   },
    "depth": {
-    "bg": -0.03,
-    "mid": -0.015,
+    "bg": -0.04,
+    "mid": -0.018,
     "figure": 0.0,
-    "fg": 0.036
+    "energy": 0.04
    },
    "rect": {
     "bg": 1.12,
     "mid": 1.12,
     "figure": 1.12,
-    "fg": 1.12
+    "energy": 1.12
    }
   },
   {
@@ -2263,5 +2306,10 @@
     "fg": 0.0205
    }
   }
- ]
+ ],
+ "schema": "tecnotaro-parallax-v3",
+ "layerCount": 4,
+ "legacyLayers": {
+  "fg": "only for placeholder cards that still point to v1 layers; HQ cards use energy"
+ }
 }
