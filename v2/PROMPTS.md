@@ -477,3 +477,10 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): asset 6ba7549a flipped vertically, recolored two-tone amber / violet.
 - finish: LOOK_KEEPGREEN=1 (new look.py option: skip the green-rim drop so foliage survives) FIG_DEGREEN=1 DEGREEN_CYAN=1 DEFRINGE=2 EDGE_CHOKE=2 (thin twigs kept) RECOLOR_GREEN=1 RECOLOR_TO=amber FG_BOOST=0.5 FG_BODY=0.85 FIN_HEADBOX=532,2349,200. Leaves end up dark olive.
+
+## 71 Oito de Ouros
+- figure (FIG_FIT=1080,2628,853 FIG_KEEPALL=1 KEY_STRICT=1: ~60% card height, wooden floor patch on the workshop floor at the bottom): goggled craftsman in black leather engraving a gold pentacle at a workbench, a rack of eight gold coins beside him, on a wooden floor patch (asset e071d721).
+- bg (default center crop on the window): workshop with a large window onto a spired city at sunset (asset 556c4da4), plus a soft contact shadow under the patch.
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): asset 6ba7549a mirrored, recolored two-tone amber / violet.
+- finish: FIG_DEGREEN=1 DEFRINGE=4 EDGE_CHOKE=5 RECOLOR_GREEN=1 RECOLOR_TO=amber FG_BOOST=0.5 FG_BODY=0.85 FIN_HEADBOX=1159,1701,220.
