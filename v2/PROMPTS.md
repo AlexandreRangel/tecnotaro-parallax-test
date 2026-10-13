@@ -340,3 +340,10 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): reuse of asset 6ba7549a, mirrored, hue -50 degrees with green hues folded to cyan/magenta.
 - finish: DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.6 FG_BODY=0.8.
+
+## 52 Três de Espadas
+- figure (FIG_FIT=1080,1850,990 KEY_STRICT=1: centered vertically, large, pommels inside the card): magenta crystal circuit heart pierced by three blue crystal swords (asset cf4f7406).
+- bg (crop): storm clouds and rain over a dark violet city (asset 96902ec6).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): reuse of asset 6ba7549a, flipped vertically, hue -25 degrees with green hues folded to cyan/magenta.
+- finish: DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.6 FG_BODY=0.8.
