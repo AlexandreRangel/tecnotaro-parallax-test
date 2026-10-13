@@ -456,3 +456,10 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): asset 6ba7549a flipped both ways, recolored two-tone amber / violet.
 - finish: FIG_DEGREEN=1 DEFRINGE=4 EDGE_CHOKE=5 RECOLOR_GREEN=1 RECOLOR_TO=amber FG_BOOST=0.5 FG_BODY=0.85 FIN_HEADBOX=1164,1750,230.
+
+## 68 Cinco de Ouros
+- figure (FIG_FIT=1080,2844,1200 KEY_STRICT=1: ~48% card height, snowy patch on the ground at the bottom, patch ends run past the card sides; crutch kept, loose snowflakes dropped): hooded young woman with a blue/violet cyber arm and an old bearded man on a crutch, both in ragged snow-covered clothes, walking on a snowy patch (asset f74633ee).
+- bg (crop x 718-1123 of 1280, centered on the stained-glass five-pentacle window): snowy neon cathedral street at night (asset c7256996), plus a soft contact shadow under the patch.
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): asset 6ba7549a mirrored, recolored two-tone amber / violet, light (cold scene).
+- finish: FIG_DEGREEN=1 DEGREEN_CYAN=1 DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.35 FG_BODY=0.9 FIN_HEADBOX=830,2066,200+1436,2176,210.
