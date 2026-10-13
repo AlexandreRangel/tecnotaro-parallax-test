@@ -470,3 +470,10 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): asset 6ba7549a, recolored two-tone amber / violet.
 - finish: FIG_DEGREEN=1 DEFRINGE=4 EDGE_CHOKE=5 RECOLOR_GREEN=1 RECOLOR_TO=amber (scale/coin glow gold) FG_BOOST=0.5 FG_BODY=0.85 FIN_HEADBOX=1071,2561,170+551,3009,160+1573,3081,160.
+
+## 70 Sete de Ouros
+- figure (FIG_FIT=1080,2997,995 FIG_KEEPALL=1 KEY_STRICT=1: ~92% width, soil patch on the path at the bottom; green screen between the branches keyed, leaves kept): Indigenous farmer in a patterned poncho leaning on a hoe, beside a circuitry bush bearing seven gold pentacle coins, on a soil patch (asset f61dcf54).
+- bg (default center crop): sunrise over a misty farm terraces valley with a spired city and the sun on the path (asset 51869b4e), plus a soft contact shadow under the patch.
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): asset 6ba7549a flipped vertically, recolored two-tone amber / violet.
+- finish: LOOK_KEEPGREEN=1 (new look.py option: skip the green-rim drop so foliage survives) FIG_DEGREEN=1 DEGREEN_CYAN=1 DEFRINGE=2 EDGE_CHOKE=2 (thin twigs kept) RECOLOR_GREEN=1 RECOLOR_TO=amber FG_BOOST=0.5 FG_BODY=0.85 FIN_HEADBOX=532,2349,200. Leaves end up dark olive.
