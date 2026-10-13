@@ -1,0 +1,152 @@
+{
+ "deck": "Deusas da Natureza, Alexandre Rangel",
+ "version": "deusas-test",
+ "engine": "v2-engine",
+ "canvas": [
+  2240,
+  3840
+ ],
+ "window": {
+  "x": 181,
+  "y": 374,
+  "w": 1892,
+  "h": 3090
+ },
+ "windowMask": "win-mask.png",
+ "layerCanvas": {
+  "overscan": 1.12,
+  "@2x": [
+   2120,
+   3460
+  ],
+  "@1x": [
+   1060,
+   1730
+  ]
+ },
+ "amplitude": 1.15,
+ "order": [
+  "bg",
+  "mid",
+  "figure",
+  "energy",
+  "frame"
+ ],
+ "layers": {
+  "frame": {
+   "moving": false,
+   "z": 50,
+   "blend": "normal",
+   "note": "fixed, topmost, never transformed; its transparent window is the clip mask of every moving layer"
+  },
+  "bg": {
+   "z": 10,
+   "depth": -0.04,
+   "blend": "normal",
+   "rect": 1.12
+  },
+  "mid": {
+   "z": 20,
+   "depth": -0.018,
+   "blend": "normal",
+   "rect": 1.12
+  },
+  "figure": {
+   "z": 30,
+   "depth": 0.0,
+   "blend": "normal",
+   "rect": 1.12
+  },
+  "energy": {
+   "z": 40,
+   "depth": 0.04,
+   "blend": "normal",
+   "rect": 1.12
+  }
+ },
+ "rule": "offset_px = tilt(-1..1) * depth * amplitude * window_width_px, both axes. Displayed layer size = window * max(rect, 1 + 2*|depth|*amplitude + 0.01) so no edge can show.",
+ "motion": {
+  "maxTiltDeg": 12,
+  "smoothing": 0.12,
+  "cardTiltDeg": 5,
+  "reduceMotionScale": 0.5
+ },
+ "files": {
+  "@1x": "{base}{file}.webp",
+  "@2x": "{base}{file}@2x.webp",
+  "default_base": "deck/{id}/"
+ },
+ "cards": [
+  {
+   "schema": "tecnotaro-parallax-v3",
+   "layerCount": 4,
+   "order": [
+    "bg",
+    "mid",
+    "figure",
+    "energy",
+    "frame"
+   ],
+   "id": "04-a-imperadora",
+   "index": 4,
+   "title": "IV A IMPERADORA",
+   "suit": "major",
+   "files": {
+    "bg": "bg",
+    "mid": "mid",
+    "figure": "figure",
+    "energy": "energy",
+    "frame": "frame",
+    "thumb": "thumb"
+   },
+   "layers": {
+    "bg": {
+     "depth": -0.04,
+     "z": 10,
+     "blend": "normal",
+     "rect": 1.12
+    },
+    "mid": {
+     "depth": -0.018,
+     "z": 20,
+     "blend": "normal",
+     "rect": 1.12
+    },
+    "figure": {
+     "depth": 0.0,
+     "z": 30,
+     "blend": "normal",
+     "rect": 1.12
+    },
+    "energy": {
+     "depth": 0.04,
+     "z": 40,
+     "blend": "normal",
+     "rect": 1.12
+    },
+    "frame": {
+     "moving": false,
+     "z": 50,
+     "blend": "normal"
+    }
+   },
+   "depth": {
+    "bg": -0.04,
+    "mid": -0.018,
+    "figure": 0.0,
+    "energy": 0.04
+   },
+   "rect": {
+    "bg": 1.12,
+    "mid": 1.12,
+    "figure": 1.12,
+    "energy": 1.12
+   }
+  }
+ ],
+ "schema": "tecnotaro-parallax-v3",
+ "layerCount": 4,
+ "legacyLayers": {
+  "fg": "only for placeholder cards that still point to v1 layers; HQ cards use energy"
+ }
+}

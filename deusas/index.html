@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,viewport-fit=cover,user-scalable=no">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#000">
+<title>Tecnotarô Parallax</title>
+<style>
+*{-webkit-tap-highlight-color:transparent}
+html,body{margin:0;-webkit-touch-callout:none;-webkit-text-size-adjust:100%;height:100%;background:#000;overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none;font-family:-apple-system,system-ui,sans-serif}
+body{display:flex;align-items:center;justify-content:center;perspective:1400px;box-sizing:border-box;
+ padding:calc(8px + env(safe-area-inset-top)) env(safe-area-inset-right) calc(34px + env(safe-area-inset-bottom)) env(safe-area-inset-left);
+ background:radial-gradient(ellipse at 50% 40%,#1a0b24 0%,#000 70%)}
+#card{touch-action:none;position:relative;height:min(100%,calc((100vw - 16px)*12/7));aspect-ratio:7/12;transform-style:flat;isolation:isolate;will-change:transform;transition:opacity .18s;pointer-events:auto}
+#card *{pointer-events:none}
+#card img{position:absolute;display:block;-webkit-user-drag:none}
+#win{position:absolute;z-index:1;left:8.080%;top:9.740%;width:84.464%;height:80.469%;overflow:hidden;background:#000;isolation:isolate;transform:translateZ(0);-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+#win img.layer{left:0;top:0;width:100%;height:100%}
+#win img.empty{visibility:hidden}
+#frame{left:0;top:0;width:100%;height:100%;z-index:5;transform:none!important}
+.layer{will-change:transform}
+/* the ONLY UI: one small row at the very bottom, outside the card */
+#bar{position:fixed;left:0;right:0;bottom:0;height:30px;padding:0 6px env(safe-area-inset-bottom);display:flex;align-items:center;justify-content:center;gap:4px;z-index:6;color:#ffd58a99;font-size:11px;white-space:nowrap}
+#bar button{font:500 11px/1 -apple-system,system-ui,sans-serif;color:#ffd58acc;background:transparent;border:1px solid #c9a24a44;border-radius:999px;padding:4px 8px;min-width:24px}
+#bar button.on{color:#000;background:#c9a24acc;border-color:#c9a24a}
+#bar .sep{width:6px}
+#name{max-width:34vw;overflow:hidden;text-overflow:ellipsis;letter-spacing:.04em}
+#hint{color:#9fdcffaa;overflow:hidden;text-overflow:ellipsis;max-width:30vw}
+#dbg{position:fixed;left:4px;top:env(safe-area-inset-top);z-index:7;font:9px/1.3 ui-monospace,Menlo,monospace;color:#9f9;background:#000a;padding:3px 5px;border-radius:4px;white-space:pre;display:none;pointer-events:none}
+#err{position:fixed;left:4px;right:4px;top:env(safe-area-inset-top);z-index:20;max-height:20vh;overflow:auto;font:10px/1.3 ui-monospace,Menlo,monospace;color:#fff;background:#a00d;padding:4px 6px;white-space:pre-wrap;display:none}
+</style><script>
+// error catcher: installed first so later failures are visible on screen
+(function(){var box=null;function out(t){try{console.error(t);if(!/[?&]debug=1/.test(location.search))return;box=box||document.getElementById('err');if(!box){setTimeout(function(){out(t)},50);return;}box.style.display='block';box.textContent+=t+'\n';}catch(_){}}
+window.__err=out;window.onerror=function(m,f,l,c,e){out('ERR '+m+' @'+(f||'').split('/').pop()+':'+l+':'+c);};
+window.addEventListener('unhandledrejection',function(e){out('PROMISE '+(e.reason&&e.reason.message||e.reason));});})();
+</script>
+</head><body>
+<div id="card">
+ <div id="win"><img id="bg" class="layer" alt=""><img id="mid" class="layer" alt=""><img id="figure" class="layer" alt=""><img id="fg" class="layer" alt=""></div>
+ <img id="frame" alt="">
+</div>
+<div id="bar"><button data-d="1">1</button><button data-d="2">2</button><button data-d="3">3</button><span class="sep"></span>
+<button id="prev" aria-label="previous">&#9664;</button><span id="name"></span><button id="next" aria-label="next">&#9654;</button><button id="rnd" aria-label="random">?</button><button id="rc" aria-label="recenter" title="recenter">&#8857;</button><span id="hint"></span></div>
+<div id="dbg"></div><div id="err"></div>
+<script>
+// Unified Tecnotarô viewer. ?deck=1|2|3 (default 2) reads each deck's own manifest + layers in place:
+//  1 -> v1/manifest.json  (v5 format, 3 moving layers bg|mid|fg + frame; normalized here to the v2 model, no figure layer)
+//  2 -> v2/deck/manifest.json, 3 -> v3/deck/manifest.json (v2-engine, bg|mid|figure|fg + frame)
+// Params: ?moldura=1|?frame=1 (frame moves with whole-card tilt; default static), ?debug=1, #NN card, ?pose=x,y, ?cardtilt=0.
+var V='3.2', ENGINE='unified', TILT=5, MAXDEG=12, LERP=0.12, AMPLITUDE=1.15, BOOST=1.03, FRONT_BOOST=1.03, FRONT={fg:1,energy:1};
+var Q=new URLSearchParams(location.search), DEBUG=Q.get('debug')==='1';
+var DECKN=({'1':1,'2':2,'3':3})[Q.get('deck')]||2;
+var DIR='./'; DECKN=3;
+var POSE=Q.get('pose')?Q.get('pose').split(',').map(Number):null; if(Q.get('cardtilt')==='0') TILT=0;
+var FRAME_MOTION=Q.get('moldura')==='1'||Q.get('frame')==='1'; if(!FRAME_MOTION) TILT=0; if(POSE) LERP=1;
+var reduce=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
+var $=function(id){return document.getElementById(id)};
+var card=$('card'), win=$('win'), dbg=$('dbg'), hint=$('hint');
+var M=null, deck=[], cur=0, MOVING=['bg','mid','figure','fg'], DEPTH={bg:0,mid:0,figure:0,fg:0};
+var tx=0,ty=0,gx=0,gy=0,dx=0,dy=0,dragging=false,x=0,y=0,base=null,mbase=null,mode='none',perm='not requested',lastO=null,nO=0,nM=0,nT=0,nP=0,started=false;
+function clamp(v){return Math.max(-1,Math.min(1,v))}
+function pad(n){return String(n).padStart(2,'0')}
+function say(t){ hint.innerHTML=t||''; hint.title=hint.textContent; }
+function cbase(c){ return DIR+(c.base||('deck/'+c.id+'/')); }
+function fileOf(c,n){ if(c.files) return (n in c.files)?c.files[n]:null; return n; }
+function src(c,n){ var f=fileOf(c,n); return f?cbase(c)+f+'.webp?v='+V:null; }
+function layerCfg(c,n){
+  var L=M.layers[n]||{};
+  var d=(c.depth&&c.depth[n]!=null)?c.depth[n]:(L.depth||0);
+  var r=(c.rect&&c.rect[n]!=null)?c.rect[n]:(L.rect||1);
+  var b=(c.blend&&c.blend[n])||L.blend||'normal';
+  var de=d*AMPLITUDE*BOOST*(FRONT[n]?FRONT_BOOST:1);
+  var s=Math.max(r, 1+2*Math.abs(de)+0.02); // overscan covers max displacement (|x|<=1) + margin
+  return {d:de, s:s, blend:b, z:L.z||0};
+}
+// v1 (v5 viewer) -> v2 model: bg rect 1.1, mid rect 1, fg rect 1.1 blend screen, fg depth x2.5 (FG_BOOST), amplitude 1, no figure
+function normalizeV1(m){
+  return {amplitude:1, order:['bg','mid','figure','fg','frame'], windowMask:'win-mask.png',
+    layers:{bg:{z:10,rect:1.1},mid:{z:20,rect:1},figure:{z:30},fg:{z:40,rect:1.1,blend:'screen'},frame:{z:50}},
+    cards:m.cards.map(function(c){ var d=c.depth||{}; return {id:c.id,index:c.index,title:c.title,
+      files:{bg:'bg',mid:'mid',figure:null,fg:'fg',frame:'frame',thumb:'thumb'},
+      depth:{bg:d.bg||-0.02,mid:0,figure:0,fg:(d.fg||0.01)*2.5}}; })};
+}
+function show(i){
+  if(!deck.length) return;
+  cur=(i+deck.length)%deck.length; var c=deck[cur];
+  card.style.opacity=.35;
+  var names=MOVING.concat(['frame']);
+  Promise.all(names.map(function(n){return new Promise(function(r){var u=src(c,n); if(!u) return r(); var im=new Image(); im.onload=im.onerror=r; im.src=u;});})).then(function(){
+    if(deck[cur]!==c) return;
+    names.forEach(function(n){
+      var el=$(n), u=src(c,n);
+      if(n==='frame'){ el.src=u; return; }
+      var g=layerCfg(c,n); DEPTH[n]=g.d;
+      if(!u){ el.removeAttribute('src'); el.classList.add('empty'); }
+      else { el.classList.remove('empty'); el.src=u; }
+      var off=((g.s-1)/2*100).toFixed(3)+'%';
+      el.style.left='-'+off; el.style.top='-'+off; el.style.width=(g.s*100).toFixed(3)+'%'; el.style.height=(g.s*100).toFixed(3)+'%';
+      el.style.mixBlendMode=g.blend; el.style.zIndex=g.z;
+    });
+    card.style.opacity=1; });
+  $('name').textContent=pad(c.index)+' '+c.title;
+  document.title='Tecnotarô '+DECKN+' · '+pad(c.index)+' '+c.title;
+  try{ history.replaceState(null,'','#'+pad(c.index)); }catch(_){}
+  [1,-1].forEach(function(k){ var n=deck[(cur+k+deck.length)%deck.length]; names.forEach(function(l){var u=src(n,l); if(u) new Image().src=u;}); });
+}
+function byHash(){ var h=parseInt(location.hash.slice(1),10); if(isNaN(h)) return -1; return deck.findIndex(function(c){return c.index===h}); }
+window.addEventListener('hashchange',function(){ var i=byHash(); if(i>=0&&i!==cur) show(i); });
+// ---- gyro
+function onOri(e){
+  nO++; lastO=e;
+  if(e.beta==null||e.gamma==null) return;
+  var g=e.gamma, b=e.beta;
+  if(!base){ base={g:g,b:b}; mode='gyro'; say(''); }
+  var dg=g-base.g, db=b-base.b; if(dg>90)dg-=180; if(dg<-90)dg+=180;
+  gx=clamp(dg/MAXDEG); gy=clamp(db/MAXDEG);
+}
+function onMot(e){
+  nM++;
+  var a=e.accelerationIncludingGravity; if(!a||a.x==null) return;
+  if(nO>0 && lastO && lastO.gamma!=null) return;
+  var ax=Math.atan2(a.x,Math.hypot(a.y,a.z))*57.3, ay=Math.atan2(a.y,a.z)*57.3;
+  if(!mbase){ mbase={x:ax,y:ay}; mode='gyro'; say(''); }
+  gx=clamp((ax-mbase.x)/MAXDEG); gy=clamp(-(ay-mbase.y)/MAXDEG);
+}
+var attached=false;
+function attach(){
+  if(attached) return; attached=true;
+  window.addEventListener('deviceorientation',onOri,true);
+  window.addEventListener('devicemotion',onMot,true);
+}
+// iOS: requestPermission must be the FIRST call inside a user gesture. No overlay: the first tap anywhere asks.
+var NEEDPERM=!!((window.DeviceOrientationEvent&&typeof DeviceOrientationEvent.requestPermission==='function')||(window.DeviceMotionEvent&&typeof DeviceMotionEvent.requestPermission==='function'));
+function start(){
+  if(started) return;
+  var DOE=window.DeviceOrientationEvent, DME=window.DeviceMotionEvent, ps=[];
+  try{
+    if(DOE && typeof DOE.requestPermission==='function') ps.push(DOE.requestPermission());
+    if(DME && typeof DME.requestPermission==='function') ps.push(DME.requestPermission());
+  }catch(err){ perm='error: '+err.message; }
+  started=true;
+  if(ps.length){
+    perm='asking';
+    Promise.all(ps.map(function(p){return p.catch(function(e){return 'error: '+(e&&e.message||e)})})).then(function(r){
+      perm=r.join('/');
+      if(r.indexOf('granted')>=0){ attach(); say(''); } else say('tilt blocked (Safari aA › Website Settings › Motion)');
+    });
+  } else if(DOE||DME){ if(perm==='not requested') perm='not required'; attach(); }
+  else perm='unsupported';
+}
+if(NEEDPERM){ say("tap for tilt"); ['touchend','click'].forEach(function(ev){ document.addEventListener(ev,start,true); }); }
+else start(); // Android / desktop: no permission needed
+// ---- drag: independent of gyro. While a finger/pointer is down it drives the target; on release
+// the target falls back to the gyro target (LERP smooths the return). Pointer events primary, touch fallback.
+var p0=null, pid=null;
+function dStart(cx,cy){ p0={x:cx,y:cy,t:performance.now()}; dragging=true; dx=0; dy=0; }
+function dMove(cx,cy){ if(!p0) return; dx=clamp((cx-p0.x)/110); dy=clamp((cy-p0.y)/110); }
+function dEnd(cx){ if(!p0){ dragging=false; return; } var ddx=cx-p0.x, dt=performance.now()-p0.t;
+  p0=null; pid=null; dragging=false; dx=0; dy=0;
+  if(Math.abs(ddx)>innerWidth*0.55 && dt<280) show(cur+(ddx<0?1:-1)); }
+var NP={passive:false};
+if(window.PointerEvent){
+  card.addEventListener('pointerdown',function(e){ nP++; if(pid!==null&&pid!==e.pointerId) return; pid=e.pointerId; dStart(e.clientX,e.clientY); try{card.setPointerCapture(e.pointerId);}catch(_){} },NP);
+  card.addEventListener('pointermove',function(e){ nP++; if(e.pointerId!==pid) return; dMove(e.clientX,e.clientY); },NP);
+  var pEnd=function(e){ if(e.pointerId!==pid) return; try{card.releasePointerCapture(e.pointerId);}catch(_){} dEnd(e.clientX); };
+  card.addEventListener('pointerup',pEnd); card.addEventListener('pointercancel',pEnd); card.addEventListener('lostpointercapture',pEnd);
+  // suppress native touch scrolling/zoom; pointer events do the work (touchend not prevented so the iOS permission tap still fires)
+  card.addEventListener('touchstart',function(e){ nT++; e.preventDefault(); },NP);
+  card.addEventListener('touchmove',function(e){ nT++; e.preventDefault(); },NP);
+} else {
+  var tid=null;
+  card.addEventListener('touchstart',function(e){ nT++; var t=e.changedTouches[0]; if(tid===null){ tid=t.identifier; dStart(t.clientX,t.clientY); } e.preventDefault(); },NP);
+  card.addEventListener('touchmove',function(e){ nT++; for(var i=0;i<e.touches.length;i++){ var t=e.touches[i]; if(t.identifier===tid) dMove(t.clientX,t.clientY); } e.preventDefault(); },NP);
+  var tEnd=function(e){ nT++; for(var i=0;i<e.changedTouches.length;i++){ var t=e.changedTouches[i]; if(t.identifier===tid){ tid=null; dEnd(t.clientX); } } if(!e.touches.length){ tid=null; if(dragging) dEnd(p0?p0.x:0); } };
+  card.addEventListener('touchend',tEnd,NP); card.addEventListener('touchcancel',tEnd,NP);
+}
+window.addEventListener('blur',function(){ p0=null; pid=null; dragging=false; dx=dy=0; });
+window.addEventListener('mousemove',function(e){ if(mode==='gyro'||dragging)return; if(mode==='none'||mode==='mouse'){ mode='mouse'; gx=clamp(e.clientX/innerWidth*2-1); gy=clamp(e.clientY/innerHeight*2-1); } });
+['gesturestart','gesturechange','gestureend'].forEach(function(ev){ document.addEventListener(ev,function(e){e.preventDefault()},NP); });
+document.addEventListener('dblclick',function(e){e.preventDefault()},NP);
+var lastEnd=0; document.addEventListener('touchend',function(e){ var n=Date.now(); if(n-lastEnd<350 && !e.target.closest('button,a')) e.preventDefault(); lastEnd=n; },NP);
+document.addEventListener('touchmove',function(e){ e.preventDefault(); },NP);
+window.addEventListener('keydown',function(e){ if(e.key==='ArrowRight')show(cur+1); if(e.key==='ArrowLeft')show(cur-1); if(e.key==='r')show(Math.floor(Math.random()*deck.length)); });
+$('prev').onclick=function(){show(cur-1)}; $('next').onclick=function(){show(cur+1)};
+$('rnd').onclick=function(){ if(deck.length>1){ var i; do{ i=Math.floor(Math.random()*deck.length); }while(i===cur); show(i); } };
+$('rc').onclick=function(){ base=null; mbase=null; };
+Array.prototype.forEach.call(document.querySelectorAll('#bar [data-d]'),function(b){
+  if(+b.dataset.d===DECKN) b.classList.add('on');
+  b.onclick=function(){ if(+b.dataset.d===DECKN) return; var q=new URLSearchParams(location.search); q.set('deck',b.dataset.d); location.href='?'+q.toString()+location.hash; };
+});
+var AMP=reduce?0.5:1;
+var L={bg:$('bg'),mid:$('mid'),figure:$('figure'),fg:$('fg')};
+if(DEBUG) dbg.style.display='block';
+var frames=0;
+function tick(){
+  try{
+    frames++;
+    if(POSE){tx=POSE[0];ty=POSE[1];mode='test';} else if(dragging){tx=dx;ty=dy;} else {tx=gx;ty=gy;}
+    x+=(tx*AMP-x)*LERP; y+=(ty*AMP-y)*LERP; var w=win.clientWidth||300;
+    for(var k in L){ var t='translate3d('+(x*DEPTH[k]*w).toFixed(2)+'px,'+(y*DEPTH[k]*w).toFixed(2)+'px,0)'; L[k].style.webkitTransform=t; L[k].style.transform=t; }
+    var ct='rotateY('+(x*TILT).toFixed(2)+'deg) rotateX('+(-y*TILT).toFixed(2)+'deg)'; card.style.webkitTransform=ct; card.style.transform=ct;
+    if(DEBUG && frames%3===0) dbg.textContent=ENGINE+' '+V+' deck '+DECKN+' ('+deck.length+' cards)  mode '+mode+(dragging?'+drag':'')+'  frame '+(FRAME_MOTION?'moving':'static')+'\nperm '+perm+'  ori '+nO+' mot '+nM+'  touch '+nT+' ptr '+nP+(reduce?'  reduce-motion':'')+'\nbeta '+(lastO&&lastO.beta!=null?lastO.beta.toFixed(1):'-')+'  gamma '+(lastO&&lastO.gamma!=null?lastO.gamma.toFixed(1):'-')+'  tilt '+x.toFixed(2)+' '+y.toFixed(2);
+  }catch(err){ window.__err&&__err('tick: '+err.message); }
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+var MURL=DECKN===1?DIR+'manifest.json':DIR+'deck/manifest.json';
+fetch(MURL+'?v='+V,{cache:'no-store'}).then(function(r){return r.json()}).then(function(m){
+  if(DECKN===1) m=normalizeV1(m);
+  M=m; deck=m.cards; AMPLITUDE=m.amplitude||1;
+  if(m.order){ MOVING=m.order.filter(function(n){return n!=='frame'});
+    deck.forEach(function(c){ Object.keys(c.files||{}).forEach(function(k){ if(k!=='frame'&&k!=='thumb'&&c.files[k]&&MOVING.indexOf(k)<0) MOVING.push(k); }); });
+    MOVING.forEach(function(n){ var el=$(n); if(!el){ el=document.createElement('img'); el.id=n; el.className='layer'; el.alt=''; } win.appendChild(el); L[n]=el; if(DEPTH[n]==null) DEPTH[n]=0; });
+    Object.keys(L).forEach(function(k){ if(MOVING.indexOf(k)<0){ L[k].removeAttribute('src'); L[k].classList.add('empty'); DEPTH[k]=0; } }); }
+  var u='url('+DIR+(m.windowMask||'win-mask.png')+')'; win.style.webkitMaskImage=u; win.style.maskImage=u;
+  var i=byHash(); show(i<0?0:i);
+}).catch(function(err){ say('could not load deck '+DECKN); window.__err&&__err('manifest: '+err); });
+</script>
+</body></html>
