@@ -512,3 +512,10 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio.
 - fg (bottom): asset 6ba7549a flipped, two-tone amber / violet, plus an extra radial energy patch centred on the coin (749,2064) with a hole around the face.
 - finish: FIG_DEGREEN=1 DEFRINGE=3 EDGE_CHOKE=3 RECOLOR_GREEN=1 RECOLOR_TO=amber FG_BOOST=0.45 FG_BODY=0.7 FIN_HEADBOX=1146,1871,230.
+
+## 76 Rainha de Ouros
+- figure (FIG_FIT=1080,2632,1050 FIG_KEEPALL=1 KEY_STRICT=1: width-bound at ~97% width = ~57% card height, stone patch ~130 px above the bottom on the mandala floor): Black queen on a vine-covered stone throne holding a glowing gold pentacle, with a golden robot rabbit, on a stone patch (asset 5a4979c3).
+- bg (default center crop): dome garden with the golden city through the arch and a mandala floor (asset 3f07aa4e), plus a soft contact shadow under the patch.
+- mid: vazio.
+- fg (bottom): asset 6ba7549a flipped and mirrored, two-tone amber / violet; COIN_GLOW=1068,2453,650,520 (work/coinglow.py, a radial patch around the coin with holes at the FIN_HEADBOX faces; keeps fg_base.png).
+- finish: FIG_DEGREEN=1 DEFRINGE=3 EDGE_CHOKE=3 RECOLOR_GREEN=1 RECOLOR_TO=amber (ivy -> gold) FG_BOOST=0.45 FG_BODY=0.75 FIN_HEADBOX=1080,1928,220.
