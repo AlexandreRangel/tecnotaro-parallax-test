@@ -400,3 +400,10 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): asset 6ba7549a mirrored, recolored two-tone amber/violet (sparse, dark mood).
 - finish: FIG_DEGREEN=1 DEGREEN_CYAN=1 (green-dominant spill clamped, cyan sword glow pushed back to blue; red cloak untouched) DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.35 FG_BODY=0.9 FIN_HEADBOX=500,3330,230.
+
+## 60 Valete de Espadas
+- figure (FIG_FIT=1080,2140,1005 FIG_KEEPALL=1 KEY_STRICT=1: tall, anchored near the bottom, full body incl. sword tip and drone): young Black woman scout in white/blue techwear with long braids, a drone at her shoulder, holding a raised blue crystal sword, standing on a rock base (asset 9fe23510).
+- bg (crop x 700-1105 of 1280, centered on the city): windy hilltop under a blue sky with a drone flock, city in the valley (asset 4933d22d), plus a soft contact shadow under the rock base.
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): asset 6ba7549a flipped vertically, recolored airy cyan-white / violet (saturation x0.55) for a daytime look.
+- finish: FIG_DEGREEN=1 DEGREEN_CYAN=1 DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.45 FG_BODY=0.85 FIN_HEADBOX=1180,860,260.
