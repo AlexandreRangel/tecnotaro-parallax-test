@@ -917,3 +917,16 @@ O arquivo `/workspace/tarot-app/tecnotaro-parallax/v3/PROMPTS.md` documenta a pa
 Anexar secoes datadas abaixo (nova seed, mudanca de checkpoint, novo negativo, etc.). Nao apagar o registro acima. Espelhar mudancas em `cards_hq.json` / `gen_hq.py` e anotar a data aqui.
 
 <!-- ## 2026-MM-DD - titulo -->
+
+## 2026-10-13 - revisao de etnias nos prompts de figura (cards_hq.json)
+
+Backup no Blackwell: `C:\tecno_v3hq\cards_hq.bak-ethnic.json`. Objetivo: manter o baralho bem diverso, sem colocar pessoas negras ou de outras minorias em papeis tolos, servis, pobres ou comicos; pessoas negras em papeis de destaque. Edicoes minimas (idade, cabelo e roupa mantidos).
+
+- 00 O Louco: homem negro -> homem branco magro, visual comico levemente caricato (sorriso brincalhao, sobrancelhas erguidas), techwear simples e excentrico, cabelo azul, sem barba.
+- 04 O Imperador: escandinavo -> homem negro queniano (recebe o papel de destaque).
+- 15 O Diabo: hispanico -> escandinavo (troca com o Imperador).
+- 19 O Sol: "etnias diferentes" -> homem negro e mulher do leste asiatico.
+- 49 Rei de Copas: grego -> mexicano.
+- 74 Valete de Ouros (lavrador de macacao): mexicano -> grego (troca com o Rei de Copas).
+
+Observacao: o NEG do `gen_hq.py` contem "east asian, asian", o que bloqueia figuras do leste asiatico (afeta o Sol). gen_hq.py carrega o JSON uma vez no inicio, entao 00, 04, 15, 19, 49 e 74 serao re-renderizados por `watch_redo.ps1` (lista em `redo_after.txt`) depois que o processo principal terminar.
