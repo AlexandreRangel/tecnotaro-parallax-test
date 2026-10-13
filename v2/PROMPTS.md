@@ -169,3 +169,24 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (top): reuse of asset 6ba7549a, flipped both ways and hue shifted +90 degrees.
 
+
+## 28 Sete de Paus
+- figure (fig 0.9, FIG_ANCHOR=base, FIG_MAXW=2700): On flat pure chroma green #00FF00, nothing else. Seven of Wands: a grey-braided older woman in a patterned steampunk cloak standing on a dark rock, gripping a glowing brass staff, six brass staff tips with glowing orbs rising from below. (asset 5c5712b4)
+- bg (crop): neon steampunk city of brass spires on a rocky ridge under a violet sky with airships and lightning (asset 5a722f12).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): reuse of asset 6ba7549a, mirrored horizontally and hue shifted +150 degrees.
+- finish: DEFRINGE=2.
+
+## 29 Oito de Paus
+- figure (fig, FIG_FIT=1080,1920,1900): On flat pure chroma green #00FF00, nothing else. Eight of Wands: eight brass staffs flying diagonally with cyan, magenta and amber energy trails, no people. Scaled large to fill the frame. (asset e3850dd6)
+- bg (crop): steampunk city beside a glowing turquoise river through green valleys under a swirling neon sky (asset 59e8e619).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (top): reuse of asset 6ba7549a, rotated 180 degrees and hue shifted -120 degrees.
+- finish: DEFRINGE=2.
+
+## 30 Nove de Paus
+- figure (fig 0.9, FIG_ANCHOR=base, KEY_STRICT=1): On flat pure chroma green #00FF00, nothing else. Nine of Wands: a weary bearded man with a bandaged head in a battered steampunk leather coat, holding a lamp staff, eight brass lamp posts standing behind him. (asset 8bc413d4)
+- bg (crop): fortified brass gate and wall with neon towers, misty mountains and a wet reflective plaza (asset 1c02569d).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (top): reuse of asset 6ba7549a, flipped vertically and hue shifted -25 degrees.
+- finish: DEFRINGE=2 RECOLOR_GREEN=1 RECOLOR_TO=amber (the yellow-green lamp glass survives the key and is recolored to amber; new look.py option).
