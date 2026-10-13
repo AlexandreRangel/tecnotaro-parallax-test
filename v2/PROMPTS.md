@@ -277,3 +277,17 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): reuse of asset 6ba7549a, flipped both ways and hue shifted -120 degrees.
 - finish: DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.6 FG_BODY=0.8.
+
+## 43 Oito de Copas
+- figure (fig 0.9, FIG_ANCHOR=base, FIG_MAXW=2160, KEY_STRICT=1): pink-haired man walking away with a glowing staff, eight stacked cups at left (in figure layer) (asset 585537f7).
+- bg (crop): misty mountain path under a sacred-geometry moon (asset 6507a4bb).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): reuse of asset 6ba7549a, mirrored and hue shifted +95 degrees.
+- finish: DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.6 FG_BODY=0.8.
+
+## 44 Nove de Copas
+- figure (fig 0.9, FIG_ANCHOR=base, FIG_MAXW=2160, KEY_STRICT=1: width-bound): joyful woman seated on a bench before a shelf of nine cups (asset 0ea80d2b).
+- bg (crop): sunset neon city seen from a domed pavilion with a geometric glass ceiling (asset 5150422a).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): reuse of asset 6ba7549a, hue shifted -90 degrees.
+- finish: DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.6 FG_BODY=0.8.
