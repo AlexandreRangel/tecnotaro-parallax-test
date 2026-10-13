@@ -519,3 +519,12 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio.
 - fg (bottom): asset 6ba7549a flipped and mirrored, two-tone amber / violet; COIN_GLOW=1068,2453,650,520 (work/coinglow.py, a radial patch around the coin with holes at the FIN_HEADBOX faces; keeps fg_base.png).
 - finish: FIG_DEGREEN=1 DEFRINGE=3 EDGE_CHOKE=3 RECOLOR_GREEN=1 RECOLOR_TO=amber (ivy -> gold) FG_BOOST=0.45 FG_BODY=0.75 FIN_HEADBOX=1080,1928,220.
+
+## 77 Rei de Ouros
+- figure (FIG_FIT=1080,2697,1026 FIG_KEEPALL=1 KEY_STRICT=1: ~95% width, stone patch ~130 px above the bottom on the mandala floor): Indian king on a bull-headed throne with a scepter and a gold pentacle, on a stone patch (asset 2f358584).
+- bg (crop x726-1131 of 1280, the tall spire and the sun): golden terraced city at sunset with a mandala terrace floor (asset 926dfae9), plus a soft contact shadow under the patch.
+- mid: vazio.
+- fg (bottom): asset 6ba7549a, two-tone amber / violet; COIN_GLOW=1401,2466,600,500.
+- finish: FIG_DEGREEN=1 DEFRINGE=4 EDGE_CHOKE=5 RECOLOR_GREEN=1 RECOLOR_TO=amber FG_BOOST=0.45 FG_BODY=0.8 FIN_HEADBOX=1083,1975,220.
+
+## Note (75/76/77): COIN_GLOW is now also read by fin.py, which removes the FG_BODY dimming inside the coin area so the glow shows over the figure. Card 75 switched to COIN_GLOW=749,2064,650,520 (base plate regenerated, the hand-made glow is gone); 76 rebuilt with the same exemption.
