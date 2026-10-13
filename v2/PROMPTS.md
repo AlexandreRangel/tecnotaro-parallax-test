@@ -32,3 +32,21 @@ Regras gerais: figura com 85 a 95% da altura e proporção adulta real; energia 
 - bg (crop): fundo anterior mantido (asset c01afe7c).
 - mid: vazio.
 - fg (center): Pure solid black #000000 background, no people. Glowing foreground energy of power: from the upper left a golden ankh-shaped light flare, thick amber and crimson plasma streams with fiery sparks and floating geometric brass sigils pour down the left side and sweep across the bottom toward the viewer, cyan electric arcs. The upper center and right stay empty black. Luminous cyberpunk steampunk tarot style.
+
+## 22 Ás de Paus
+- figure (fig 0.9): Full composition on flat pure chroma green #00FF00. Ace of Wands: a single elegant hand of a mature Black woman emerging from a glowing neon magenta and cyan cloud, gripping one large knotted brass baton with glowing amber core and mechanical vines, leaves falling. No other people. Cyberpunk steampunk illustration, neon rim light. (asset 2bb4e88f)
+- bg (crop): sunlit neon forest of brass trees and glowing embers, magenta and amber nebula sky, empty of people (asset 82c1c78c).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (r): Pure solid black #000000 background, no people. Amber and magenta plasma ribbons, sparks and floating leaves framing sides and bottom, upper center empty (asset 83b327d4).
+
+## 23 Dois de Paus
+- figure (fig 0.9): On flat pure chroma green #00FF00. Two of Wands Marseille pip: exactly two ornate brass batons with glowing amber cores crossed in an X, no people. Cyberpunk steampunk illustration (asset 921835ad).
+- bg (crop): sunlit neon brass forest with copper trunks, magenta amber cyan nebula sky (asset 8a9307fd).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (r): Pure solid black #000000, amber and magenta energy framing edges, center empty (asset 2713cbee).
+
+## 24 Três de Paus
+- figure (fig 0.9): On flat pure chroma green #00FF00. Three of Wands Marseille pip: three ornate brass batons with glowing amber cores in a V with central upright, no people. Cyberpunk steampunk illustration (asset 614ba556).
+- bg (crop): neon brass woodland clearing, amber mist, magenta and gold nebula sky (asset 08a9d919).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (r): Pure solid black #000000, amber gold and magenta plasma swirls framing sides and bottom, center empty (asset a0ab32a4).
