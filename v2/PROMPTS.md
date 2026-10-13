@@ -435,3 +435,10 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): asset 6ba7549a flipped vertically, recolored three-tone amber / gold / violet.
 - finish: FIG_DEGREEN=1 DEFRINGE=4 EDGE_CHOKE=5 RECOLOR_GREEN=1 RECOLOR_TO=amber (green spill on gold edges -> amber) FG_BOOST=0.5 FG_BODY=0.85.
+
+## 65 Dois de Ouros
+- figure (FIG_FIT=1080,2342,1000 FIG_KEEPALL=1 KEY_STRICT=1: anchored near the bottom, coins and infinity ribbon kept): joyful juggler woman in a purple/orange outfit and top hat dancing on a paving patch, two gold pentacle coins linked by a glowing infinity ribbon (asset 34912aa1).
+- bg (crop x 655-1060 of 1280, right ship): golden-hour harbor quay, ships on rough waves (asset c90c2573), plus a soft contact shadow under the paving patch.
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): asset 6ba7549a mirrored, recolored two-tone amber / violet.
+- finish: FIG_DEGREEN=1 DEFRINGE=4 EDGE_CHOKE=5 RECOLOR_GREEN=1 RECOLOR_TO=amber (grass tufts and gold-edge spill -> amber) FG_BOOST=0.5 FG_BODY=0.85 FIN_HEADBOX=1060,1342,240.
