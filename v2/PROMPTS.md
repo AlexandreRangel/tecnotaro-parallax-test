@@ -428,3 +428,10 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): asset 6ba7549a mirrored, recolored airy blue-white / violet (saturation x0.55).
 - finish: FIG_DEGREEN=1 DEGREEN_CYAN=1 DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.45 FG_BODY=0.85 FIN_HEADBOX=1102,2425,240.
+
+## 64 Ás de Ouros
+- figure (FIG_FIT=1080,1750,740 FIG_KEEPALL=1 KEY_STRICT=1: centered slightly above the middle, large; cloud floats by design): chrome robotic hand rising from a grey cloud holding a large golden circuit pentagram coin (asset 7e7fbadd).
+- bg (center crop on the rose archway and the golden city): rose archway garden at golden hour, golden city through the arch, mountains (asset 77cb6f33).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): asset 6ba7549a flipped vertically, recolored three-tone amber / gold / violet.
+- finish: FIG_DEGREEN=1 DEFRINGE=4 EDGE_CHOKE=5 RECOLOR_GREEN=1 RECOLOR_TO=amber (green spill on gold edges -> amber) FG_BOOST=0.5 FG_BODY=0.85.
