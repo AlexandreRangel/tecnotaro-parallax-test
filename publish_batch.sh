@@ -6,7 +6,7 @@ set -euo pipefail
 REPO="$(cd "$(dirname "$0")" && pwd)"
 SRC_RAW="${SRC_RAW:-/workspace/tarot-app/tecnotaro-parallax/v2/raw}"
 [ $# -ge 1 ] || { echo "usage: $0 NN [NN...]"; exit 1; }
-cd "$REPO"; git pull --rebase -q
+cd "$REPO"; git pull --rebase --autostash -q
 built=()
 for n in "$@"; do
   nn=$(printf %02d "$((10#$n))")
