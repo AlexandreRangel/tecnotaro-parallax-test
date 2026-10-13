@@ -291,3 +291,17 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): reuse of asset 6ba7549a, hue shifted -90 degrees.
 - finish: DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.6 FG_BODY=0.8.
+
+## 45 Dez de Copas
+- figure (fig 0.9, FIG_ANCHOR=base, FIG_MAXW=2160, KEY_STRICT=1: width-bound): joyful family of four under an arc of ten rainbow cups on a grassy ground patch (asset 9398c9d6).
+- bg (crop): golden sunrise valley under a Flower of Life sky (asset 59c1ca55).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): reuse of asset 6ba7549a, flipped vertically, hue +20 degrees with green hues folded to cyan/magenta.
+- finish: DEFRINGE=4 EDGE_CHOKE=5 RECOLOR_GREEN=1 RECOLOR_TO=amber (grass -> amber) FG_BOOST=0.6 FG_BODY=0.8.
+
+## 46 Valete de Copas
+- figure (fig 0.9, FIG_ANCHOR=base, FIG_MAXW=2160, KEY_STRICT=1): teal-bob young woman holding a cup with a holographic fish (asset 7947ba37).
+- bg (crop): neon seaside promenade at dusk (asset 7df1f337).
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): reuse of asset 6ba7549a, flipped both ways, hue -40 degrees with green hues folded to cyan/magenta.
+- finish: DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.6 FG_BODY=0.8.
