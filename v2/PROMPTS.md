@@ -463,3 +463,10 @@ Nota (12/10, tarde): look.py gera figure.png a partir de figure_key.png (neon se
 - mid: vazio (aura do fg gerada pelo fin.py).
 - fg (bottom): asset 6ba7549a mirrored, recolored two-tone amber / violet, light (cold scene).
 - finish: FIG_DEGREEN=1 DEGREEN_CYAN=1 DEFRINGE=4 EDGE_CHOKE=5 FG_BOOST=0.35 FG_BODY=0.9 FIN_HEADBOX=830,2066,200+1436,2176,210.
+
+## 69 Seis de Ouros
+- figure (FIG_FIT=1080,3152,995 FIG_KEEPALL=1 KEY_STRICT=1: ~92% width, stone patch on the plaza floor at the bottom; floating scale and coins kept): Black merchant in a purple and gold coat holding a glowing golden scale and dropping glowing gold coins to two kneeling beggars, a young woman and an old man, on a stone patch (asset 4ebe7478).
+- bg (crop x 400-805 of 1280: central tower, readable tarot banners at right excluded): golden-hour city plaza with a central spire, airships and an inlaid floor circle (asset 6bf65e05), plus a soft contact shadow under the patch.
+- mid: vazio (aura do fg gerada pelo fin.py).
+- fg (bottom): asset 6ba7549a, recolored two-tone amber / violet.
+- finish: FIG_DEGREEN=1 DEFRINGE=4 EDGE_CHOKE=5 RECOLOR_GREEN=1 RECOLOR_TO=amber (scale/coin glow gold) FG_BOOST=0.5 FG_BODY=0.85 FIN_HEADBOX=1071,2561,170+551,3009,160+1573,3081,160.
