@@ -658,27 +658,25 @@
    "index": 22,
    "title": "ACE OF WANDS",
    "suit": "wands",
-   "placeholder": true,
-   "base": "../v1/deck/22-ace-of-wands/",
    "files": {
-    "frame": "frame",
     "bg": "bg",
-    "mid": null,
-    "figure": "mid",
+    "mid": "mid",
+    "figure": "figure",
     "fg": "fg",
+    "frame": "frame",
     "thumb": "thumb"
-   },
-   "rect": {
-    "bg": 1.1,
-    "figure": 1.0,
-    "fg": 1.0
-   },
-   "blend": {
-    "fg": "screen"
    },
    "depth": {
     "bg": -0.03,
+    "mid": -0.015,
+    "figure": 0.008,
     "fg": 0.035
+   },
+   "rect": {
+    "bg": 1.12,
+    "mid": 1.12,
+    "figure": 1.12,
+    "fg": 1.12
    }
   },
   {
@@ -686,27 +684,25 @@
    "index": 23,
    "title": "TWO OF WANDS",
    "suit": "wands",
-   "placeholder": true,
-   "base": "../v1/deck/23-two-of-wands/",
    "files": {
-    "frame": "frame",
     "bg": "bg",
-    "mid": null,
-    "figure": "mid",
+    "mid": "mid",
+    "figure": "figure",
     "fg": "fg",
+    "frame": "frame",
     "thumb": "thumb"
-   },
-   "rect": {
-    "bg": 1.1,
-    "figure": 1.0,
-    "fg": 1.0
-   },
-   "blend": {
-    "fg": "screen"
    },
    "depth": {
     "bg": -0.03,
+    "mid": -0.015,
+    "figure": 0.008,
     "fg": 0.035
+   },
+   "rect": {
+    "bg": 1.12,
+    "mid": 1.12,
+    "figure": 1.12,
+    "fg": 1.12
    }
   },
   {
@@ -714,27 +710,25 @@
    "index": 24,
    "title": "THREE OF WANDS",
    "suit": "wands",
-   "placeholder": true,
-   "base": "../v1/deck/24-three-of-wands/",
    "files": {
-    "frame": "frame",
     "bg": "bg",
-    "mid": null,
-    "figure": "mid",
+    "mid": "mid",
+    "figure": "figure",
     "fg": "fg",
+    "frame": "frame",
     "thumb": "thumb"
-   },
-   "rect": {
-    "bg": 1.1,
-    "figure": 1.0,
-    "fg": 1.0
-   },
-   "blend": {
-    "fg": "screen"
    },
    "depth": {
     "bg": -0.03,
+    "mid": -0.015,
+    "figure": 0.008,
     "fg": 0.035
+   },
+   "rect": {
+    "bg": 1.12,
+    "mid": 1.12,
+    "figure": 1.12,
+    "fg": 1.12
    }
   },
   {
