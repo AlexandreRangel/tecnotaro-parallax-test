@@ -23,6 +23,16 @@
   "frame": "frame",
   "thumb": "thumb"
  },
+ "window": [
+  60,
+  190,
+  2120,
+  3460
+ ],
+ "frameOptions": {
+  "A": "frame",
+  "B": "frame-alt"
+ },
  "layers": {
   "bg": {
    "depth": -0.04,

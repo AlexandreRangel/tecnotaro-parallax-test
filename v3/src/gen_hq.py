@@ -9,7 +9,8 @@ OUT=r'C:\Dropbox\tarot-app\midia\decks\tecnotaro-parallax-3\raw_hq'
 W,H=2120,3460            # final layer size (window x 1.12 @2x)
 BW,BH=1024,1664          # base txt2img
 HW,HH=1600,2600          # hires pass
-CK=r'_SDXL_1_0\Juggernaut_XL\juggernautXL_ragnarokBy.safetensors'
+# model is configurable: set TECNO_CKPT (checkpoint name as listed by ComfyUI); SDXL graph today, Flux Krea / Z-Image need their own graph
+CK=os.environ.get('TECNO_CKPT',r'_SDXL_1_0\Juggernaut_XL\juggernautXL_ragnarokBy.safetensors')
 STYLE=("Tecnotaro tarot art by Alexandre Rangel, playful energetic fluid mood, transhumanist cyberpunk steampunk world, polished brass and copper, glowing neon magenta, cyan and amber, "
  "magic and technology, sacred geometry as glowing neon line-work and holograms (Flower of Life, Metatron cube, golden spirals, mandala grids), neon LED circuitry, holographic interfaces, cybernetic accents, very bright luminous high-key lighting, vivid saturated colors, painterly digital illustration, crisp fine details, sharp focus, masterpiece")
 NEG=("text, letters, words, caption, watermark, signature, logo, border, frame, card frame, margin, young, teenager, child, kid, childlike, youthful face, east asian, asian, "
@@ -182,10 +183,8 @@ def do_card(c,only=None):
             im=render(f"vertical portrait composition, one single tall isolated element: {item}, complete and fully visible from top to bottom, centered, no text, flat solid pure green #00FF00 chroma key background, {STYLE}",NEG+", "+NOFIG+", green objects, text, letters, scenery, sky, floor, multiple scenes",seed+21+side*5)
             im.save(os.path.join(d,f'_raw_mid{side}.png'))
             pc=despill(cut(sharpen(im))); pc=pc.crop(pc.getbbox())
-            k=min(H*rng.uniform(0.62,0.80)/pc.height,W*0.40/pc.width); pc=pc.resize((int(pc.width*k),int(pc.height*k)),Image.LANCZOS)
-            x=-int(pc.width*rng.uniform(0.0,0.15)) if side==0 else W-int(pc.width*rng.uniform(0.85,1.0))
-            lay.alpha_composite(place(pc,x,int(H*rng.uniform(0.80,0.88))-pc.height))
-        S('mid',lay)
+            k=min(H*rng.uniform(0.62,0.80)/pc.height,W*0.36/pc.width); pc=pc.resize((int(pc.width*k),int(pc.height*k)),Image.LANCZOS)
+            pc.save(os.path.join(d,f'_mid{side}.png'))
     if want('figure'):
         LAYER[0]='figure'
         if c['kind']=='pip':
@@ -199,7 +198,7 @@ def do_card(c,only=None):
             im=render(f"{c['fig']}, {shot}, {GREY}, {STYLE}",NEG+", scenery, buildings, city, sky, small head, tiny figure, distant, floor shadow",seed+41,face=person or c['kind']=='ace',hand=person or c['kind']=='ace')
             im=sharpen(im); im.save(os.path.join(d,'_raw_figure.png')); fc=cut(im); fc=fc.crop(fc.getbbox())
             # large figure that reaches the card base: bottom anchored past the window bottom edge
-            k=min(H*0.95/fc.height,W*0.96/fc.width); fc2=fc.resize((int(fc.width*k),int(fc.height*k)),Image.LANCZOS)
+            k=min(H*0.95/fc.height,W*0.84/fc.width); fc2=fc.resize((int(fc.width*k),int(fc.height*k)),Image.LANCZOS)
             ox,oy=(W-fc2.width)//2,H-fc2.height; fig=place(fc2,ox,oy)
             faces=detect(im,'face_yolov8m.pt',0.35); sx=fc2.width/fc.width
             bb0=Image.open(os.path.join(d,'_raw_figure.png')).size
@@ -227,10 +226,13 @@ def do_card(c,only=None):
         S('near',lay)
     if want('energy'):
         LAYER[0]='energy'
-        im=render(f"large swirling neon energy ribbons and luminous light streaks of {E}, flowing in from the edges around an empty center, glowing sparks, musical light waves and particles, on a pure black background, {STYLE}",NEG+", "+NOFIG+", objects, buildings, white background",seed+61)
+        im=render(f"borderless large swirling neon energy ribbons and luminous light streaks of {E}, flowing in from the edges around an empty center, glowing sparks, musical light waves and particles, on a pure black background, {STYLE}",NEG+", "+NOFIG+", objects, buildings, white background, rectangle, panel, frame corners, border ornaments, HUD frame",seed+61)
         en=lumakey(fit(im,(W,H)))
         yy,xx=np.mgrid[0:H,0:W]; m=np.ones((H,W),np.float32)
         r=np.sqrt(((xx-W*.5)/(W*.30))**2+((yy-H*.45)/(H*.32))**2); m*=0.15+0.85*np.clip((r-0.55)/0.6,0,1)
+        # feather the outer edges and kill the corners so no rectangular shapes show
+        ex=np.minimum(xx,W-1-xx)/(W*0.10); ey=np.minimum(yy,H-1-yy)/(H*0.08); m*=np.clip(np.minimum(ex,ey),0,1)**1.5
+        rc=np.sqrt(((xx-W*.5)/(W*.62))**2+((yy-H*.5)/(H*.62))**2); m*=np.clip((1.12-rc)/0.25,0,1)
         ip=os.path.join(d,'_info.json'); faces=json.load(open(ip)).get('faces',[]) if os.path.exists(ip) else []
         for (x1,y1,x2,y2) in faces:   # energy never crosses a face
             cx,cy=(x1+x2)/2,(y1+y2)/2; rx,ry=(x2-x1)*1.25,(y2-y1)*1.35
@@ -241,7 +243,18 @@ def do_card(c,only=None):
             m*=1-0.85*fa
         S('energy',mult_alpha(en,m))
     L_=lambda k: Image.open(os.path.join(d,k+'.png')).convert('RGBA')
-    if want('figure'): L_('_fig').save(os.path.join(d,'figure.png'))  # character + attached things (seat, held objects, ground mound)
+    if want('figure'): L_('_fig').save(os.path.join(d,'figure.png'))
+    if want('mid') or want('figure'):   # place mid pieces so they peek out beside the figure (at least ~55% visible)
+        fb=L_('_fig').getbbox() if os.path.exists(os.path.join(d,'_fig.png')) else (int(W*.3),0,int(W*.7),H)
+        lay=Image.new('RGBA',(W,H),(0,0,0,0)); r2=random.Random(seed+7)
+        for side in (0,1):
+            mp=os.path.join(d,f'_mid{side}.png')
+            if not os.path.exists(mp): continue
+            pc=L_(f'_mid{side}'); pw=pc.width; m0=int(W*0.07)  # keep inside the visible window (6% overscan)
+            if side==0: x=min(int(W*0.10), fb[0]-int(pw*0.55)); x=max(x, m0-int(pw*0.25))
+            else: x=max(W-int(W*0.10)-pw, fb[2]-int(pw*0.45)); x=min(x, W-m0-int(pw*0.75))
+            lay.alpha_composite(place(pc,x,int(H*r2.uniform(0.80,0.88))-pc.height))
+        lay.save(os.path.join(d,'mid.png'))  # character + attached things (seat, held objects, ground mound)
     wp=os.path.join(d,'_workflows.json'); old=json.load(open(wp)) if os.path.exists(wp) else []
     done={e['layer'] for e in LOG}; json.dump([e for e in old if e['layer'] not in done]+LOG,open(wp,'w'),indent=1)
     comp=Image.new('RGBA',(W,H))
